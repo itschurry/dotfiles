@@ -64,7 +64,7 @@ lua/utils/                빌드, rsync, 터미널 유틸
   - 분할 미리보기: `<leader>mp`
   - 명령어: `:RenderMarkdown toggle`, `:RenderMarkdown preview`
 - 주석: `<leader>/`, `<M-/>`
-- 파일 탐색: `<C-n>` (`nvim-tree`, 오른쪽 80컬럼)
+- 파일 탐색: `<C-n>` (`nvim-tree`, 오른쪽 60컬럼, 파일 열면 자동 닫힘)
 - 심볼 탐색: `<C-t>`
 
 ## 단축키
@@ -101,7 +101,7 @@ Leader 키는 `,`다.
 
 | 모드 | 키 | 동작 |
 | --- | --- | --- |
-| Normal | `<C-n>` | NvimTree 토글 |
+| Normal | `<C-n>` | NvimTree 토글, 파일 열면 자동 닫힘 |
 | Normal | `<C-t>` | Aerial 심볼 아웃라인 토글 |
 | Normal | `<leader>ff` | Telescope 파일 찾기 |
 | Normal | `<leader>fF` | Telescope Git 파일 찾기 |

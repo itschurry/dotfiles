@@ -5,6 +5,11 @@ require("nvim-tree").setup {
         width = 60,          -- 탐색기 너비 설정
         side = "right",       -- 탐색기 위치 (left, right)
     },
+    actions = {
+        open_file = {
+            quit_on_open = true, -- 파일을 열면 NvimTree 닫기
+        },
+    },
     filters = {
         dotfiles = true,     -- 숨김 파일 표시 여부
     },
