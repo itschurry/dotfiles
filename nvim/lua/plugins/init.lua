@@ -16,6 +16,7 @@ local plugins = {
   { repo = "catppuccin/nvim", name = "catppuccin" },
   { repo = "folke/tokyonight.nvim" },
   { repo = "projekt0n/github-nvim-theme", name = 'github-theme' },
+  { repo = "EdenEast/nightfox.nvim", name = "nightfox.nvim" },
 
   { repo = "folke/which-key.nvim" },
   { repo = "folke/zen-mode.nvim" },

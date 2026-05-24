@@ -48,7 +48,7 @@ lua/utils/                빌드, rsync, 터미널 유틸
 ## 주요 설정
 
 - Leader: `,`
-- 테마: `tokyonight`
+- 테마: `nightfox`
 - LSP: `mason.nvim`, `mason-lspconfig.nvim`, Neovim LSP API
   - 활성 서버: `clangd`, `pyright`, `dockerls`, `jsonls`, `yamlls`
 - 자동완성: `nvim-cmp`, `cmp-nvim-lsp`, `cmp-buffer`, `cmp-path`, `cmp_luasnip`

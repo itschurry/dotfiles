@@ -18,8 +18,9 @@ else
       local mason_path = vim.fn.stdpath("data") .. "/site/pack/plugins/start/mason.nvim"
       if vim.fn.isdirectory(mason_path) ~= 0 then
         -- require("theme.catppuccin")
-        require("theme.tokyonight")
+        -- require("theme.tokyonight")
         -- require("theme.github")
+        require("theme.nightfox")
 
         require("plugins.ui.alpha")
         require("plugins.completion.cmp")
