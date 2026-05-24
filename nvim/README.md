@@ -49,6 +49,7 @@ lua/utils/                빌드, rsync, 터미널 유틸
 
 - Leader: `,`
 - 테마: `nightfox`
+- BufferLine 구분선: 얇은 선(`thin`)
 - LSP: `mason.nvim`, `mason-lspconfig.nvim`, Neovim LSP API
   - 활성 서버: `clangd`, `pyright`, `dockerls`, `jsonls`, `yamlls`
 - 자동완성: `nvim-cmp`, `cmp-nvim-lsp`, `cmp-buffer`, `cmp-path`, `cmp_luasnip`
@@ -92,6 +93,9 @@ Leader 키는 `,`다.
 | Normal | `<leader>d` | 현재 버퍼 닫기 |
 | Normal | `<leader>p` | BufferLine 버퍼 선택 |
 | Normal | `<leader>pd` | BufferLine 버퍼 선택 후 닫기 |
+| Normal | `<leader>bo` | 현재 버퍼만 남기고 닫기 |
+| Normal | `<leader>bL` | 현재 버퍼 왼쪽 버퍼 닫기 |
+| Normal | `<leader>bR` | 현재 버퍼 오른쪽 버퍼 닫기 |
 | Normal | `<leader>h` | 현재 버퍼를 왼쪽 split으로 이동 |
 | Normal | `<leader>j` | 현재 버퍼를 아래 split으로 이동 |
 | Normal | `<leader>k` | 현재 버퍼를 위 split으로 이동 |

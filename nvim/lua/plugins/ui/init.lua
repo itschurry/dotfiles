@@ -70,11 +70,38 @@ require('lualine').setup {
 -- Bufferline
 require('bufferline').setup {
     options = {
-        numbers = "ordinal", -- 버퍼 번호를 정렬
-        diagnostics = "nvim_lsp", -- LSP 진단 정보 표시
-        show_buffer_close_icons = false, -- 버퍼 닫기 버튼 표시
-        show_close_icon = true, -- 전체 닫기 버튼 비활성화
-        separator_style = "slant", -- 버퍼 사이의 구분선 스타일
+        mode = "buffers",
+        numbers = "ordinal",
+        diagnostics = "nvim_lsp",
+        diagnostics_indicator = function(count, level)
+            local icon = tostring(level):match("error") and "" or ""
+            return " " .. icon .. " " .. count
+        end,
+        close_command = "bdelete %d",
+        right_mouse_command = "bdelete %d",
+        middle_mouse_command = "bdelete %d",
+        show_buffer_close_icons = false,
+        show_close_icon = false,
+        always_show_bufferline = false,
+        separator_style = "thin",
+        sort_by = "insert_after_current",
+        indicator = {
+            style = "icon",
+            icon = "▎",
+        },
+        hover = {
+            enabled = true,
+            delay = 200,
+            reveal = { "close" },
+        },
+        offsets = {
+            {
+                filetype = "NvimTree",
+                text = "Files",
+                text_align = "center",
+                separator = true,
+            },
+        },
     }
 }
 
