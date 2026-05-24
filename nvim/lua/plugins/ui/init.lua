@@ -154,14 +154,17 @@ vim.keymap.set("v", "<M-/>", function()
 end, { desc = "Visual toggle block comment" })
 
 -- notify
-local colors = require("catppuccin.palettes").get_palette("mocha")
 local bg = vim.api.nvim_get_hl_by_name("Normal", true).background
+local notify = require("notify")
 
-require("notify").setup({
---   background_colour = "#1e1e2e", -- Catppuccin Mocha 테마와 어울리는 어두운 색
-  -- background_colour = colors.base,
-  background_colour = string.format("#%06x", bg or 0x000000)
+notify.setup({
+  background_colour = string.format("#%06x", bg or 0x000000),
+  timeout = 3000,
+  render = "compact",
+  stages = "fade_in_slide_out",
+  top_down = false,
 })
+vim.notify = notify
 
 require("twilight").setup()
 require("zen-mode").setup {
