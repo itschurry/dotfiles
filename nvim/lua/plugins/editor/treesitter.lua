@@ -20,7 +20,9 @@ local languages = {
   "markdown_inline",
 }
 
-treesitter.install(languages):wait(300000)
+vim.api.nvim_create_user_command("TSInstallConfigured", function()
+  treesitter.install(languages):wait(300000)
+end, { desc = "Install configured Treesitter parsers" })
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = languages,
@@ -37,13 +39,3 @@ vim.api.nvim_set_hl(0, "@class", { link = "Structure" })
 vim.api.nvim_set_hl(0, "@struct", { link = "Structure" })
 vim.api.nvim_set_hl(0, "@interface", { link = "Structure" })
 vim.api.nvim_set_hl(0, "@enum", { link = "Structure" })
-
-require("nvim-autopairs").setup({
-  check_ts = true,
-  disable_filetype = { "TelescopePrompt", "vim" },
-})
-
-local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-local cmp = require("cmp")
-
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())

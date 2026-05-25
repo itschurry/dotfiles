@@ -11,6 +11,12 @@ nvim
 
 처음 실행하면 `lua/plugins/init.lua`에 정의된 플러그인을 자동 설치한다. 설치가 끝나면 Neovim을 한 번 재시작해.
 
+Treesitter parser는 시작 시 자동 설치하지 않는다. 처음 설치하거나 parser를 갱신할 때 직접 실행해.
+
+```vim
+:TSInstallConfigured
+```
+
 포맷 기능을 쓰려면 필요한 포맷터를 먼저 설치해.
 
 ```vim
@@ -38,9 +44,8 @@ lua/plugins/init.lua      플러그인 설치/업데이트
 lua/plugins/ui/           화면, 트리, 상태줄, 대시보드
 lua/plugins/editor/       포맷, 폴딩, Treesitter, Markdown 렌더링
 lua/plugins/completion/   자동완성, 스니펫
-lua/plugins/language/     LSP, DAP
+lua/plugins/language/     LSP, Flutter
 lua/plugins/navigation/   Telescope 탐색
-lua/plugins/integrations/ Copilot, Flutter 같은 선택 연동
 lua/theme/                colorscheme 설정
 lua/utils/                빌드, rsync, 터미널 유틸
 ```
@@ -52,6 +57,9 @@ lua/utils/                빌드, rsync, 터미널 유틸
 - BufferLine 구분선: 얇은 선(`thin`)
 - LSP: `mason.nvim`, `mason-lspconfig.nvim`, Neovim LSP API
   - 활성 서버: `clangd`, `pyright`, `dockerls`, `jsonls`, `yamlls`
+- Flutter: `flutter-tools.nvim`
+  - `dartls`는 `flutter-tools.nvim`이 관리한다.
+  - Flutter SDK는 `flutter` 명령이 PATH에 있는 머신에서만 로드한다.
 - 자동완성: `nvim-cmp`, `cmp-nvim-lsp`, `cmp-buffer`, `cmp-path`, `cmp_luasnip`
 - 저장 시 포맷: `conform.nvim`
   - Lua: `stylua`
@@ -131,7 +139,6 @@ Leader 키는 `,`다.
 | Normal | `<leader>ca` | code action |
 | Normal | `<leader>rn` | symbol rename |
 | Normal | `<leader>f` | 현재 버퍼 포맷 |
-| Normal | `<F8>` | Python 파일에서 `Autopep8()` 실행 |
 
 ### 주석/폴딩
 
@@ -171,14 +178,19 @@ Leader 키는 `,`다.
 | Normal | `<leader>rd` | rsync 다운로드 |
 | Terminal | `<Esc>` | popup terminal 닫기 |
 
-### 디버그
+### Flutter
 
 | 모드 | 키 | 동작 |
 | --- | --- | --- |
-| Normal | `<F5>` | DAP continue |
-| Normal | `<F10>` | DAP step over |
-| Normal | `<F11>` | DAP step into |
-| Normal | `<F12>` | DAP step out |
+| Normal | `<leader>Fr` | Flutter run |
+| Normal | `<leader>FR` | Flutter hot reload |
+| Normal | `<leader>FS` | Flutter hot restart |
+| Normal | `<leader>Fq` | Flutter quit |
+| Normal | `<leader>Fd` | Flutter device 선택 |
+| Normal | `<leader>Fe` | Flutter emulator 선택 |
+| Normal | `<leader>Fo` | Flutter outline 토글 |
+| Normal | `<leader>Fl` | Flutter log 토글 |
+| Normal | `<leader>Fp` | Flutter pub get |
 
 ### Alpha 대시보드
 
@@ -200,6 +212,7 @@ Leader 키는 `,`다.
 | 명령어 | 동작 |
 | --- | --- |
 | `:PlugUpdate` | 직접 관리하는 플러그인 업데이트 |
+| `:TSInstallConfigured` | 설정된 Treesitter parser 설치 |
 | `:RsyncUp [path]` | 로컬에서 원격으로 rsync |
 | `:RsyncDown [path]` | 원격에서 로컬로 rsync |
 

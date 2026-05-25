@@ -10,7 +10,11 @@ else
     require("core.project")
 
     -- Step 2. 플러그인 설치
-    require("plugins")
+    local plugins = require("plugins")
+    if plugins.installed_any then
+      print("새 플러그인 설치 완료. Neovim 재시작해.")
+      return
+    end
 
     -- Step 3. mason이 설치됐는지 확인 후 나머지 플러그인 설정 실행
     vim.schedule(function()
@@ -24,12 +28,12 @@ else
 
         require("plugins.ui.alpha")
         require("plugins.completion.cmp")
-        -- require("plugins.integrations.copilot")
-        require("plugins.language.dap")
         require("plugins.editor.format")
-        -- require("plugins.integrations.flutter")
         require("plugins.editor.folding")
         require("plugins.language.lsp")
+        if vim.fn.executable("flutter") == 1 then
+          require("plugins.language.flutter")
+        end
         require("plugins.navigation.telescope")
         require("plugins.editor.treesitter")
         require("plugins.editor.markdown")

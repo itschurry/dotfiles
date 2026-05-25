@@ -36,8 +36,6 @@ local plugins = {
 
   -- ☆ 코드 하이라이트 및 구조
   { repo = "nvim-treesitter/nvim-treesitter", branch = "main" },
-  { repo = "kevinhwang91/nvim-ufo" },
-  { repo = "kevinhwang91/promise-async" }, -- 의존성
 
   -- ☆ LSP / 자동완성
   { repo = "neovim/nvim-lspconfig" },
@@ -51,19 +49,17 @@ local plugins = {
   { repo = "saadparwaiz1/cmp_luasnip" },
   { repo = "windwp/nvim-autopairs" },
   { repo = "stevearc/conform.nvim" },
-  { repo = "nvimtools/none-ls.nvim" },
+  { repo = "nvim-flutter/flutter-tools.nvim", name = "flutter-tools.nvim" },
 
-  -- ☆ Git / AI
+  -- ☆ Git
   { repo = "lewis6991/gitsigns.nvim" },
-  { repo = "zbirenbaum/copilot.lua" },
-
-  -- ☆ DAP (Debug Adapter Protocol)
-  { repo = "mfussenegger/nvim-dap" },
 
   -- ☆ 기타
   { repo = "lukas-reineke/indent-blankline.nvim" },
   { repo = "numToStr/Comment.nvim" },
 }
+
+local installed_any = false
 
 -- 플러그인마다 존재 여부 확인 후 git clone
 for _, plugin in ipairs(plugins) do
@@ -84,6 +80,7 @@ for _, plugin in ipairs(plugins) do
       table.insert(clone_cmd, 6, plugin.branch)
     end
     vim.fn.system(clone_cmd)
+    installed_any = true
   end
 end
 
@@ -136,3 +133,7 @@ end
 vim.api.nvim_create_user_command("PlugUpdate", function()
   update_plugins()
 end, { desc = "Git pull all custom-managed plugins" })
+
+return {
+  installed_any = installed_any,
+}
