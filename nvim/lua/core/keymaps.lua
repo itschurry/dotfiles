@@ -1,5 +1,6 @@
 local map = vim.keymap.set
 vim.g.mapleader = ","
+vim.g.tmux_navigator_no_mappings = 1
 
 -- 일반
 map("n", "<leader>nh", ":nohlsearch<CR>", { silent = true, desc = "Clear search highlight" })
@@ -83,6 +84,12 @@ map("n", "<leader>H", function() move_buf_to_split("h") end, { desc = "Move buff
 map("n", "<leader>J", function() move_buf_to_split("j") end, { desc = "Move buffer down", silent = true })
 map("n", "<leader>K", function() move_buf_to_split("k") end, { desc = "Move buffer up", silent = true })
 map("n", "<leader>L", function() move_buf_to_split("l") end, { desc = "Move buffer right", silent = true })
+
+-- tmux pane / Neovim split 이동
+map("n", "<M-h>", "<cmd>TmuxNavigateLeft<CR>", { silent = true, desc = "Move to left pane" })
+map("n", "<M-j>", "<cmd>TmuxNavigateDown<CR>", { silent = true, desc = "Move to lower pane" })
+map("n", "<M-k>", "<cmd>TmuxNavigateUp<CR>", { silent = true, desc = "Move to upper pane" })
+map("n", "<M-l>", "<cmd>TmuxNavigateRight<CR>", { silent = true, desc = "Move to right pane" })
 
 -- Fold 키 매핑
 map('n', '<leader>zR', 'zR', { noremap = true, silent = true })

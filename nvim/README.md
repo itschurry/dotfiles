@@ -123,6 +123,10 @@ Leader 키는 `,`다.
 | Normal | `<leader>J` | 현재 버퍼를 아래 split으로 이동 |
 | Normal | `<leader>K` | 현재 버퍼를 위 split으로 이동 |
 | Normal | `<leader>L` | 현재 버퍼를 오른쪽 split으로 이동 |
+| Normal | `<M-h>` | 왼쪽 Neovim split/tmux pane으로 이동 |
+| Normal | `<M-j>` | 아래 Neovim split/tmux pane으로 이동 |
+| Normal | `<M-k>` | 위 Neovim split/tmux pane으로 이동 |
+| Normal | `<M-l>` | 오른쪽 Neovim split/tmux pane으로 이동 |
 
 ### 탐색
 

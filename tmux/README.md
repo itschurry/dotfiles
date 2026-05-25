@@ -61,7 +61,8 @@ tmux/
 - `prefix + h/j/k/l`: pane 이동
 - `prefix + C-h/C-j/C-k/C-l`: pane 크기 조절
 - `prefix + u`: 화면의 URL을 fzf로 선택해서 열기
-- `C-h/C-j/C-k/C-l`: Neovim split과 tmux pane 사이 이동
+- `M-h/M-j/M-k/M-l`: Neovim split과 tmux pane 사이 이동
+- `C-h/C-j/C-k/C-l`: 셸/터미널 기본 동작
 
 ## 플러그인
 
