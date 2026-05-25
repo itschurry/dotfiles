@@ -32,6 +32,18 @@ map("n", "<leader>bo", ":BufferLineCloseOthers<CR>", { silent = true, desc = "Cl
 map("n", "<leader>bL", ":BufferLineCloseLeft<CR>",   { silent = true, desc = "Close buffers on the left" })
 map("n", "<leader>bR", ":BufferLineCloseRight<CR>",  { silent = true, desc = "Close buffers on the right" })
 
+-- tmux prefix key와 suffix를 맞춘 split/window 조작
+map("n", "<leader>v", ":vsplit<CR>", { silent = true, desc = "Vertical split" })
+map("n", "<leader>s", ":split<CR>", { silent = true, desc = "Horizontal split" })
+map("n", "<leader>h", "<C-w>h", { silent = true, desc = "Move to left window" })
+map("n", "<leader>j", "<C-w>j", { silent = true, desc = "Move to lower window" })
+map("n", "<leader>k", "<C-w>k", { silent = true, desc = "Move to upper window" })
+map("n", "<leader>l", "<C-w>l", { silent = true, desc = "Move to right window" })
+map("n", "<leader><C-h>", ":vertical resize -5<CR>", { silent = true, desc = "Resize window left" })
+map("n", "<leader><C-j>", ":resize +5<CR>", { silent = true, desc = "Resize window down" })
+map("n", "<leader><C-k>", ":resize -5<CR>", { silent = true, desc = "Resize window up" })
+map("n", "<leader><C-l>", ":vertical resize +5<CR>", { silent = true, desc = "Resize window right" })
+
 local function move_buf_to_split(dir)
   local bufnr = vim.api.nvim_get_current_buf()
   local cur_win = vim.api.nvim_get_current_win()
@@ -67,10 +79,10 @@ local function move_buf_to_split(dir)
 
 end
 -- 키맵 등록
-map("n", "<leader>h", function() move_buf_to_split("h") end, { desc = "Move buffer left", silent = true })
-map("n", "<leader>j", function() move_buf_to_split("j") end, { desc = "Move buffer down", silent = true })
-map("n", "<leader>k", function() move_buf_to_split("k") end, { desc = "Move buffer up", silent = true })
-map("n", "<leader>l", function() move_buf_to_split("l") end, { desc = "Move buffer right", silent = true })
+map("n", "<leader>H", function() move_buf_to_split("h") end, { desc = "Move buffer left", silent = true })
+map("n", "<leader>J", function() move_buf_to_split("j") end, { desc = "Move buffer down", silent = true })
+map("n", "<leader>K", function() move_buf_to_split("k") end, { desc = "Move buffer up", silent = true })
+map("n", "<leader>L", function() move_buf_to_split("l") end, { desc = "Move buffer right", silent = true })
 
 -- Fold 키 매핑
 map('n', '<leader>zR', 'zR', { noremap = true, silent = true })

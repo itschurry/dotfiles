@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "https://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Hide iTerm2</key>
+	<string>^@h</string>
+	<key>Jump to Selection</key>
+	<string>^@j</string>
+	<key>Select Pane Above</key>
+	<string>@k</string>
+	<key>Select Pane Below</key>
+	<string>@j</string>
+	<key>Select Pane Left</key>
+	<string>@h</string>
+	<key>Select Pane Right</key>
+	<string>@l</string>
+	<key>Split Horizontally with Current Profile</key>
+	<string>@$s</string>
+	<key>Split Vertically with Current Profile</key>
+	<string>@$v</string>
+</dict>
+</plist>

@@ -51,6 +51,7 @@ tmux/
 
 ## 키 바인딩
 
+- Neovim도 같은 suffix를 쓴다. tmux는 `prefix`, Neovim은 `,`만 다르다.
 - `prefix + r`: 설정 리로드
 - `prefix + p`: 현재 pane 종료
 - `prefix + x`: 다음 window

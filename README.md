@@ -2,7 +2,7 @@
 
 ## 목적
 
-Neovim, tmux, VS Code, clangd 설정을 관리하는 개인 개발 환경 저장소.
+Neovim, tmux, iTerm, VS Code, clangd 설정을 관리하는 개인 개발 환경 저장소.
 
 ## 설치
 
@@ -10,6 +10,8 @@ Neovim, tmux, VS Code, clangd 설정을 관리하는 개인 개발 환경 저장
 git clone <repo-url> ~/dotfiles
 ln -sfn ~/dotfiles/nvim ~/.config/nvim
 ln -sfn ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
+chmod +x ~/dotfiles/iterm/apply-keymaps.sh
+~/dotfiles/iterm/apply-keymaps.sh
 ```
 
 ## 실행
@@ -26,6 +28,12 @@ tmux:
 tmux
 ```
 
+iTerm:
+
+```bash
+open -a iTerm
+```
+
 ## 디렉터리 구조
 
 ```text
@@ -37,6 +45,11 @@ tmux
 │       ├── build.sh
 │       ├── Dockerfile
 │       └── run.sh
+├── iterm/
+│   ├── keymaps/
+│   │   └── my-keymap.plist
+│   ├── README.md
+│   └── apply-keymaps.sh
 ├── nvim/
 │   └── README.md
 ├── scripts/
@@ -56,8 +69,16 @@ tmux
 
 - `~/.config/nvim`: `~/dotfiles/nvim`으로 연결
 - `~/.tmux.conf`: `~/dotfiles/tmux/tmux.conf`으로 연결
+- iTerm 세부 설정: `iterm/README.md`
 - tmux 세부 설정: `tmux/README.md`
 - tmux status line: 기본 스타일에 시간 표시
+- Neovim/tmux 창 조작 suffix:
+  - split 생성: `v`, `s`
+  - split/pane 이동: `h`, `j`, `k`, `l`
+  - split/pane 크기 조절: `C-h`, `C-j`, `C-k`, `C-l`
+- iTerm pane 조작:
+  - pane 이동: `Cmd+H/J/K/L`
+  - split 생성: `Cmd+Shift+V/S`
 - `legacy/ros-docker`: 특정 ROS Docker 환경용 예전 스크립트
 
 ## 저장소 이름

@@ -75,6 +75,11 @@ lua/utils/                빌드, rsync, 터미널 유틸
 - 주석: `<leader>/`, `<M-/>`
 - 파일 탐색: `<C-n>` (`nvim-tree`, 오른쪽 60컬럼, 파일 열면 자동 닫힘)
 - 심볼 탐색: `<C-t>`
+- tmux와 맞춘 창 조작:
+  - `<leader>v`: 좌우 split
+  - `<leader>s`: 상하 split
+  - `<leader>h/j/k/l`: split 이동
+  - `<leader><C-h/C-j/C-k/C-l>`: split 크기 조절
 
 ## 단축키
 
@@ -104,10 +109,20 @@ Leader 키는 `,`다.
 | Normal | `<leader>bo` | 현재 버퍼만 남기고 닫기 |
 | Normal | `<leader>bL` | 현재 버퍼 왼쪽 버퍼 닫기 |
 | Normal | `<leader>bR` | 현재 버퍼 오른쪽 버퍼 닫기 |
-| Normal | `<leader>h` | 현재 버퍼를 왼쪽 split으로 이동 |
-| Normal | `<leader>j` | 현재 버퍼를 아래 split으로 이동 |
-| Normal | `<leader>k` | 현재 버퍼를 위 split으로 이동 |
-| Normal | `<leader>l` | 현재 버퍼를 오른쪽 split으로 이동 |
+| Normal | `<leader>v` | 좌우 split 생성 |
+| Normal | `<leader>s` | 상하 split 생성 |
+| Normal | `<leader>h` | 왼쪽 split으로 이동 |
+| Normal | `<leader>j` | 아래 split으로 이동 |
+| Normal | `<leader>k` | 위 split으로 이동 |
+| Normal | `<leader>l` | 오른쪽 split으로 이동 |
+| Normal | `<leader><C-h>` | split 너비 줄이기 |
+| Normal | `<leader><C-j>` | split 높이 키우기 |
+| Normal | `<leader><C-k>` | split 높이 줄이기 |
+| Normal | `<leader><C-l>` | split 너비 키우기 |
+| Normal | `<leader>H` | 현재 버퍼를 왼쪽 split으로 이동 |
+| Normal | `<leader>J` | 현재 버퍼를 아래 split으로 이동 |
+| Normal | `<leader>K` | 현재 버퍼를 위 split으로 이동 |
+| Normal | `<leader>L` | 현재 버퍼를 오른쪽 split으로 이동 |
 
 ### 탐색
 
