@@ -1,0 +1,73 @@
+# tmux
+
+## 목적
+
+개발용 tmux 설정. 테마 없이 기본 status line과 자주 쓰는 pane/window 키 바인딩만 관리한다.
+
+## 설치
+
+```bash
+ln -sfn ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+
+## 실행
+
+```bash
+tmux
+```
+
+설정 리로드:
+
+```text
+prefix + r
+```
+
+플러그인 설치:
+
+```text
+prefix + I
+```
+
+## 디렉터리 구조
+
+```text
+tmux/
+├── README.md
+└── tmux.conf
+```
+
+## 주요 옵션
+
+- prefix: `C-b`
+- 터미널: `tmux-256color`
+- 마우스: 켜짐
+- window index: `0`부터 시작
+- pane index: `0`부터 시작
+- status line: 하단, 오른쪽에 시간 표시
+- copy mode: vi key
+- 테마: 없음
+
+## 키 바인딩
+
+- `prefix + r`: 설정 리로드
+- `prefix + p`: 현재 pane 종료
+- `prefix + x`: 다음 window
+- `prefix + z`: 이전 window
+- `prefix + v`: 좌우 split
+- `prefix + s`: 상하 split
+- `prefix + h/j/k/l`: pane 이동
+- `prefix + C-h/C-j/C-k/C-l`: pane 크기 조절
+
+## 플러그인
+
+- `tmux-plugins/tpm`
+- `tmux-plugins/tmux-resurrect`
+- `tmux-plugins/tmux-continuum`
+- `tmux-plugins/tmux-yank`
+
+`tmux-yank`의 copy binding은 `xclip`을 사용한다.
+
+```bash
+sudo apt install xclip
+```

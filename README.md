@@ -10,7 +10,6 @@ Neovim, tmux, VS Code, clangd 설정을 관리하는 개인 개발 환경 저장
 git clone <repo-url> ~/dotfiles
 ln -sfn ~/dotfiles/nvim ~/.config/nvim
 ln -sfn ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
 ## 실행
@@ -25,18 +24,6 @@ tmux:
 
 ```bash
 tmux
-```
-
-tmux 플러그인 설치:
-
-```text
-prefix + I
-```
-
-tmux 설정 리로드:
-
-```text
-prefix + r
 ```
 
 ## 디렉터리 구조
@@ -55,6 +42,7 @@ prefix + r
 ├── scripts/
 │   └── merge_compile_commands.py
 ├── tmux/
+│   ├── README.md
 │   └── tmux.conf
 └── vscode/
     ├── c_cpp_properties.json
@@ -68,10 +56,7 @@ prefix + r
 
 - `~/.config/nvim`: `~/dotfiles/nvim`으로 연결
 - `~/.tmux.conf`: `~/dotfiles/tmux/tmux.conf`으로 연결
-- tmux prefix: `C-b`
-- tmux 플러그인 관리자: TPM
-- tmux 플러그인: `tmux-resurrect`, `tmux-continuum`, `tmux-yank`
-- tmux 테마: 별도 테마 없음
+- tmux 세부 설정: `tmux/README.md`
 - tmux status line: 기본 스타일에 시간 표시
 - `legacy/ros-docker`: 특정 ROS Docker 환경용 예전 스크립트
 
