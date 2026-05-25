@@ -2,7 +2,7 @@
 
 ## 목적
 
-개발용 tmux 설정. 테마 없이 기본 status line과 자주 쓰는 pane/window 키 바인딩만 관리한다.
+개발용 tmux 설정. 테마 플러그인 없이 기본 색상과 자주 쓰는 pane/window 키 바인딩만 관리한다.
 
 ## 설치
 
@@ -46,7 +46,8 @@ tmux/
 - pane index: `0`부터 시작
 - status line: 하단, 오른쪽에 시간 표시
 - copy mode: vi key
-- 테마: 없음
+- 테마 플러그인: 없음
+- 색상: 기본 배경, 흰색 status line, 초록색 active window/pane
 
 ## 키 바인딩
 
@@ -58,6 +59,8 @@ tmux/
 - `prefix + s`: 상하 split
 - `prefix + h/j/k/l`: pane 이동
 - `prefix + C-h/C-j/C-k/C-l`: pane 크기 조절
+- `prefix + u`: 화면의 URL을 fzf로 선택해서 열기
+- `C-h/C-j/C-k/C-l`: Neovim split과 tmux pane 사이 이동
 
 ## 플러그인
 
@@ -65,9 +68,18 @@ tmux/
 - `tmux-plugins/tmux-resurrect`
 - `tmux-plugins/tmux-continuum`
 - `tmux-plugins/tmux-yank`
+- `christoomey/vim-tmux-navigator`
+- `tmux-plugins/tmux-copycat`
+- `wfxr/tmux-fzf-url`
 
 `tmux-yank`의 copy binding은 `xclip`을 사용한다.
 
 ```bash
 sudo apt install xclip
+```
+
+`tmux-fzf-url`은 `fzf`를 사용한다.
+
+```bash
+sudo apt install fzf
 ```

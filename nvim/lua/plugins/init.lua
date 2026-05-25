@@ -33,6 +33,7 @@ local plugins = {
 
   -- ☆ 탐색 기능
   { repo = "nvim-telescope/telescope.nvim" },
+  { repo = "christoomey/vim-tmux-navigator" },
 
   -- ☆ 코드 하이라이트 및 구조
   { repo = "nvim-treesitter/nvim-treesitter", branch = "main" },
