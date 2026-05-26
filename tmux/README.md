@@ -47,7 +47,8 @@ tmux/
 - status line: 하단, 오른쪽에 시간 표시
 - copy mode: vi key
 - 테마 플러그인: 없음
-- 색상: 기본 배경, 흰색 status line, 초록색 active window/pane
+- 색상: 기본 배경, 흰색 status line, 초록색 active window
+- pane 구분선: 단일 선, 낮은 대비 색상
 
 ## 키 바인딩
 
