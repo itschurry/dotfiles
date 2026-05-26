@@ -9,6 +9,11 @@ local function setup()
   require("render-markdown").setup({})
 end
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = setup,
+})
+
 vim.keymap.set("n", "<leader>mt", function()
   setup()
   vim.cmd("RenderMarkdown toggle")

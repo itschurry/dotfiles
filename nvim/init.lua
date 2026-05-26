@@ -21,6 +21,7 @@ else
     if vim.fn.isdirectory(mason_path) ~= 0 then
       require("plugins.completion.blink")
       require("plugins.language.lsp")
+      require("plugins.editor.markdown")
       if vim.fn.executable("flutter") == 1 then
         require("plugins.language.flutter")
       end
@@ -35,7 +36,6 @@ else
         require("plugins.editor.folding")
         require("plugins.navigation.telescope")
         require("plugins.editor.treesitter")
-        require("plugins.editor.markdown")
         require("plugins.ui")
 
         -- 유틸 (rsync 단축키 등)

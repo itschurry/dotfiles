@@ -199,7 +199,7 @@ vim.keymap.set("v", "<M-/>", function()
   require("Comment.api").toggle.blockwise(vim.fn.visualmode())
 end, { desc = "Visual toggle block comment" })
 
-vim.api.nvim_create_user_command("UiEffectsEnable", function()
+M.ui_effects = once(function()
   vim.cmd("packadd nui.nvim")
   vim.cmd("packadd noice.nvim")
   vim.cmd("packadd nvim-notify")
@@ -234,6 +234,12 @@ vim.api.nvim_create_user_command("UiEffectsEnable", function()
     top_down = false,
   })
   vim.notify = notify
+end)
+
+M.ui_effects()
+
+vim.api.nvim_create_user_command("UiEffectsEnable", function()
+  M.ui_effects()
 end, { desc = "Enable noice.nvim and nvim-notify" })
 
 require("twilight").setup()

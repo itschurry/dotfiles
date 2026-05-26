@@ -73,6 +73,7 @@ lua/utils/                빌드, rsync, 터미널 유틸
   - JSON: `jq`
   - YAML: `yamlfmt`
 - Markdown 보기: `render-markdown.nvim`
+  - Markdown 파일에서 기본 활성화
   - 토글: `<leader>mt`
   - 분할 미리보기: `<leader>mp`
   - 명령어: `:RenderMarkdown toggle`, `:RenderMarkdown preview`
@@ -80,7 +81,8 @@ lua/utils/                빌드, rsync, 터미널 유틸
 - 파일 탐색: `<C-n>` (`nvim-tree`, 오른쪽 60컬럼, 파일 열면 자동 닫힘)
 - 심볼 탐색: `<C-t>`
 - Alpha 대시보드: `ItsChurry Lab` 로고, 작업 버튼, 현재 경로/버전 footer 표시
-- UI 효과: `noice.nvim`, `nvim-notify`는 기본 시작 로드에서 제외한다. 필요할 때 `:UiEffectsEnable`로 켠다.
+- UI 효과: `noice.nvim`, `nvim-notify`
+  - command-line 입력은 popup UI로 표시한다.
 - tmux와 맞춘 창 조작:
   - `<leader>v`: 좌우 split
   - `<leader>s`: 상하 split
@@ -238,7 +240,7 @@ Leader 키는 `,`다.
 | --- | --- |
 | `:PlugUpdate` | 직접 관리하는 플러그인 업데이트 |
 | `:TSInstallConfigured` | 설정된 Treesitter parser 설치 |
-| `:UiEffectsEnable` | `noice.nvim`, `nvim-notify` UI 효과 활성화 |
+| `:UiEffectsEnable` | `noice.nvim`, `nvim-notify` UI 효과 재활성화 |
 | `:RsyncUp [path]` | 로컬에서 원격으로 rsync |
 | `:RsyncDown [path]` | 원격에서 로컬로 rsync |
 
