@@ -78,6 +78,7 @@ lua/utils/                빌드, rsync, 터미널 유틸
 - 주석: `<leader>/`, `<M-/>`
 - 파일 탐색: `<C-n>` (`nvim-tree`, 오른쪽 60컬럼, 파일 열면 자동 닫힘)
 - 심볼 탐색: `<C-t>`
+- Alpha 대시보드: `ItsChurry Lab` 로고, 작업 버튼, 현재 경로/버전 footer 표시
 - UI 효과: `noice.nvim`, `nvim-notify`는 기본 시작 로드에서 제외한다. 필요할 때 `:UiEffectsEnable`로 켠다.
 - tmux와 맞춘 창 조작:
   - `<leader>v`: 좌우 split
