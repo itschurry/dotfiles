@@ -2,7 +2,7 @@
 
 ## 목적
 
-개발용 tmux 설정. 테마 플러그인 없이 기본 색상과 자주 쓰는 pane/window 키 바인딩만 관리한다.
+개발용 tmux 설정. Ghostty 같은 가벼운 터미널에서 tmux를 주 작업 UI로 쓰기 좋게 status line과 pane/window 키 바인딩을 관리한다.
 
 ## 설치
 
@@ -44,11 +44,30 @@ tmux/
 - 마우스: 켜짐
 - window index: `0`부터 시작
 - pane index: `0`부터 시작
-- status line: 하단, 오른쪽에 시간 표시
+- status line: 하단, session/path/window/git/battery/time/prefix/copy-mode 표시
 - copy mode: vi key
 - 테마 플러그인: 없음
-- 색상: 기본 배경, 흰색 status line, 초록색 active window
+- 색상: 기본 배경, 낮은 대비 status line, 초록색 active window
 - pane 구분선: 단일 선, 낮은 대비 색상
+
+## Status line
+
+왼쪽:
+
+```text
+session PREFIX COPY cwd
+```
+
+오른쪽:
+
+```text
+git-branch battery time date
+```
+
+- `PREFIX`: prefix 입력 중일 때만 표시
+- `COPY`: copy mode일 때만 표시
+- `git-branch`: 현재 pane 경로 기준 Git branch
+- `battery`: macOS `pmset` 기준 배터리 퍼센트
 
 ## 키 바인딩
 

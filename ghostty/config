@@ -1,0 +1,57 @@
+# Theme / window
+theme = Hardcore
+
+background-opacity = 0.92
+background-blur = 18
+background-opacity-cells = true
+window-padding-x = 12
+window-padding-y = 12
+unfocused-split-opacity = 0.80
+
+# Font
+font-family = Maple Mono NF
+font-feature = -calt
+font-feature = -liga
+font-size = 14
+font-thicken = true
+font-thicken-strength = 90
+
+# Cursor / shell
+cursor-style = bar
+shell-integration = zsh
+shell-integration-features = no-cursor
+macos-option-as-alt = true
+
+# Clipboard / mouse
+clipboard-read = allow
+clipboard-write = allow
+copy-on-select = clipboard
+mouse-hide-while-typing = true
+
+# Split navigation
+keybind = alt+h=goto_split:left
+keybind = alt+j=goto_split:down
+keybind = alt+k=goto_split:up
+keybind = alt+l=goto_split:right
+
+# Split creation
+keybind = alt+v=new_split:right
+keybind = alt+s=new_split:down
+
+# Split resizing
+keybind = alt+shift+h=resize_split:left,10
+keybind = alt+shift+j=resize_split:down,10
+keybind = alt+shift+k=resize_split:up,10
+keybind = alt+shift+l=resize_split:right,10
+
+# Split commands
+keybind = alt+q=close_surface
+keybind = alt+enter=toggle_split_zoom
+keybind = alt+e=equalize_splits
+
+# Tabs / config
+keybind = alt+[=previous_tab
+keybind = alt+]=next_tab
+
+keybind = cmd+r=reload_config
+keybind = global:cmd+`=toggle_quick_terminal
