@@ -1,6 +1,6 @@
 # Neovim Config
 
-Neovim용 Lua 설정이다. 플러그인은 별도 매니저 없이 `site/pack/plugins/start`에 직접 `git clone`해서 쓴다.
+Neovim용 Lua 설정이다. 플러그인은 별도 매니저 없이 `site/pack/plugins/start`, `site/pack/plugins/opt`에 직접 `git clone`해서 쓴다.
 
 ## 설치
 
@@ -10,6 +10,7 @@ nvim
 ```
 
 처음 실행하면 `lua/plugins/init.lua`에 정의된 플러그인을 자동 설치한다. 설치가 끝나면 Neovim을 한 번 재시작해.
+시작 때 필요 없는 플러그인은 `site/pack/plugins/opt`에 두고 사용할 때 `packadd`로 로드한다.
 `blink.cmp`는 v1 태그의 prebuilt fuzzy matcher를 받기 때문에 `git`, `curl`이 필요하다.
 
 Treesitter parser는 시작 시 자동 설치하지 않는다. 처음 설치하거나 parser를 갱신할 때 직접 실행해.
@@ -54,8 +55,9 @@ lua/utils/                빌드, rsync, 터미널 유틸
 ## 주요 설정
 
 - Leader: `,`
-- 테마: `nightfox`
+- 테마: `tokyonight`
 - BufferLine 구분선: 얇은 선(`thin`)
+- 로딩 정책: 시작 시 필수 설정만 올리고 탐색/대시보드/Markdown/주석/indent 일부는 사용할 때 로드한다.
 - LSP: `mason.nvim`, `mason-lspconfig.nvim`, Neovim LSP API
   - 활성 서버: `clangd`, `pyright`, `dockerls`, `jsonls`, `yamlls`
 - Flutter: `flutter-tools.nvim`
@@ -76,6 +78,7 @@ lua/utils/                빌드, rsync, 터미널 유틸
 - 주석: `<leader>/`, `<M-/>`
 - 파일 탐색: `<C-n>` (`nvim-tree`, 오른쪽 60컬럼, 파일 열면 자동 닫힘)
 - 심볼 탐색: `<C-t>`
+- UI 효과: `noice.nvim`, `nvim-notify`는 기본 시작 로드에서 제외한다. 필요할 때 `:UiEffectsEnable`로 켠다.
 - tmux와 맞춘 창 조작:
   - `<leader>v`: 좌우 split
   - `<leader>s`: 상하 split
@@ -233,6 +236,7 @@ Leader 키는 `,`다.
 | --- | --- |
 | `:PlugUpdate` | 직접 관리하는 플러그인 업데이트 |
 | `:TSInstallConfigured` | 설정된 Treesitter parser 설치 |
+| `:UiEffectsEnable` | `noice.nvim`, `nvim-notify` UI 효과 활성화 |
 | `:RsyncUp [path]` | 로컬에서 원격으로 rsync |
 | `:RsyncDown [path]` | 원격에서 로컬로 rsync |
 

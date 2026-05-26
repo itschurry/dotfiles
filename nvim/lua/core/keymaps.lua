@@ -17,7 +17,9 @@ map("n", "<leader>yr", ':echo @"<CR>', { silent = true })
 -- 경고 표시
 map("n", "gl", vim.diagnostic.open_float, { desc = "Show diagnostics under cursor" })
 -- 🔍 진단 전체 보기: Telescope diagnostics
-map("n", "<leader>gl", "<cmd>Telescope diagnostics<CR>", {
+map("n", "<leader>gl", function()
+  require("plugins.navigation.telescope").diagnostics()
+end, {
   desc = "Show all diagnostics via Telescope",
   silent = true,
 })

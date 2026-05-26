@@ -26,7 +26,6 @@ else
         -- require("theme.github")
         -- require("theme.nightfox")
 
-        require("plugins.ui.alpha")
         require("plugins.completion.blink")
         require("plugins.editor.format")
         require("plugins.editor.folding")

@@ -1,26 +1,44 @@
-local telescope = require("telescope")
-local actions = require("telescope.actions")
+local M = {}
+local loaded = false
 
-telescope.setup({
-  defaults = {
-    file_ignore_patterns = { "node_modules", ".git", "build", "install" },
-    mappings = {
-      i = { ["<C-n>"] = actions.move_selection_next,
-            ["<C-p>"] = actions.move_selection_previous },
+function M.setup()
+  if loaded then
+    return
+  end
+  loaded = true
+  vim.cmd("packadd telescope.nvim")
+
+  local telescope = require("telescope")
+  local actions = require("telescope.actions")
+
+  telescope.setup({
+    defaults = {
+      file_ignore_patterns = { "node_modules", ".git", "build", "install" },
+      mappings = {
+        i = {
+          ["<C-n>"] = actions.move_selection_next,
+          ["<C-p>"] = actions.move_selection_previous,
+        },
+      },
     },
-  },
-})
+  })
+end
+
+local function builtin(name, opts)
+  M.setup()
+  require("telescope.builtin")[name](opts or {})
+end
 
 -- Telescope 명령어에 키맵 연결
 local map = vim.keymap.set
-map("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { silent = true })
-map("n", "<leader>fF", "<cmd>Telescope git_files<CR>", { silent = true })
-map("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", { silent = true })
-map("n", "<leader>fb", "<cmd>Telescope buffers<CR>",   { silent = true })
-map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { silent = true })
-map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { silent = true })
-map("n", "<leader>fs", "<cmd>Telescope lsp_document_symbols<CR>", { silent = true })
-map("n", "<leader>fr", "<cmd>Telescope lsp_references<CR>", { silent = true })
+map("n", "<leader>ff", function() builtin("find_files") end, { silent = true })
+map("n", "<leader>fF", function() builtin("git_files") end, { silent = true })
+map("n", "<leader>fg", function() builtin("live_grep") end, { silent = true })
+map("n", "<leader>fb", function() builtin("buffers") end, { silent = true })
+map("n", "<leader>fh", function() builtin("help_tags") end, { silent = true })
+map("n", "<leader>fo", function() builtin("oldfiles") end, { silent = true })
+map("n", "<leader>fs", function() builtin("lsp_document_symbols") end, { silent = true })
+map("n", "<leader>fr", function() builtin("lsp_references") end, { silent = true })
 -- vim.api.nvim_set_keymap('n', '<leader>ff', '<Cmd>Telescope find_files<CR>', { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap('n', '<leader>fg', '<Cmd>Telescope live_grep<CR>', { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap('n', '<leader>fb', '<Cmd>Telescope buffers<CR>', { noremap = true, silent = true })
@@ -28,7 +46,8 @@ map("n", "<leader>fr", "<cmd>Telescope lsp_references<CR>", { silent = true })
 
 
 -- Fuction for selecting buffers and performing vimdiff
-function DiffBuffers()
+function M.diff_buffers()
+    M.setup()
     require('telescope.builtin').buffers {
         attach_mappings = function(_, map)
             local actions = require('telescope.actions')
@@ -56,4 +75,30 @@ function DiffBuffers()
         end
     }
 end
-vim.api.nvim_set_keymap('n', '<leader>fd', ':lua DiffBuffers()<CR>', { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>fd", M.diff_buffers, { silent = true })
+
+function M.find_files()
+  builtin("find_files")
+end
+
+function M.git_files()
+  builtin("git_files")
+end
+
+function M.live_grep()
+  builtin("live_grep")
+end
+
+function M.oldfiles()
+  builtin("oldfiles")
+end
+
+function M.launch_files()
+  builtin("find_files", { search_dirs = { "src" }, prompt_title = "launch" })
+end
+
+function M.diagnostics()
+  builtin("diagnostics")
+end
+
+return M

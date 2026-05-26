@@ -1,11 +1,26 @@
-require("render-markdown").setup({})
+local loaded = false
 
-vim.keymap.set("n", "<leader>mt", "<cmd>RenderMarkdown toggle<CR>", {
+local function setup()
+  if loaded then
+    return
+  end
+  loaded = true
+  vim.cmd("packadd render-markdown.nvim")
+  require("render-markdown").setup({})
+end
+
+vim.keymap.set("n", "<leader>mt", function()
+  setup()
+  vim.cmd("RenderMarkdown toggle")
+end, {
   silent = true,
   desc = "Toggle markdown render",
 })
 
-vim.keymap.set("n", "<leader>mp", "<cmd>RenderMarkdown preview<CR>", {
+vim.keymap.set("n", "<leader>mp", function()
+  setup()
+  vim.cmd("RenderMarkdown preview")
+end, {
   silent = true,
   desc = "Preview markdown render",
 })

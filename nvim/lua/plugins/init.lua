@@ -3,14 +3,15 @@
  Neovim의 플러그인들을 직접 git clone하여 설치하고 로드하는 최소한의 패키지 매니저 없이 사용하는 방식.
 --]]
 
--- 플러그인을 설치할 디렉토리 경로 (site/pack/plugins/start/)
+-- 플러그인을 설치할 디렉토리 경로 (site/pack/plugins/start|opt)
 local install_path = vim.fn.stdpath("data") .. "/site/pack/plugins/start/"
+local opt_path = vim.fn.stdpath("data") .. "/site/pack/plugins/opt/"
 
 -- 사용하고자 하는 GitHub 플러그인 리스트
 local plugins = {
   -- ☆ 종속성 / Utility
   { repo = "nvim-lua/plenary.nvim" },
-  { repo = "MunifTanjim/nui.nvim", name = "nui.nvim" }, -- noice.nvim 의 필수 종속성
+  { repo = "MunifTanjim/nui.nvim", name = "nui.nvim", opt = true }, -- noice.nvim 의 필수 종속성
 
   -- ☆ 테마 & UI
   { repo = "catppuccin/nvim", name = "catppuccin" },
@@ -21,18 +22,18 @@ local plugins = {
   { repo = "folke/which-key.nvim" },
   { repo = "folke/zen-mode.nvim" },
   { repo = "folke/twilight.nvim" },
-  { repo = "folke/noice.nvim" },
-  { repo = "rcarriga/nvim-notify" },
-  { repo = "goolord/alpha-nvim" },
+  { repo = "folke/noice.nvim", opt = true },
+  { repo = "rcarriga/nvim-notify", opt = true },
+  { repo = "goolord/alpha-nvim", opt = true },
   { repo = "nvim-tree/nvim-web-devicons" },
-  { repo = "nvim-tree/nvim-tree.lua" },
+  { repo = "nvim-tree/nvim-tree.lua", opt = true },
   { repo = "akinsho/bufferline.nvim", name = "bufferline.nvim" },
   { repo = "nvim-lualine/lualine.nvim" },
-  { repo = "stevearc/aerial.nvim" },
-  { repo = "MeanderingProgrammer/render-markdown.nvim" },
+  { repo = "stevearc/aerial.nvim", opt = true },
+  { repo = "MeanderingProgrammer/render-markdown.nvim", opt = true },
 
   -- ☆ 탐색 기능
-  { repo = "nvim-telescope/telescope.nvim" },
+  { repo = "nvim-telescope/telescope.nvim", opt = true },
   { repo = "christoomey/vim-tmux-navigator" },
 
   -- ☆ 코드 하이라이트 및 구조
@@ -52,17 +53,37 @@ local plugins = {
   { repo = "lewis6991/gitsigns.nvim" },
 
   -- ☆ 기타
-  { repo = "lukas-reineke/indent-blankline.nvim" },
+  { repo = "lukas-reineke/indent-blankline.nvim", opt = true },
   { repo = "numToStr/Comment.nvim" },
 }
 
 local installed_any = false
 
+local function plugin_name(plugin)
+  return plugin.name or plugin.repo:match(".*/(.*)")
+end
+
+local function plugin_path(plugin)
+  return (plugin.opt and opt_path or install_path) .. plugin_name(plugin)
+end
+
+if vim.fn.isdirectory(install_path) == 0 then
+  vim.fn.mkdir(install_path, "p")
+end
+if vim.fn.isdirectory(opt_path) == 0 then
+  vim.fn.mkdir(opt_path, "p")
+end
+
 -- 플러그인마다 존재 여부 확인 후 git clone
 for _, plugin in ipairs(plugins) do
   -- repo 이름에서 마지막 부분을 디렉토리 이름으로 사용
-  local name = plugin.name or plugin.repo:match(".*/(.*)")
-  local path = install_path .. name
+  local name = plugin_name(plugin)
+  local path = plugin_path(plugin)
+  local old_start_path = install_path .. name
+
+  if plugin.opt and vim.fn.isdirectory(old_start_path) ~= 0 and vim.fn.isdirectory(path) == 0 then
+    vim.fn.rename(old_start_path, path)
+  end
 
   -- 경로가 존재하지 않으면 git clone
   if vim.fn.empty(vim.fn.glob(path)) > 0 then
@@ -84,7 +105,7 @@ end
 if not installed_any then
   vim.defer_fn(function()
     if vim.fn.argc() == 0 and vim.fn.expand("%") == "" then
-      vim.cmd("Alpha")
+      require("plugins.ui.alpha").open()
     end
   end, 50)
 end
@@ -96,8 +117,8 @@ local function update_plugins()
   -- ① 업데이트용 bash 스크립트 한 덩어리 만들기
   local lines = { "set -e" }
   for _, plugin in ipairs(plugins) do
-    local name = plugin.name or plugin.repo:match(".*/(.*)")
-    local path = install_path .. name
+    local name = plugin_name(plugin)
+    local path = plugin_path(plugin)
     local update_cmd = plugin.tag and string.format([[
         git -C "%s" fetch origin tag "%s" --depth=1
         git -C "%s" checkout --detach "%s"
