@@ -22,8 +22,7 @@ local function on_attach(client, bufnr)
   map('n', '<leader>rn', vim.lsp.buf.rename)
 end
 
--- cmp-nvim-lsp capabilities 그대로
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local capabilities = require("blink.cmp").get_lsp_capabilities()
 capabilities.offsetEncoding = { "utf-16" }
 
 -- ⬇️ 핵심: 새 API로 clangd 구성

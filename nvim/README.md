@@ -10,6 +10,7 @@ nvim
 ```
 
 처음 실행하면 `lua/plugins/init.lua`에 정의된 플러그인을 자동 설치한다. 설치가 끝나면 Neovim을 한 번 재시작해.
+`blink.cmp`는 v1 태그의 prebuilt fuzzy matcher를 받기 때문에 `git`, `curl`이 필요하다.
 
 Treesitter parser는 시작 시 자동 설치하지 않는다. 처음 설치하거나 parser를 갱신할 때 직접 실행해.
 
@@ -60,7 +61,7 @@ lua/utils/                빌드, rsync, 터미널 유틸
 - Flutter: `flutter-tools.nvim`
   - `dartls`는 `flutter-tools.nvim`이 관리한다.
   - Flutter SDK는 `flutter` 명령이 PATH에 있는 머신에서만 로드한다.
-- 자동완성: `nvim-cmp`, `cmp-nvim-lsp`, `cmp-buffer`, `cmp-path`, `cmp_luasnip`
+- 자동완성: `blink.cmp` v1.10.2, `LuaSnip`
 - 저장 시 포맷: `conform.nvim`
   - Lua: `stylua`
   - Python: `ruff format`

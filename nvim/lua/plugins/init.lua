@@ -42,12 +42,8 @@ local plugins = {
   { repo = "neovim/nvim-lspconfig" },
   { repo = "williamboman/mason.nvim" },
   { repo = "williamboman/mason-lspconfig.nvim" },
-  { repo = "hrsh7th/nvim-cmp" },
-  { repo = "hrsh7th/cmp-nvim-lsp" },
-  { repo = "hrsh7th/cmp-buffer" },
-  { repo = "hrsh7th/cmp-path" },
+  { repo = "saghen/blink.cmp", tag = "v1.10.2" },
   { repo = "L3MON4D3/LuaSnip" },
-  { repo = "saadparwaiz1/cmp_luasnip" },
   { repo = "windwp/nvim-autopairs" },
   { repo = "stevearc/conform.nvim" },
   { repo = "nvim-flutter/flutter-tools.nvim", name = "flutter-tools.nvim" },
@@ -76,20 +72,22 @@ for _, plugin in ipairs(plugins) do
       "https://github.com/" .. plugin.repo,
       path
     }
-    if plugin.branch then
+    if plugin.branch or plugin.tag then
       table.insert(clone_cmd, 5, "--branch")
-      table.insert(clone_cmd, 6, plugin.branch)
+      table.insert(clone_cmd, 6, plugin.branch or plugin.tag)
     end
     vim.fn.system(clone_cmd)
     installed_any = true
   end
 end
 
-vim.defer_fn(function()
-  if vim.fn.argc() == 0 and vim.fn.expand("%") == "" then
-    vim.cmd("Alpha")
-  end
-end, 50)
+if not installed_any then
+  vim.defer_fn(function()
+    if vim.fn.argc() == 0 and vim.fn.expand("%") == "" then
+      vim.cmd("Alpha")
+    end
+  end, 50)
+end
 
 ----------------------------------------------------------------------
 -- 1) 모든 플러그인 git pull / clone  -------------------------------
@@ -100,7 +98,10 @@ local function update_plugins()
   for _, plugin in ipairs(plugins) do
     local name = plugin.name or plugin.repo:match(".*/(.*)")
     local path = install_path .. name
-    local update_cmd = plugin.branch and string.format([[
+    local update_cmd = plugin.tag and string.format([[
+        git -C "%s" fetch origin tag "%s" --depth=1
+        git -C "%s" checkout --detach "%s"
+      ]], path, plugin.tag, path, plugin.tag) or plugin.branch and string.format([[
         git -C "%s" fetch origin "%s:refs/remotes/origin/%s" --depth=1
         git -C "%s" checkout -B "%s" "origin/%s"
         git -C "%s" branch --set-upstream-to="origin/%s" "%s"
@@ -114,7 +115,7 @@ local function update_plugins()
         echo "🌱  cloning  %s ..."
         git clone --depth 1 %s https://github.com/%s "%s"
       fi
-      ]], path, name, update_cmd, name, plugin.branch and ("--branch " .. plugin.branch) or "", plugin.repo, path))
+      ]], path, name, update_cmd, name, (plugin.branch or plugin.tag) and ("--branch " .. (plugin.branch or plugin.tag)) or "", plugin.repo, path))
   end
   table.insert(lines, 'echo "✅  all plugins up-to-date!"')
 

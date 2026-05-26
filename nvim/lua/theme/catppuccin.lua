@@ -29,7 +29,7 @@ require("catppuccin").setup({
         gitsigns = true, -- Git 변경 사항 강조
         telescope = true, -- Telescope UI 색상 적용
         nvimtree = true, -- NvimTree(파일 탐색기) 색상 적용
-        cmp = true, -- nvim-cmp 자동완성 강조
+        blink_cmp = true, -- blink.cmp 자동완성 강조
         lsp_saga = true, -- LSP UI 색상 적용
         markdown = true, -- Markdown 강조
         dashboard = true, -- Alpha.nvim 같은 대시보드 스타일링 적용

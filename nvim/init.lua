@@ -27,7 +27,7 @@ else
         -- require("theme.nightfox")
 
         require("plugins.ui.alpha")
-        require("plugins.completion.cmp")
+        require("plugins.completion.blink")
         require("plugins.editor.format")
         require("plugins.editor.folding")
         require("plugins.language.lsp")
