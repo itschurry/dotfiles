@@ -36,7 +36,6 @@ vim.lsp.config('clangd', {
     "--j=6",
     "--log=error",
     "--limit-results=30",
-    "--compile-commands-dir=" .. vim.fn.getcwd() .. "/build"
   },
   on_attach = on_attach,
   capabilities = capabilities,

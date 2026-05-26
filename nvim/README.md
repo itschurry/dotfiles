@@ -57,9 +57,10 @@ lua/utils/                빌드, rsync, 터미널 유틸
 - Leader: `,`
 - 테마: `tokyonight`
 - BufferLine 구분선: 얇은 선(`thin`)
-- 로딩 정책: 시작 시 필수 설정만 올리고 탐색/대시보드/Markdown/주석/indent 일부는 사용할 때 로드한다.
+- 로딩 정책: LSP/자동완성은 즉시 로드하고, UI/탐색/Markdown/주석/indent 일부는 지연 로드한다.
 - LSP: `mason.nvim`, `mason-lspconfig.nvim`, Neovim LSP API
   - 활성 서버: `clangd`, `pyright`, `dockerls`, `jsonls`, `yamlls`
+  - `clangd` compile database 위치는 프로젝트별 `.clangd` 설정을 따른다.
 - Flutter: `flutter-tools.nvim`
   - `dartls`는 `flutter-tools.nvim`이 관리한다.
   - Flutter SDK는 `flutter` 명령이 PATH에 있는 머신에서만 로드한다.
