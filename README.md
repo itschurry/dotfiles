@@ -84,6 +84,7 @@ open -a Ghostty
 - iTerm 세부 설정: `iterm/README.md`
 - Ghostty 세부 설정: `ghostty/README.md`
 - tmux 세부 설정: `tmux/README.md`
+- tmux prefix: `C-a`
 - tmux status line: session/path/window/git/battery/time/prefix/copy-mode 표시
 - Neovim/tmux 창 조작 suffix:
   - split 생성: `v`, `s`

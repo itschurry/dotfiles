@@ -39,7 +39,7 @@ tmux/
 
 ## 주요 옵션
 
-- prefix: `C-b`
+- prefix: `C-a`
 - 터미널: `tmux-256color`
 - 마우스: 켜짐
 - window index: `0`부터 시작
