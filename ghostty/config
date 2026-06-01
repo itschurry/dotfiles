@@ -1,6 +1,9 @@
 # Theme / window
 theme = Hardcore
 
+tab-inherit-working-directory = true
+working-directory = ~/
+
 background-opacity = 0.92
 background-blur = 18
 background-opacity-cells = true
