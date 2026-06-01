@@ -39,7 +39,7 @@ M.nvim_tree = once(function()
   }
 end)
 
-vim.keymap.set("n", "<C-n>", function()
+vim.keymap.set("n", "<leader>n", function()
   M.nvim_tree()
   vim.cmd("NvimTreeToggle")
 end, { silent = true })
@@ -62,7 +62,7 @@ M.aerial = once(function()
   }
 end)
 
-vim.keymap.set("n", "<C-t>", function()
+vim.keymap.set("n", "<leader>t", function()
   M.aerial()
   vim.cmd("AerialToggle")
 end, { silent = true })
