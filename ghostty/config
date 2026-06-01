@@ -28,6 +28,37 @@ clipboard-write = allow
 copy-on-select = clipboard
 mouse-hide-while-typing = true
 
+# Disable default split/tab navigation keys
+keybind = ctrl+shift+tab=unbind
+keybind = ctrl+tab=unbind
+keybind = super+shift+[=unbind
+keybind = super+shift+]=unbind
+keybind = super+d=unbind
+keybind = super+shift+d=unbind
+# keybind = super+[=unbind
+# keybind = super+]=unbind
+keybind = super+alt+arrow_up=unbind
+keybind = super+alt+arrow_down=unbind
+keybind = super+alt+arrow_left=unbind
+keybind = super+alt+arrow_right=unbind
+keybind = super+digit_1=unbind
+keybind = super+1=unbind
+keybind = super+digit_2=unbind
+keybind = super+2=unbind
+keybind = super+digit_3=unbind
+keybind = super+3=unbind
+keybind = super+digit_4=unbind
+keybind = super+4=unbind
+keybind = super+digit_5=unbind
+keybind = super+5=unbind
+keybind = super+digit_6=unbind
+keybind = super+6=unbind
+keybind = super+digit_7=unbind
+keybind = super+7=unbind
+keybind = super+digit_8=unbind
+keybind = super+8=unbind
+keybind = super+9=unbind
+
 # Split navigation
 keybind = alt+h=goto_split:left
 keybind = alt+j=goto_split:down
@@ -50,8 +81,8 @@ keybind = alt+enter=toggle_split_zoom
 keybind = alt+e=equalize_splits
 
 # Tabs / config
-keybind = alt+[=previous_tab
-keybind = alt+]=next_tab
+# keybind = alt+[=previous_tab
+# keybind = alt+]=next_tab
 
 keybind = cmd+r=reload_config
 keybind = global:cmd+`=toggle_quick_terminal

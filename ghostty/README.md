@@ -54,3 +54,12 @@ ghostty/
 - `Alt+[` / `Alt+]`: 이전/다음 tab
 - `Cmd+R`: 설정 리로드
 - `Cmd+\``: quick terminal 토글
+
+## 비활성화한 기본 키
+
+split/tab 이동은 위 Alt 기반 키만 쓴다.
+
+- `Cmd+D`, `Cmd+Shift+D`: 기본 split 생성 해제
+- `Cmd+[` / `Cmd+]`, `Cmd+Opt+방향키`: 기본 split 이동 해제
+- `Ctrl+Tab`, `Ctrl+Shift+Tab`, `Cmd+Shift+[` / `Cmd+Shift+]`: 기본 tab 이동 해제
+- `Cmd+1..9`: 기본 tab 번호 이동 해제
