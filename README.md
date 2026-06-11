@@ -90,6 +90,7 @@ open -a Ghostty
   - split 생성: `v`, `s`
   - split/pane 이동: `h`, `j`, `k`, `l`
   - split/pane 크기 조절: `C-h`, `C-j`, `C-k`, `C-l`
+- tmux 안에서 `C-\`는 pane 이동에 쓰지 않고 foreground process에 그대로 전달
 - iTerm pane 조작:
   - pane 이동: `Cmd+H/J/K/L`
   - split 생성: `Cmd+Shift+V/S`
