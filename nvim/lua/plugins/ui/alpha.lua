@@ -44,6 +44,7 @@ function M.setup()
 
   dashboard.section.buttons.val = {
     button("e", "     새 파일        ", ":ene <BAR> startinsert<CR>"),
+    button("n", "  󰙅   트리 토글      ", ":lua require('plugins.ui').nvim_tree(); vim.cmd('NvimTreeToggle')<CR>"),
     button("f", "     파일 찾기      ", ":lua require('plugins.navigation.telescope').find_files()<CR>"),
     button("r", "     최근 파일      ", ":lua require('plugins.navigation.telescope').oldfiles()<CR>"),
     button("g", "  󰱼   문자열 검색    ", ":lua require('plugins.navigation.telescope').live_grep()<CR>"),
