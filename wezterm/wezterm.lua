@@ -1,23 +1,6 @@
 local wezterm = require 'wezterm'
 local act = wezterm.action
 local is_windows = wezterm.target_triple:find('windows') ~= nil
-local default_tab_title = is_windows and 'Ubuntu' or 'wezterm'
-
-wezterm.on('format-tab-title', function(tab)
-  local title = default_tab_title
-
-  if tab.tab_title and #tab.tab_title > 0 then
-    title = tab.tab_title
-  end
-
-  return {
-    { Text = ' ' .. title .. ' ' },
-  }
-end)
-
-wezterm.on('format-window-title', function()
-  return 'wezterm'
-end)
 
 local config = {
   color_schemes = {
@@ -88,6 +71,7 @@ local config = {
     -- Disable default split/tab navigation keys.
     { key = 'Tab', mods = 'CTRL|SHIFT', action = act.DisableDefaultAssignment },
     { key = 'Tab', mods = 'CTRL', action = act.DisableDefaultAssignment },
+    { key = 't', mods = 'CTRL|SHIFT', action = act.DisableDefaultAssignment },
     { key = '[', mods = 'SUPER|SHIFT', action = act.DisableDefaultAssignment },
     { key = ']', mods = 'SUPER|SHIFT', action = act.DisableDefaultAssignment },
     { key = '{', mods = 'SUPER|SHIFT', action = act.Nop },
@@ -128,6 +112,9 @@ local config = {
     { key = 'q', mods = 'ALT', action = act.CloseCurrentPane { confirm = false } },
     { key = 'Enter', mods = 'ALT', action = act.TogglePaneZoomState },
     { key = 'e', mods = 'ALT', action = act.Nop },
+
+    -- Tab creation.
+    { key = 't', mods = 'CTRL', action = act.SpawnTab 'CurrentPaneDomain' },
 
     -- Tab navigation.
     { key = 'phys:LeftBracket', mods = 'ALT|SHIFT', action = act.ActivateTabRelative(-1) },
