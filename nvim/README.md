@@ -70,7 +70,10 @@ lua/utils/                빌드, rsync, 터미널 유틸
 - Leader: `,`
 - 테마: `tokyonight`
 - BufferLine 구분선: 얇은 선(`thin`)
-- 로딩 정책: LSP/자동완성은 즉시 로드하고, UI/탐색/Markdown/주석/indent 일부는 지연 로드한다.
+- 로딩 정책:
+  - 빈 시작: `tokyonight`, Alpha 대시보드를 먼저 띄운 뒤 LSP/자동완성/UI 부가 설정을 지연 로드한다.
+  - 파일 시작: LSP/자동완성은 즉시 로드하고, UI/탐색/Markdown/주석/indent 일부는 지연 로드한다.
+- 플러그인 배치: 자동 로드가 필요한 최소 플러그인만 `start`에 두고, 테마/LSP/완성/UI/탐색 플러그인은 `opt`에 둔 뒤 설정 파일에서 `packadd`로 로드한다.
 - Lua Treesitter parser: Neovim 번들 parser를 우선 사용한다. `nvim-treesitter` 안의 오래된 prebuilt parser가 런타임 query와 충돌하는 걸 막기 위해서다.
 - LSP: `mason.nvim`, `mason-lspconfig.nvim`, Neovim LSP API
   - 활성 서버: `clangd`, `pyright`, `dockerls`, `jsonls`, `yamlls`

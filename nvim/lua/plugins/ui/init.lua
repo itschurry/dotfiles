@@ -67,6 +67,7 @@ vim.keymap.set("n", "<leader>t", function()
   vim.cmd("AerialToggle")
 end, { silent = true })
 
+vim.cmd("packadd lualine.nvim")
 require("lualine").setup {
   options = {
     theme = "auto",
@@ -88,6 +89,7 @@ require("lualine").setup {
   },
 }
 
+vim.cmd("packadd bufferline.nvim")
 require("bufferline").setup {
   options = {
     mode = "buffers",
@@ -147,6 +149,7 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
   callback = M.indent,
 })
 
+vim.cmd("packadd gitsigns.nvim")
 require("gitsigns").setup {
   signs = {
     add = { text = "│" },
@@ -165,6 +168,7 @@ vim.api.nvim_set_hl(0, "GitSignsTopdelete", { link = "DiffDelete" })
 vim.api.nvim_set_hl(0, "GitSignsChangedelete", { link = "DiffChange" })
 
 local function setup_comment()
+  vim.cmd("packadd Comment.nvim")
   require("Comment").setup({
     mappings = {
       basic = false,
@@ -242,6 +246,8 @@ vim.api.nvim_create_user_command("UiEffectsEnable", function()
   M.ui_effects()
 end, { desc = "Enable noice.nvim and nvim-notify" })
 
+vim.cmd("packadd twilight.nvim")
+vim.cmd("packadd zen-mode.nvim")
 require("twilight").setup()
 require("zen-mode").setup {
   window = {

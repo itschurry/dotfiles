@@ -1,3 +1,5 @@
+vim.cmd("packadd tokyonight.nvim")
+
 require("tokyonight").setup({
   style = "night", -- night | storm | moon | day 중 선택
   transparent = true, -- true면 배경이 투명

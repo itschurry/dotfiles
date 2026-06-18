@@ -1,5 +1,7 @@
 -- ~/.config/nvim/lua/theme/github.lua
 
+vim.cmd("packadd github-theme")
+
 require("github-theme").setup({
   comment_style = "italic",
   keyword_style = "bold",
@@ -26,4 +28,3 @@ require("github-theme").setup({
     }
   end,
 })
-

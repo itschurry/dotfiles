@@ -14,21 +14,21 @@ local plugins = {
   { repo = "MunifTanjim/nui.nvim", name = "nui.nvim", opt = true }, -- noice.nvim 의 필수 종속성
 
   -- ☆ 테마 & UI
-  { repo = "catppuccin/nvim", name = "catppuccin" },
-  { repo = "folke/tokyonight.nvim" },
-  { repo = "projekt0n/github-nvim-theme", name = 'github-theme' },
-  { repo = "EdenEast/nightfox.nvim", name = "nightfox.nvim" },
+  { repo = "catppuccin/nvim", name = "catppuccin", opt = true },
+  { repo = "folke/tokyonight.nvim", opt = true },
+  { repo = "projekt0n/github-nvim-theme", name = 'github-theme', opt = true },
+  { repo = "EdenEast/nightfox.nvim", name = "nightfox.nvim", opt = true },
 
-  { repo = "folke/which-key.nvim" },
-  { repo = "folke/zen-mode.nvim" },
-  { repo = "folke/twilight.nvim" },
+  { repo = "folke/which-key.nvim", opt = true },
+  { repo = "folke/zen-mode.nvim", opt = true },
+  { repo = "folke/twilight.nvim", opt = true },
   { repo = "folke/noice.nvim", opt = true },
   { repo = "rcarriga/nvim-notify", opt = true },
   { repo = "goolord/alpha-nvim", opt = true },
   { repo = "nvim-tree/nvim-web-devicons" },
   { repo = "nvim-tree/nvim-tree.lua", opt = true },
-  { repo = "akinsho/bufferline.nvim", name = "bufferline.nvim" },
-  { repo = "nvim-lualine/lualine.nvim" },
+  { repo = "akinsho/bufferline.nvim", name = "bufferline.nvim", opt = true },
+  { repo = "nvim-lualine/lualine.nvim", opt = true },
   { repo = "stevearc/aerial.nvim", opt = true },
   { repo = "MeanderingProgrammer/render-markdown.nvim", opt = true },
 
@@ -37,24 +37,24 @@ local plugins = {
   { repo = "christoomey/vim-tmux-navigator" },
 
   -- ☆ 코드 하이라이트 및 구조
-  { repo = "nvim-treesitter/nvim-treesitter", branch = "main" },
+  { repo = "nvim-treesitter/nvim-treesitter", branch = "main", opt = true },
 
   -- ☆ LSP / 자동완성
-  { repo = "neovim/nvim-lspconfig" },
-  { repo = "williamboman/mason.nvim" },
-  { repo = "williamboman/mason-lspconfig.nvim" },
-  { repo = "saghen/blink.cmp", tag = "v1.10.2" },
-  { repo = "L3MON4D3/LuaSnip" },
-  { repo = "windwp/nvim-autopairs" },
-  { repo = "stevearc/conform.nvim" },
-  { repo = "nvim-flutter/flutter-tools.nvim", name = "flutter-tools.nvim" },
+  { repo = "neovim/nvim-lspconfig", opt = true },
+  { repo = "williamboman/mason.nvim", opt = true },
+  { repo = "williamboman/mason-lspconfig.nvim", opt = true },
+  { repo = "saghen/blink.cmp", tag = "v1.10.2", opt = true },
+  { repo = "L3MON4D3/LuaSnip", opt = true },
+  { repo = "windwp/nvim-autopairs", opt = true },
+  { repo = "stevearc/conform.nvim", opt = true },
+  { repo = "nvim-flutter/flutter-tools.nvim", name = "flutter-tools.nvim", opt = true },
 
   -- ☆ Git
-  { repo = "lewis6991/gitsigns.nvim" },
+  { repo = "lewis6991/gitsigns.nvim", opt = true },
 
   -- ☆ 기타
   { repo = "lukas-reineke/indent-blankline.nvim", opt = true },
-  { repo = "numToStr/Comment.nvim" },
+  { repo = "numToStr/Comment.nvim", opt = true },
 }
 
 local installed_any = false
@@ -100,14 +100,6 @@ for _, plugin in ipairs(plugins) do
     vim.fn.system(clone_cmd)
     installed_any = true
   end
-end
-
-if not installed_any then
-  vim.defer_fn(function()
-    if vim.fn.argc() == 0 and vim.fn.expand("%") == "" then
-      require("plugins.ui.alpha").open()
-    end
-  end, 50)
 end
 
 ----------------------------------------------------------------------

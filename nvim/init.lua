@@ -3,6 +3,39 @@ if vim.g.vscode then
     require("core.keymaps")
 else
     -- ordinary Neovim
+    local function is_empty_start()
+      return vim.fn.argc() == 0 and vim.fn.expand("%") == ""
+    end
+
+    local function setup_theme()
+      -- require("theme.catppuccin")
+      require("theme.tokyonight")
+      -- require("theme.github")
+      -- require("theme.nightfox")
+    end
+
+    local function setup_editing_plugins()
+      require("plugins.completion.blink")
+      require("plugins.language.lsp")
+      require("plugins.editor.markdown")
+      if vim.fn.executable("flutter") == 1 then
+        require("plugins.language.flutter")
+      end
+    end
+
+    local function setup_deferred_plugins()
+      require("plugins.editor.format")
+      require("plugins.editor.folding")
+      require("plugins.navigation.telescope")
+      require("plugins.editor.treesitter")
+      require("plugins.ui")
+
+      -- 유틸 (rsync 단축키 등)
+      require("utils.build_tools")
+      require("utils.rsync")
+      require("utils.terminal")
+    end
+
     -- Step 1. 기본 설정
     require("core.options")
     require("core.keymaps")
@@ -17,32 +50,25 @@ else
     end
 
     -- Step 3. mason이 설치됐는지 확인 후 플러그인 설정 실행
-    local mason_path = vim.fn.stdpath("data") .. "/site/pack/plugins/start/mason.nvim"
-    if vim.fn.isdirectory(mason_path) ~= 0 then
-      require("plugins.completion.blink")
-      require("plugins.language.lsp")
-      require("plugins.editor.markdown")
-      if vim.fn.executable("flutter") == 1 then
-        require("plugins.language.flutter")
+    local plugin_site = vim.fn.stdpath("data") .. "/site/pack/plugins"
+    local mason_start_path = plugin_site .. "/start/mason.nvim"
+    local mason_opt_path = plugin_site .. "/opt/mason.nvim"
+    if vim.fn.isdirectory(mason_start_path) ~= 0 or vim.fn.isdirectory(mason_opt_path) ~= 0 then
+      if is_empty_start() then
+        setup_theme()
+        require("plugins.ui.alpha").open()
+
+        vim.defer_fn(function()
+          setup_editing_plugins()
+          setup_deferred_plugins()
+        end, 100)
+      else
+        setup_editing_plugins()
+        vim.schedule(function()
+          setup_theme()
+          setup_deferred_plugins()
+        end)
       end
-
-      vim.schedule(function()
-        -- require("theme.catppuccin")
-        require("theme.tokyonight")
-        -- require("theme.github")
-        -- require("theme.nightfox")
-
-        require("plugins.editor.format")
-        require("plugins.editor.folding")
-        require("plugins.navigation.telescope")
-        require("plugins.editor.treesitter")
-        require("plugins.ui")
-
-        -- 유틸 (rsync 단축키 등)
-        require("utils.build_tools")
-        require("utils.rsync")
-        require("utils.terminal")
-      end)
     else
       print("⚠️ mason.nvim 아직 설치되지 않았습니다. Neovim 재시작 후 다시 시도하세요.")
     end

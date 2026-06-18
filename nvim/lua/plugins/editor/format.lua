@@ -1,3 +1,5 @@
+vim.cmd("packadd conform.nvim")
+
 local conform = require("conform")
 
 conform.setup({

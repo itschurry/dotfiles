@@ -1,3 +1,5 @@
+vim.cmd("packadd flutter-tools.nvim")
+
 require("flutter-tools").setup({
   ui = {
     border = "rounded",

@@ -1,3 +1,5 @@
+vim.cmd("packadd catppuccin")
+
 require("catppuccin").setup({
     flavour = "mocha", -- latte, frappe, macchiato, mocha 중 선택 가능
     transparent_background = true, -- 배경 투명 여부

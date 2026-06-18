@@ -1,3 +1,6 @@
+vim.cmd("packadd blink.cmp")
+vim.cmd("packadd nvim-autopairs")
+
 require("plugins.completion.luasnip")
 
 require("blink.cmp").setup({

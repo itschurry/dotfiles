@@ -1,3 +1,5 @@
+vim.cmd("packadd nightfox.nvim")
+
 require("nightfox").setup({
   options = {
     transparent = true,

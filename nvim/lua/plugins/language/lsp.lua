@@ -1,3 +1,7 @@
+vim.cmd("packadd mason.nvim")
+vim.cmd("packadd mason-lspconfig.nvim")
+vim.cmd("packadd nvim-lspconfig")
+
 -- mason은 "설치"만 맡기고, 설정/활성화는 core API로
 local mason = require("mason")
 local mlsp  = require("mason-lspconfig")

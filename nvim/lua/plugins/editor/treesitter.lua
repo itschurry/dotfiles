@@ -1,3 +1,5 @@
+vim.cmd("packadd nvim-treesitter")
+
 local treesitter = require("nvim-treesitter")
 
 treesitter.setup({
