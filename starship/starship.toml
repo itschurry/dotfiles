@@ -1,0 +1,160 @@
+"$schema" = "https://starship.rs/config-schema.json"
+
+add_newline = true
+command_timeout = 750
+scan_timeout = 30
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_status\
+$nodejs\
+$python\
+$golang\
+$rust\
+$docker_context\
+$kubernetes\
+$cmd_duration\
+$line_break\
+$character"""
+right_format = "$jobs$status$time"
+
+[character]
+success_symbol = "[>](bold green)"
+error_symbol = "[>](bold red)"
+vimcmd_symbol = "[<](bold yellow)"
+
+[username]
+show_always = false
+style_user = "bold blue"
+style_root = "bold red"
+format = "[$user]($style)@"
+
+[hostname]
+ssh_only = true
+style = "bold purple"
+format = "[$hostname]($style) "
+
+[directory]
+truncation_length = 4
+truncate_to_repo = false
+style = "bold cyan"
+read_only = " ro"
+read_only_style = "red"
+format = "[$path]($style)[$read_only]($read_only_style) "
+
+[git_branch]
+symbol = "git:"
+style = "bold purple"
+format = "[$symbol$branch(:$remote_branch)]($style) "
+
+[git_status]
+style = "bold yellow"
+format = "([$all_status$ahead_behind]($style) )"
+conflicted = "=${count}"
+ahead = ">${count}"
+behind = "<${count}"
+diverged = "<>${ahead_count}/${behind_count}"
+up_to_date = ""
+untracked = "?${count}"
+stashed = "\\$${count}"
+modified = "!${count}"
+staged = "+${count}"
+renamed = "r${count}"
+deleted = "x${count}"
+
+[docker_context]
+symbol = "docker:"
+style = "blue"
+format = "[$symbol$context]($style) "
+
+[kubernetes]
+disabled = false
+symbol = "k8s:"
+style = "cyan"
+format = "[$symbol$context(.$namespace)]($style) "
+
+[nodejs]
+symbol = "node:"
+style = "green"
+format = "[$symbol$version]($style) "
+
+[python]
+symbol = "py:"
+style = "yellow"
+format = "[$symbol$version( $virtualenv)]($style) "
+
+[golang]
+symbol = "go:"
+style = "cyan"
+format = "[$symbol$version]($style) "
+
+[rust]
+symbol = "rs:"
+style = "red"
+format = "[$symbol$version]($style) "
+
+[java]
+symbol = "java:"
+style = "red"
+format = "[ $symbol$version ]($style)"
+
+[dotnet]
+symbol = "dotnet:"
+style = "blue"
+format = "[ $symbol$version ]($style)"
+
+[php]
+symbol = "php:"
+style = "purple"
+format = "[ $symbol$version ]($style)"
+
+[ruby]
+symbol = "rb:"
+style = "red"
+format = "[ $symbol$version ]($style)"
+
+[lua]
+symbol = "lua:"
+style = "blue"
+format = "[ $symbol$version ]($style)"
+
+[dart]
+symbol = "dart:"
+style = "cyan"
+format = "[ $symbol$version ]($style)"
+
+[cmd_duration]
+min_time = 2000
+style = "bold yellow"
+format = "[took $duration]($style) "
+
+[jobs]
+symbol = "jobs:"
+style = "bold blue"
+format = "[$symbol$number]($style) "
+
+[status]
+disabled = false
+symbol = "exit:"
+style = "bold red"
+format = "[$symbol$status]($style) "
+
+[time]
+disabled = false
+time_format = "%H:%M"
+style = "dimmed white"
+format = "[$time]($style)"
+
+[package]
+disabled = true
+
+[aws]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[azure]
+disabled = true

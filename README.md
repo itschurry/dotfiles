@@ -2,7 +2,7 @@
 
 ## 목적
 
-Neovim, tmux, iTerm/Ghostty 터미널 사용 흐름, VS Code, clangd 설정을 관리하는 개인 개발 환경 저장소.
+Neovim, tmux, Starship, ble.sh, iTerm/Ghostty 터미널 사용 흐름, VS Code, clangd 설정을 관리하는 개인 개발 환경 저장소.
 
 ## 설치
 
@@ -10,6 +10,9 @@ Neovim, tmux, iTerm/Ghostty 터미널 사용 흐름, VS Code, clangd 설정을 �
 git clone <repo-url> ~/dotfiles
 ln -sfn ~/dotfiles/nvim ~/.config/nvim
 ln -sfn ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
+mkdir -p ~/.config
+ln -sfn ~/dotfiles/starship/starship.toml ~/.config/starship.toml
+ln -sfn ~/dotfiles/blesh/blerc ~/.blerc
 mkdir -p ~/.config/ghostty
 ln -sfn ~/dotfiles/ghostty/config ~/.config/ghostty/config
 chmod +x ~/dotfiles/iterm/apply-keymaps.sh
@@ -30,6 +33,18 @@ tmux:
 tmux
 ```
 
+Starship:
+
+```bash
+starship prompt
+```
+
+ble.sh:
+
+```bash
+source ~/.bashrc
+```
+
 iTerm:
 
 ```bash
@@ -48,6 +63,9 @@ open -a Ghostty
 .
 ├── clangd/
 │   └── clangd
+├── blesh/
+│   ├── README.md
+│   └── blerc
 ├── legacy/
 │   └── ros-docker/
 │       ├── build.sh
@@ -65,6 +83,9 @@ open -a Ghostty
 │   └── README.md
 ├── scripts/
 │   └── merge_compile_commands.py
+├── starship/
+│   ├── README.md
+│   └── starship.toml
 ├── tmux/
 │   ├── README.md
 │   └── tmux.conf
@@ -80,7 +101,11 @@ open -a Ghostty
 
 - `~/.config/nvim`: `~/dotfiles/nvim`으로 연결
 - `~/.tmux.conf`: `~/dotfiles/tmux/tmux.conf`으로 연결
+- `~/.config/starship.toml`: `~/dotfiles/starship/starship.toml`으로 연결
+- `~/.blerc`: `~/dotfiles/blesh/blerc`으로 연결
 - `~/.config/ghostty/config`: `~/dotfiles/ghostty/config`으로 연결
+- Starship 세부 설정: `starship/README.md`
+- ble.sh 세부 설정: `blesh/README.md`
 - iTerm 세부 설정: `iterm/README.md`
 - Ghostty 세부 설정: `ghostty/README.md`
 - tmux 세부 설정: `tmux/README.md`
