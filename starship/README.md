@@ -54,7 +54,8 @@ STARSHIP_CONFIG="$PWD/starship.toml" starship prompt
 - `directory.truncation_length`: 경로를 줄이지 않고 풀 경로로 표시
 - `command_timeout`: Starship 모듈 명령 제한 시간 750ms
 - `scan_timeout`: 디렉터리 스캔 제한 시간 30ms
-- `git_status`: 변경 상태를 bracketed preset 형식으로 표시
+- `git_branch`: 로컬 브랜치와 remote 브랜치를 같이 표시
+- `git_status`: staged, modified, untracked, deleted, renamed, stashed, ahead/behind 상태를 개수와 함께 표시
 - `package.disabled`: 패키지 버전 표시는 꺼둠
 - `aws`, `gcloud`, `azure`: 클라우드 컨텍스트 표시는 꺼둠
 
