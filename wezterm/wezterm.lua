@@ -1,8 +1,10 @@
 local wezterm = require 'wezterm'
 local act = wezterm.action
+local is_windows = wezterm.target_triple:find('windows') ~= nil
+local default_tab_title = is_windows and 'Ubuntu' or 'wezterm'
 
 wezterm.on('format-tab-title', function(tab)
-  local title = 'Ubuntu'
+  local title = default_tab_title
 
   if tab.tab_title and #tab.tab_title > 0 then
     title = tab.tab_title
@@ -17,9 +19,7 @@ wezterm.on('format-window-title', function()
   return 'wezterm'
 end)
 
-return {
-  default_prog = { 'wsl.exe', '-d', 'Ubuntu-24.04', '--cd', '~' },
-
+local config = {
   color_schemes = {
     Hardcore = {
       foreground = '#d0d0d0',
@@ -139,3 +139,9 @@ return {
     { key = 'r', mods = 'SUPER', action = act.ReloadConfiguration },
   },
 }
+
+if is_windows then
+  config.default_prog = { 'wsl.exe', '-d', 'Ubuntu-24.04', '--cd', '~' }
+end
+
+return config

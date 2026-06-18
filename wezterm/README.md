@@ -35,14 +35,15 @@ wezterm/
 
 ## 주요 옵션
 
-- default shell: `wsl.exe -d Ubuntu-24.04 --cd ~`
+- default shell: Windows에서만 `wsl.exe -d Ubuntu-24.04 --cd ~`
 - theme: `Hardcore`
 - font: `JetBrainsMono NFM`, 11pt
 - opacity: `0.86`
 - blur/backdrop: macOS blur `24`, Windows Acrylic
 - accent color: `#0f1117`
 - padding: `14px`
-- tab bar: tab이 하나면 숨김, fancy tab bar/번호 비활성화, 기본 제목 `Ubuntu`
+- tab bar: tab이 하나면 숨김, fancy tab bar/번호 비활성화
+- tab title: Windows는 `Ubuntu`, 그 외 플랫폼은 `wezterm`
 - window decoration: 제목 표시줄 표시, resize 유지
 - window title: `wezterm`으로 고정
 - cursor: bar
