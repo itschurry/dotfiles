@@ -2,7 +2,7 @@
 
 ## 목적
 
-Neovim, tmux, Starship, ble.sh, iTerm/Ghostty 터미널 사용 흐름, VS Code, clangd 설정을 관리하는 개인 개발 환경 저장소.
+Neovim, tmux, Starship, ble.sh 기반 Bash 입력 환경, Ghostty/WezTerm 터미널 사용 흐름, VS Code, clangd 설정을 관리하는 개인 개발 환경 저장소.
 
 ## 설치
 
@@ -15,8 +15,15 @@ ln -sfn ~/dotfiles/starship/starship.toml ~/.config/starship.toml
 ln -sfn ~/dotfiles/blesh/blerc ~/.blerc
 mkdir -p ~/.config/ghostty
 ln -sfn ~/dotfiles/ghostty/config ~/.config/ghostty/config
-chmod +x ~/dotfiles/iterm/apply-keymaps.sh
-~/dotfiles/iterm/apply-keymaps.sh
+```
+
+Windows WezTerm:
+
+```powershell
+New-Item -ItemType SymbolicLink `
+  -Path "$env:USERPROFILE\.wezterm.lua" `
+  -Target "\\wsl.localhost\Ubuntu-24.04\home\user\dotfiles\wezterm\wezterm.lua" `
+  -Force
 ```
 
 ## 실행
@@ -45,16 +52,16 @@ ble.sh:
 source ~/.bashrc
 ```
 
-iTerm:
-
-```bash
-open -a iTerm
-```
-
 Ghostty:
 
 ```bash
 open -a Ghostty
+```
+
+WezTerm:
+
+```powershell
+wezterm
 ```
 
 ## 디렉터리 구조
@@ -71,11 +78,6 @@ open -a Ghostty
 │       ├── build.sh
 │       ├── Dockerfile
 │       └── run.sh
-├── iterm/
-│   ├── keymaps/
-│   │   └── my-keymap.plist
-│   ├── README.md
-│   └── apply-keymaps.sh
 ├── ghostty/
 │   ├── README.md
 │   └── config
@@ -89,6 +91,9 @@ open -a Ghostty
 ├── tmux/
 │   ├── README.md
 │   └── tmux.conf
+├── wezterm/
+│   ├── README.md
+│   └── wezterm.lua
 └── vscode/
     ├── c_cpp_properties.json
     ├── launch.json
@@ -104,10 +109,12 @@ open -a Ghostty
 - `~/.config/starship.toml`: `~/dotfiles/starship/starship.toml`으로 연결
 - `~/.blerc`: `~/dotfiles/blesh/blerc`으로 연결
 - `~/.config/ghostty/config`: `~/dotfiles/ghostty/config`으로 연결
+- `%USERPROFILE%\.wezterm.lua`: `wezterm/wezterm.lua`로 연결
 - Starship 세부 설정: `starship/README.md`
 - ble.sh 세부 설정: `blesh/README.md`
-- iTerm 세부 설정: `iterm/README.md`
+- Bash 입력 개선: 문법/파일/변수 하이라이트, 히스토리 자동제안, 자동완성 메뉴, prefix/substring 히스토리 검색
 - Ghostty 세부 설정: `ghostty/README.md`
+- WezTerm 세부 설정: `wezterm/README.md`
 - tmux 세부 설정: `tmux/README.md`
 - tmux prefix: `C-a`
 - tmux status line: session/path/window/git/battery/time/prefix/copy-mode 표시
@@ -116,13 +123,17 @@ open -a Ghostty
   - split/pane 이동: `h`, `j`, `k`, `l`
   - split/pane 크기 조절: `C-h`, `C-j`, `C-k`, `C-l`
 - tmux 안에서 `C-\`는 pane 이동에 쓰지 않고 foreground process에 그대로 전달
-- iTerm pane 조작:
-  - pane 이동: `Cmd+H/J/K/L`
-  - split 생성: `Cmd+Shift+V/S`
 - Ghostty split 조작:
   - split 이동: `Alt+H/J/K/L`
   - split 생성: `Alt+V/S`
   - split 크기 조절: `Alt+Shift+H/J/K/L`
+- WezTerm split 조작:
+  - split 이동: `Alt+H/J/K/L`
+  - split 생성: `Alt+V/S`
+  - split 크기 조절: `Alt+Shift+H/J/K/L`
+  - WSL 기본 실행: `wsl.exe -d Ubuntu-24.04 --cd ~`
+  - 제목 표시줄 숨김, resize 유지, 반투명 Acrylic 배경
+  - 탭 제목: `Ubuntu`로 표시
 - `legacy/ros-docker`: 특정 ROS Docker 환경용 예전 스크립트
 
 ## 저장소 이름
