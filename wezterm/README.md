@@ -66,7 +66,7 @@ wezterm/
 - padding: `14px`
 - tab bar: tab이 하나면 숨김, fancy tab bar/번호 비활성화
 - window decoration: 제목 표시줄 표시, resize 유지
-- title: WezTerm 기본 제목 사용
+- title: Ubuntu/macOS는 WezTerm 기본 제목 사용, Windows는 `Ubuntu`로 표시
 - cursor: bar
 - clipboard: WezTerm 기본 mouse binding으로 선택 완료 시 clipboard 복사
 - mouse: 입력 중 cursor 숨김

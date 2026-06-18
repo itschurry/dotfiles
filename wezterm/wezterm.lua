@@ -133,6 +133,22 @@ local config = {
 
 if is_windows then
   config.default_prog = { 'wsl.exe', '-d', 'Ubuntu-24.04', '--cd', '~' }
+
+  wezterm.on('format-tab-title', function(tab)
+    local title = tab.tab_title
+
+    if not title or #title == 0 then
+      title = 'Ubuntu'
+    end
+
+    return {
+      { Text = ' ' .. title .. ' ' },
+    }
+  end)
+
+  wezterm.on('format-window-title', function()
+    return 'Ubuntu'
+  end)
 end
 
 return config
