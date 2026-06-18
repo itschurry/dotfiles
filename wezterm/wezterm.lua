@@ -92,6 +92,12 @@ local config = {
     { key = '8', mods = 'SUPER', action = act.DisableDefaultAssignment },
     { key = '9', mods = 'SUPER', action = act.DisableDefaultAssignment },
 
+    -- Clipboard.
+    { key = 'c', mods = 'CTRL|SHIFT', action = act.CopyTo 'Clipboard' },
+    { key = 'v', mods = 'CTRL|SHIFT', action = act.PasteFrom 'Clipboard' },
+    { key = 'c', mods = 'SUPER', action = act.CopyTo 'Clipboard' },
+    { key = 'v', mods = 'SUPER', action = act.PasteFrom 'Clipboard' },
+
     -- Split navigation.
     { key = 'h', mods = 'ALT', action = act.ActivatePaneDirection 'Left' },
     { key = 'j', mods = 'ALT', action = act.ActivatePaneDirection 'Down' },
@@ -128,6 +134,19 @@ local config = {
 
     -- Config.
     { key = 'r', mods = 'SUPER', action = act.ReloadConfiguration },
+  },
+
+  mouse_bindings = {
+    {
+      event = { Up = { streak = 1, button = 'Left' } },
+      mods = 'NONE',
+      action = act.CompleteSelectionOrOpenLinkAtMouseCursor 'ClipboardAndPrimarySelection',
+    },
+    {
+      event = { Up = { streak = 1, button = 'Right' } },
+      mods = 'NONE',
+      action = act.CopyTo 'Clipboard',
+    },
   },
 }
 

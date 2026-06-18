@@ -68,7 +68,7 @@ wezterm/
 - window decoration: 제목 표시줄 표시, resize 유지
 - title: Ubuntu/macOS는 WezTerm 기본 제목 사용, Windows는 `Ubuntu`로 표시
 - cursor: bar
-- clipboard: WezTerm 기본 mouse binding으로 선택 완료 시 clipboard 복사
+- clipboard: `Ctrl+Shift+C/V`, `Super+C/V`, drag 선택 완료 복사, 선택 후 우클릭 복사
 - mouse: 입력 중 cursor 숨김
 
 ## 키 바인딩
@@ -80,12 +80,19 @@ wezterm/
 - `Alt+q`: 현재 pane 닫기
 - `Alt+Enter`: split zoom 토글
 - `Alt+e`: 비활성화
+- `Ctrl+Shift+c` / `Ctrl+Shift+v`: 복사/붙여넣기
+- `Super+c` / `Super+v`: 복사/붙여넣기
 - `Ctrl+t`: 새 tab 생성
 - `Alt+Shift+[` / `Alt+Shift+]`: 이전/다음 tab 이동
 - `Alt+Shift+LeftBracket` / `Alt+Shift+RightBracket`: 물리 키 위치 기준 tab 이동
 - `Alt+{` / `Alt+}`: `Shift+[` / `Shift+]`가 `{` / `}`로 들어오는 경우용 tab 이동
 - `Alt+Shift+{` / `Alt+Shift+}`: OS/키보드 레이아웃 해석 차이 대응용 tab 이동
 - `Super+R`: 설정 리로드
+
+## 마우스
+
+- drag 선택 완료: 선택 영역을 clipboard/primary selection에 복사
+- 선택 후 우클릭: 선택 영역을 clipboard에 복사
 
 ## 단축키 디버깅
 
