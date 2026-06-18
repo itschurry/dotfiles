@@ -132,6 +132,8 @@ local config = {
     -- Tab navigation.
     { key = '[', mods = 'ALT|SHIFT', action = act.ActivateTabRelative(-1) },
     { key = ']', mods = 'ALT|SHIFT', action = act.ActivateTabRelative(1) },
+    { key = '{', mods = 'ALT', action = act.ActivateTabRelative(-1) },
+    { key = '}', mods = 'ALT', action = act.ActivateTabRelative(1) },
     { key = '{', mods = 'ALT|SHIFT', action = act.ActivateTabRelative(-1) },
     { key = '}', mods = 'ALT|SHIFT', action = act.ActivateTabRelative(1) },
 
