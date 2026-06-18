@@ -11,7 +11,20 @@ nvim
 
 처음 실행하면 `lua/plugins/init.lua`에 정의된 플러그인을 자동 설치한다. 설치가 끝나면 Neovim을 한 번 재시작해.
 시작 때 필요 없는 플러그인은 `site/pack/plugins/opt`에 두고 사용할 때 `packadd`로 로드한다.
+필수 도구:
+
+```sh
+sudo apt install git curl gcc
+npm install -g tree-sitter-cli
+```
+
 `blink.cmp`는 v1 태그의 prebuilt fuzzy matcher를 받기 때문에 `git`, `curl`이 필요하다.
+Treesitter parser 설치는 `tree-sitter` CLI와 C 컴파일러가 필요하다.
+`npm`을 쓰지 않는 환경이면 아래처럼 설치해.
+
+```sh
+cargo install tree-sitter-cli
+```
 
 Treesitter parser는 시작 시 자동 설치하지 않는다. 처음 설치하거나 parser를 갱신할 때 직접 실행해.
 
@@ -58,6 +71,7 @@ lua/utils/                빌드, rsync, 터미널 유틸
 - 테마: `tokyonight`
 - BufferLine 구분선: 얇은 선(`thin`)
 - 로딩 정책: LSP/자동완성은 즉시 로드하고, UI/탐색/Markdown/주석/indent 일부는 지연 로드한다.
+- Lua Treesitter parser: Neovim 번들 parser를 우선 사용한다. `nvim-treesitter` 안의 오래된 prebuilt parser가 런타임 query와 충돌하는 걸 막기 위해서다.
 - LSP: `mason.nvim`, `mason-lspconfig.nvim`, Neovim LSP API
   - 활성 서버: `clangd`, `pyright`, `dockerls`, `jsonls`, `yamlls`
   - `clangd` compile database 위치는 프로젝트별 `.clangd` 설정을 따른다.

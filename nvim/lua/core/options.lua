@@ -2,6 +2,11 @@ local o = vim.o
 local wo = vim.wo
 local g = vim.g
 
+local bundled_lua_parser = vim.fn.fnamemodify(vim.v.progpath, ":h:h") .. "/lib/nvim/parser/lua.so"
+if vim.fn.filereadable(bundled_lua_parser) == 1 then
+  vim.treesitter.language.add("lua", { path = bundled_lua_parser })
+end
+
 -- 기본 옵션
 o.encoding, o.fileencoding = "utf-8", "utf-8"
 o.tabstop, o.shiftwidth, o.softtabstop = 4, 4, 4

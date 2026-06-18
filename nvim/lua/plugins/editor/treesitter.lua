@@ -21,6 +21,10 @@ local languages = {
 }
 
 vim.api.nvim_create_user_command("TSInstallConfigured", function()
+  if vim.fn.executable("tree-sitter") ~= 1 then
+    error("tree-sitter CLI가 없어. 먼저 `npm install -g tree-sitter-cli` 또는 `cargo install tree-sitter-cli` 실행해.")
+  end
+
   treesitter.install(languages):wait(300000)
 end, { desc = "Install configured Treesitter parsers" })
 
