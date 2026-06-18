@@ -68,7 +68,7 @@ wezterm/
 - window decoration: 제목 표시줄 표시, resize 유지
 - title: Ubuntu/macOS는 WezTerm 기본 제목 사용, Windows는 `Ubuntu`로 표시
 - cursor: bar
-- clipboard: `Ctrl+Shift+C/V`, `Super+C/V`, drag 선택 완료 복사 후 선택 해제, 우클릭 복사 후 선택 해제
+- clipboard: `Ctrl+Shift+C/V`, `Super+C/V`, drag 선택 완료 복사 후 선택 해제, 우클릭 붙여넣기
 - mouse: 입력 중 cursor 숨김
 
 ## 키 바인딩
@@ -92,7 +92,7 @@ wezterm/
 ## 마우스
 
 - drag 선택 완료: 선택 영역을 clipboard/primary selection에 복사하고 선택 해제
-- 선택 후 우클릭: 선택 영역을 clipboard에 복사하고 선택 해제
+- 우클릭: clipboard 붙여넣기
 
 ## 단축키 디버깅
 

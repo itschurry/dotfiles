@@ -149,7 +149,7 @@ local config = {
       event = { Up = { streak = 1, button = 'Right' } },
       mods = 'NONE',
       action = act.Multiple {
-        act.CopyTo 'Clipboard',
+        act.PasteFrom 'Clipboard',
         act.ClearSelection,
       },
     },
