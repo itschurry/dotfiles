@@ -13,6 +13,10 @@ wezterm.on('format-tab-title', function(tab)
   }
 end)
 
+wezterm.on('format-window-title', function()
+  return 'wezterm'
+end)
+
 return {
   default_prog = { 'wsl.exe', '-d', 'Ubuntu-24.04', '--cd', '~' },
 
@@ -54,7 +58,7 @@ return {
   harfbuzz_features = { 'calt=0', 'liga=0' },
 
   default_cursor_style = 'SteadyBar',
-  window_decorations = 'RESIZE',
+  window_decorations = 'TITLE|RESIZE',
   window_background_opacity = 0.86,
   macos_window_background_blur = 24,
   win32_system_backdrop = 'Acrylic',
@@ -86,6 +90,8 @@ return {
     { key = 'Tab', mods = 'CTRL', action = act.DisableDefaultAssignment },
     { key = '[', mods = 'SUPER|SHIFT', action = act.DisableDefaultAssignment },
     { key = ']', mods = 'SUPER|SHIFT', action = act.DisableDefaultAssignment },
+    { key = '{', mods = 'SUPER|SHIFT', action = act.Nop },
+    { key = '}', mods = 'SUPER|SHIFT', action = act.Nop },
     { key = 'd', mods = 'SUPER', action = act.DisableDefaultAssignment },
     { key = 'd', mods = 'SUPER|SHIFT', action = act.DisableDefaultAssignment },
     { key = 'UpArrow', mods = 'SUPER|ALT', action = act.DisableDefaultAssignment },
@@ -122,6 +128,12 @@ return {
     { key = 'q', mods = 'ALT', action = act.CloseCurrentPane { confirm = false } },
     { key = 'Enter', mods = 'ALT', action = act.TogglePaneZoomState },
     { key = 'e', mods = 'ALT', action = act.Nop },
+
+    -- Tab navigation.
+    { key = '[', mods = 'ALT|SHIFT', action = act.ActivateTabRelative(-1) },
+    { key = ']', mods = 'ALT|SHIFT', action = act.ActivateTabRelative(1) },
+    { key = '{', mods = 'ALT|SHIFT', action = act.ActivateTabRelative(-1) },
+    { key = '}', mods = 'ALT|SHIFT', action = act.ActivateTabRelative(1) },
 
     -- Config.
     { key = 'r', mods = 'SUPER', action = act.ReloadConfiguration },

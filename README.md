@@ -131,8 +131,10 @@ wezterm
   - split 이동: `Alt+H/J/K/L`
   - split 생성: `Alt+V/S`
   - split 크기 조절: `Alt+Shift+H/J/K/L`
+  - tab 이동: `Alt+Shift+[` / `Alt+Shift+]`
   - WSL 기본 실행: `wsl.exe -d Ubuntu-24.04 --cd ~`
-  - 제목 표시줄 숨김, resize 유지, 반투명 Acrylic 배경
+  - 제목 표시줄 표시, resize 유지, 반투명 Acrylic 배경
+  - 창 제목: `wezterm`으로 고정
   - 탭 제목: `Ubuntu`로 표시
 - `legacy/ros-docker`: 특정 ROS Docker 환경용 예전 스크립트
 

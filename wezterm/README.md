@@ -43,7 +43,8 @@ wezterm/
 - accent color: `#0f1117`
 - padding: `14px`
 - tab bar: tab이 하나면 숨김, fancy tab bar/번호 비활성화, 기본 제목 `Ubuntu`
-- window decoration: 제목 표시줄 숨김, resize 유지
+- window decoration: 제목 표시줄 표시, resize 유지
+- window title: `wezterm`으로 고정
 - cursor: bar
 - clipboard: WezTerm 기본 mouse binding으로 선택 완료 시 clipboard 복사
 - mouse: 입력 중 cursor 숨김
@@ -57,6 +58,8 @@ wezterm/
 - `Alt+q`: 현재 pane 닫기
 - `Alt+Enter`: split zoom 토글
 - `Alt+e`: 비활성화
+- `Alt+Shift+[` / `Alt+Shift+]`: 이전/다음 tab 이동
+- `Alt+Shift+{` / `Alt+Shift+}`: Windows 키 해석 차이 대응용 tab 이동
 - `Super+R`: 설정 리로드
 
 ## 비활성화한 기본 키
@@ -66,6 +69,7 @@ split/tab 이동은 Alt 기반 키만 쓴다.
 - `Super+D`, `Super+Shift+D`: 기본 split 생성 해제
 - `Super+Alt+방향키`: 기본 split 이동 해제
 - `Ctrl+Tab`, `Ctrl+Shift+Tab`, `Super+Shift+[` / `Super+Shift+]`: 기본 tab 이동 해제
+- `Super+Shift+{` / `Super+Shift+}`: Windows 키 해석 차이 대응용 tab 이동 해제
 - `Super+1..9`: 기본 tab 번호 이동 해제
 
 ## Ghostty와 다른 점
