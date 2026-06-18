@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Bash에서 `ble.sh`를 조용하게 쓰기 위한 설정이다. 문법 하이라이트와 파일명 하이라이트는 끄고, 히스토리 기반 자동제안만 흐린 회색으로 표시한다.
+Bash에서 `ble.sh`를 조용하게 쓰기 위한 설정이다. 문법 하이라이트와 파일명 하이라이트는 끄고, 히스토리 기반 자동제안만 흐린 회색으로 표시한다. Starship 오른쪽 프롬프트와 transient prompt도 여기서 제어한다.
 
 ## Installation
 
@@ -51,4 +51,7 @@ source ~/.bashrc
 - `complete_ambiguous`: 애매한 자동완성 끔
 - `complete_menu_complete`: 탭 메뉴 완성 끔
 - `complete_menu_filter`: 메뉴 필터링 끔
+- `prompt_ps1_transient`: 같은 디렉터리에서 실행한 이전 Starship 프롬프트를 짧게 정리
+- `prompt_ps1_final`: 이전 프롬프트 왼쪽에는 Starship character만 표시
+- `prompt_rps1_final`: 이전 프롬프트 오른쪽에는 종료 코드와 시간만 표시
 - `auto_complete`: 자동제안은 배경 없이 흐린 회색으로 표시
