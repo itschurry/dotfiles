@@ -1,13 +1,18 @@
-# Keep ble.sh quiet: history suggestion only, no noisy highlights.
+# Make Bash feel closer to a modern interactive shell.
 
-bleopt highlight_syntax=
-bleopt highlight_filename=
-bleopt highlight_variable=
+bleopt highlight_syntax=1
+bleopt highlight_filename=1
+bleopt highlight_variable=1
 
-bleopt complete_auto_delay=200
-bleopt complete_ambiguous=
-bleopt complete_menu_complete=
-bleopt complete_menu_filter=
+bleopt complete_auto_delay=150
+bleopt complete_auto_complete=1
+bleopt complete_auto_history=1
+bleopt complete_auto_menu=250
+bleopt complete_ambiguous=1
+bleopt complete_menu_complete=1
+bleopt complete_menu_complete_opts=insert-selection
+bleopt complete_menu_filter=1
+bleopt complete_menu_maxlines=12
 
 bleopt prompt_eol_mark=''
 bleopt prompt_ps1_transient=same-dir:trim
@@ -19,3 +24,8 @@ bleopt edit_marker=
 bleopt edit_marker_error=#
 
 ble-face auto_complete='fg=240'
+
+ble-bind -m emacs -f 'M-p' 'history-substring-search-backward hide-status:point=end'
+ble-bind -m emacs -f 'M-n' 'history-substring-search-forward hide-status:point=end'
+ble-bind -m emacs -f 'C-p' 'history-search-backward hide-status:point=end'
+ble-bind -m emacs -f 'C-n' 'history-search-forward hide-status:point=end'

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Bash에서 `ble.sh`를 조용하게 쓰기 위한 설정이다. 문법 하이라이트와 파일명 하이라이트는 끄고, 히스토리 기반 자동제안만 흐린 회색으로 표시한다. Starship 오른쪽 프롬프트와 transient prompt도 여기서 제어한다.
+Bash에서 `ble.sh`로 zsh에 가까운 입력 경험을 쓰기 위한 설정이다. 문법/파일/변수 하이라이트, 히스토리 자동제안, 자동완성 메뉴, 히스토리 검색 키를 켠다. Starship 오른쪽 프롬프트와 transient prompt도 여기서 제어한다.
 
 ## Installation
 
@@ -32,7 +32,7 @@ ln -sfn ~/dotfiles/blesh/blerc ~/.blerc
 source ~/.bashrc
 ```
 
-현재 셸에서 바로 다시 읽으려면 새 터미널을 여는 게 제일 깔끔하다.
+현재 셸에서 바로 다시 읽으려면 새 터미널을 열어.
 
 ## Directory structure
 
@@ -44,14 +44,26 @@ source ~/.bashrc
 
 ## Main options
 
-- `highlight_syntax`: 명령어 문법 하이라이트 끔
-- `highlight_filename`: 파일명 하이라이트 끔
-- `highlight_variable`: 변수 타입 하이라이트 끔
-- `complete_auto_delay`: 자동제안 표시 지연 시간 200ms
-- `complete_ambiguous`: 애매한 자동완성 끔
-- `complete_menu_complete`: 탭 메뉴 완성 끔
-- `complete_menu_filter`: 메뉴 필터링 끔
+- `highlight_syntax`: 명령어 문법 하이라이트 켬
+- `highlight_filename`: 파일명 하이라이트 켬
+- `highlight_variable`: 변수 타입 하이라이트 켬
+- `complete_auto_delay`: 자동제안 표시 지연 시간 150ms
+- `complete_auto_complete`: 입력 중 자동완성 후보 표시 켬
+- `complete_auto_history`: 히스토리 기반 자동제안 켬
+- `complete_auto_menu`: 입력 후 250ms 뒤 자동완성 메뉴 표시
+- `complete_ambiguous`: 애매한 후보도 메뉴로 표시
+- `complete_menu_complete`: 메뉴에서 선택한 후보를 바로 삽입
+- `complete_menu_filter`: 입력값으로 메뉴 후보 필터링
+- `complete_menu_maxlines`: 자동완성 메뉴 최대 12줄 표시
 - `prompt_ps1_transient`: 같은 디렉터리에서 실행한 이전 Starship 프롬프트를 짧게 정리
 - `prompt_ps1_final`: 이전 프롬프트 왼쪽에는 Starship character만 표시
 - `prompt_rps1_final`: 이전 프롬프트 오른쪽에는 종료 코드와 시간만 표시
 - `auto_complete`: 자동제안은 배경 없이 흐린 회색으로 표시
+
+## Key bindings
+
+- `C-r`: 히스토리 역방향 검색
+- `C-p` / `C-n`: 현재 입력 prefix 기준 히스토리 이동
+- `M-p` / `M-n`: 현재 입력 substring 기준 히스토리 이동
+- `Tab`: 자동완성 메뉴 열기/선택
+- `Shift-Tab`: 자동완성 메뉴 역방향 선택
