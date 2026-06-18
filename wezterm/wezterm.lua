@@ -140,12 +140,18 @@ local config = {
     {
       event = { Up = { streak = 1, button = 'Left' } },
       mods = 'NONE',
-      action = act.CompleteSelectionOrOpenLinkAtMouseCursor 'ClipboardAndPrimarySelection',
+      action = act.Multiple {
+        act.CompleteSelectionOrOpenLinkAtMouseCursor 'ClipboardAndPrimarySelection',
+        act.ClearSelection,
+      },
     },
     {
       event = { Up = { streak = 1, button = 'Right' } },
       mods = 'NONE',
-      action = act.CopyTo 'Clipboard',
+      action = act.Multiple {
+        act.CopyTo 'Clipboard',
+        act.ClearSelection,
+      },
     },
   },
 }
