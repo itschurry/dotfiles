@@ -60,6 +60,7 @@ wezterm/
 - `Alt+Enter`: split zoom 토글
 - `Alt+e`: 비활성화
 - `Alt+Shift+[` / `Alt+Shift+]`: 이전/다음 tab 이동
+- `Alt+Shift+LeftBracket` / `Alt+Shift+RightBracket`: 물리 키 위치 기준 tab 이동
 - `Alt+{` / `Alt+}`: Linux 키 해석 차이 대응용 tab 이동
 - `Alt+Shift+{` / `Alt+Shift+}`: Windows 키 해석 차이 대응용 tab 이동
 - `Super+R`: 설정 리로드

@@ -132,6 +132,7 @@ wezterm
   - split 생성: `Alt+V/S`
   - split 크기 조절: `Alt+Shift+H/J/K/L`
   - tab 이동: `Alt+Shift+[` / `Alt+Shift+]`
+  - 물리 키 위치 기준 tab 이동: `Alt+Shift+LeftBracket` / `Alt+Shift+RightBracket`
   - Linux 키 해석 대응 tab 이동: `Alt+{` / `Alt+}`
   - Windows WSL 기본 실행: `wsl.exe -d Ubuntu-24.04 --cd ~`
   - 제목 표시줄 표시, resize 유지, 반투명 Acrylic 배경

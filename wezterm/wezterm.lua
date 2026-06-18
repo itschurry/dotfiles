@@ -130,6 +130,8 @@ local config = {
     { key = 'e', mods = 'ALT', action = act.Nop },
 
     -- Tab navigation.
+    { key = 'phys:LeftBracket', mods = 'ALT|SHIFT', action = act.ActivateTabRelative(-1) },
+    { key = 'phys:RightBracket', mods = 'ALT|SHIFT', action = act.ActivateTabRelative(1) },
     { key = '[', mods = 'ALT|SHIFT', action = act.ActivateTabRelative(-1) },
     { key = ']', mods = 'ALT|SHIFT', action = act.ActivateTabRelative(1) },
     { key = '{', mods = 'ALT', action = act.ActivateTabRelative(-1) },
