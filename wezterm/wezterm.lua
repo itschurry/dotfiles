@@ -131,6 +131,8 @@ local config = {
     { key = '}', mods = 'ALT', action = act.ActivateTabRelative(1) },
     { key = '{', mods = 'ALT|SHIFT', action = act.ActivateTabRelative(-1) },
     { key = '}', mods = 'ALT|SHIFT', action = act.ActivateTabRelative(1) },
+    { key = 'Tab', mods = 'CTRL|SHIFT', action = act.ActivateTabRelative(-1) },
+    { key = 'Tab', mods = 'CTRL', action = act.ActivateTabRelative(1) },
 
     -- Config.
     { key = 'r', mods = 'SUPER', action = act.ReloadConfiguration },
