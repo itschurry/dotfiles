@@ -12,6 +12,7 @@ local plugins = {
   -- ☆ 종속성 / Utility
   { repo = "nvim-lua/plenary.nvim" },
   { repo = "MunifTanjim/nui.nvim", name = "nui.nvim", opt = true }, -- noice.nvim 의 필수 종속성
+  { repo = "nvim-neotest/nvim-nio", name = "nvim-nio", opt = true },
 
   -- ☆ 테마 & UI
   { repo = "catppuccin/nvim", name = "catppuccin", opt = true },
@@ -31,6 +32,7 @@ local plugins = {
   { repo = "nvim-lualine/lualine.nvim", opt = true },
   { repo = "stevearc/aerial.nvim", opt = true },
   { repo = "MeanderingProgrammer/render-markdown.nvim", opt = true },
+  { repo = "j-hui/fidget.nvim", name = "fidget.nvim", opt = true },
 
   -- ☆ 탐색 기능
   { repo = "nvim-telescope/telescope.nvim", opt = true },
@@ -48,6 +50,7 @@ local plugins = {
   { repo = "windwp/nvim-autopairs", opt = true },
   { repo = "stevearc/conform.nvim", opt = true },
   { repo = "nvim-flutter/flutter-tools.nvim", name = "flutter-tools.nvim", opt = true },
+  { repo = "rest-nvim/rest.nvim", name = "rest.nvim", opt = true },
 
   -- ☆ Git
   { repo = "lewis6991/gitsigns.nvim", opt = true },

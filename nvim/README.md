@@ -14,12 +14,21 @@ nvim
 필수 도구:
 
 ```sh
-sudo apt install git curl gcc
+sudo apt install git curl gcc luarocks
 npm install -g tree-sitter-cli
 ```
 
 `blink.cmp`는 v1 태그의 prebuilt fuzzy matcher를 받기 때문에 `git`, `curl`이 필요하다.
 Treesitter parser 설치는 `tree-sitter` CLI와 C 컴파일러가 필요하다.
+`rest.nvim`은 `curl`과 LuaRocks 의존성(`mimetypes`, `xml2lua`)이 필요하다.
+이 설정은 Neovim 데이터 경로 아래 `rocks` 트리를 Lua module path로 추가한다.
+
+```sh
+NVIM_DATA="$(nvim --headless +'lua io.write(vim.fn.stdpath("data"))' +qa)"
+luarocks --lua-version=5.1 --tree "$NVIM_DATA/rocks" install mimetypes
+luarocks --lua-version=5.1 --tree "$NVIM_DATA/rocks" install xml2lua
+```
+
 `npm`을 쓰지 않는 환경이면 아래처럼 설치해.
 
 ```sh
@@ -58,6 +67,7 @@ lua/core/                 기본 옵션, 키맵, autocommand, 프로젝트 설�
 lua/plugins/init.lua      플러그인 설치/업데이트
 lua/plugins/ui/           화면, 트리, 상태줄, 대시보드
 lua/plugins/editor/       포맷, 폴딩, Treesitter, Markdown 렌더링
+lua/plugins/editor/rest.lua REST API 요청 실행
 lua/plugins/completion/   자동완성, 스니펫
 lua/plugins/language/     LSP, Flutter
 lua/plugins/navigation/   Telescope 탐색
@@ -94,6 +104,11 @@ lua/utils/                빌드, rsync, 터미널 유틸
   - 토글: `<leader>mt`
   - 분할 미리보기: `<leader>mp`
   - 명령어: `:RenderMarkdown toggle`, `:RenderMarkdown preview`
+- REST API 클라이언트: `rest.nvim`
+  - `.http`, `.rest` 파일을 `http` filetype으로 연다.
+  - 요청 실행: `<leader>rr`, `:Rest run`
+  - 마지막 요청 재실행: `<leader>rl`, `:Rest last`
+  - env 파일 선택: `<leader>re`, `:Rest env select`
 - 주석: `<leader>/`, `<M-/>`
 - 파일 탐색: `<C-n>` (`nvim-tree`, 오른쪽 60컬럼, 파일 열면 자동 닫힘)
 - 심볼 탐색: `<C-t>`
@@ -201,6 +216,14 @@ Leader 키는 `,`다.
 | Normal | `<leader>mt` | Markdown 렌더링 토글 |
 | Normal | `<leader>mp` | Markdown 렌더링 분할 미리보기 |
 
+### REST
+
+| 모드 | 키 | 동작 |
+| --- | --- | --- |
+| Normal | `<leader>rr` | 커서 아래 REST 요청 실행 |
+| Normal | `<leader>rl` | 마지막 REST 요청 재실행 |
+| Normal | `<leader>re` | REST env 파일 선택 |
+
 ### 자동완성/스니펫
 
 | 모드 | 키 | 동작 |
@@ -257,6 +280,9 @@ Leader 키는 `,`다.
 | --- | --- |
 | `:PlugUpdate` | 직접 관리하는 플러그인 업데이트 |
 | `:TSInstallConfigured` | 설정된 Treesitter parser 설치 |
+| `:Rest run` | 커서 아래 REST 요청 실행 |
+| `:Rest last` | 마지막 REST 요청 재실행 |
+| `:Rest env select` | REST env 파일 선택 |
 | `:UiEffectsEnable` | `noice.nvim`, `nvim-notify` UI 효과 재활성화 |
 | `:RsyncUp [path]` | 로컬에서 원격으로 rsync |
 | `:RsyncDown [path]` | 원격에서 로컬로 rsync |

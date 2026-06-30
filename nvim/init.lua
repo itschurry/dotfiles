@@ -9,15 +9,16 @@ else
 
     local function setup_theme()
       -- require("theme.catppuccin")
-      require("theme.tokyonight")
+      -- require("theme.tokyonight")
       -- require("theme.github")
-      -- require("theme.nightfox")
+      require("theme.nightfox")
     end
 
     local function setup_editing_plugins()
       require("plugins.completion.blink")
       require("plugins.language.lsp")
       require("plugins.editor.markdown")
+      require("plugins.editor.rest")
       if vim.fn.executable("flutter") == 1 then
         require("plugins.language.flutter")
       end

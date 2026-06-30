@@ -20,6 +20,7 @@ local languages = {
   "vim",
   "markdown",
   "markdown_inline",
+  "http",
 }
 
 vim.api.nvim_create_user_command("TSInstallConfigured", function()
