@@ -1,8 +1,8 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 add_newline = true
-command_timeout = 750
-scan_timeout = 30
+command_timeout = 500
+scan_timeout = 10
 continuation_prompt = '[..](dimmed white) '
 format = """
 $username\
@@ -12,7 +12,7 @@ $git_branch\
 $git_status\
 $line_break\
 $character"""
-right_format = "$nodejs$python$golang$rust$docker_context$kubernetes$cmd_duration$jobs$status$time"
+right_format = "$cmd_duration$jobs$status$time"
 
 [aws]
 format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'

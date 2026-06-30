@@ -1,13 +1,13 @@
 # Make Bash feel closer to a modern interactive shell.
 
 bleopt highlight_syntax=1
-bleopt highlight_filename=1
-bleopt highlight_variable=1
+bleopt highlight_filename=0
+bleopt highlight_variable=0
 
-bleopt complete_auto_delay=150
-bleopt complete_auto_complete=1
+bleopt complete_auto_delay=250
+bleopt complete_auto_complete=0
 bleopt complete_auto_history=1
-bleopt complete_auto_menu=250
+bleopt complete_auto_menu=
 bleopt complete_ambiguous=1
 bleopt complete_menu_complete=1
 bleopt complete_menu_complete_opts=insert-selection
@@ -16,8 +16,8 @@ bleopt complete_menu_maxlines=12
 
 bleopt prompt_eol_mark=''
 bleopt prompt_ps1_transient=same-dir:trim
-bleopt prompt_ps1_final='$(starship module character)'
-bleopt prompt_rps1_final='$(starship module status)$(starship module time)'
+bleopt prompt_ps1_final='>'
+bleopt prompt_rps1_final=
 bleopt exec_errexit_mark=
 bleopt exec_exit_mark=
 bleopt edit_marker=

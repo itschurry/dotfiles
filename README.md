@@ -112,7 +112,7 @@ wezterm
 - `%USERPROFILE%\.wezterm.lua`: `wezterm/wezterm.lua`로 연결
 - Starship 세부 설정: `starship/README.md`
 - ble.sh 세부 설정: `blesh/README.md`
-- Bash 입력 개선: 문법/파일/변수 하이라이트, 히스토리 자동제안, 자동완성 메뉴, prefix/substring 히스토리 검색
+- Bash 입력 개선: 문법 하이라이트, 히스토리 자동제안, 수동 자동완성 메뉴, prefix/substring 히스토리 검색
 - Ghostty 세부 설정: `ghostty/README.md`
 - WezTerm 세부 설정: `wezterm/README.md`
 - tmux 세부 설정: `tmux/README.md`
