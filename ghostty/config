@@ -89,3 +89,5 @@ keybind = alt+e=equalize_splits
 
 keybind = cmd+r=reload_config
 keybind = global:cmd+`=toggle_quick_terminal
+
+gtk-single-instance = false
