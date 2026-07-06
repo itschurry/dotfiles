@@ -197,7 +197,9 @@ Leader 키는 `,`다.
 | Normal | `gr` | 참조 찾기 |
 | Normal | `K` | hover 문서 보기 |
 | Normal | `gl` | 현재 위치 진단 팝업 |
+| Normal | `<leader>e` | 현재 위치 진단 팝업 |
 | Normal | `<leader>gl` | 전체 진단 Telescope로 보기 |
+| Normal | `<leader>E` | 전체 진단 Telescope로 보기 |
 | Normal | `<leader>ca` | code action |
 | Normal | `<leader>rn` | symbol rename |
 | Normal | `<leader>f` | 현재 버퍼 포맷 |
