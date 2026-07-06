@@ -133,12 +133,10 @@ Leader 키는 `,`다.
 | 모드 | 키 | 동작 |
 | --- | --- | --- |
 | Normal | `<leader>nh` | 검색 하이라이트 제거 |
-| Normal | `<leader>tn` | 줄 번호/상대 줄 번호 끄기 |
-| Normal | `<leader>tnr` | 줄 번호/상대 줄 번호 켜기 |
+| Normal | `<leader>N` | 줄 번호/상대 줄 번호 토글 |
 | Normal | `<leader>u` | redo |
 | Normal/Visual | `<leader>y` | 시스템 클립보드로 yank |
 | Normal | `<leader>P` | 시스템 클립보드에서 paste |
-| Normal | `<leader>yr` | 기본 레지스터 출력 |
 
 ### 창/버퍼
 
@@ -147,8 +145,8 @@ Leader 키는 `,`다.
 | Normal | `<leader>z` | 이전 버퍼로 이동 |
 | Normal | `<leader>x` | 다음 버퍼로 이동 |
 | Normal | `<leader>d` | 현재 버퍼 닫기 |
-| Normal | `<leader>p` | BufferLine 버퍼 선택 |
-| Normal | `<leader>pd` | BufferLine 버퍼 선택 후 닫기 |
+| Normal | `<leader>bb` | BufferLine 버퍼 선택 |
+| Normal | `<leader>bD` | BufferLine 버퍼 선택 후 닫기 |
 | Normal | `<leader>bo` | 현재 버퍼만 남기고 닫기 |
 | Normal | `<leader>bL` | 현재 버퍼 왼쪽 버퍼 닫기 |
 | Normal | `<leader>bR` | 현재 버퍼 오른쪽 버퍼 닫기 |
@@ -175,8 +173,8 @@ Leader 키는 `,`다.
 
 | 모드 | 키 | 동작 |
 | --- | --- | --- |
-| Normal | `<C-n>` | NvimTree 토글, 파일 열면 자동 닫힘 |
-| Normal | `<C-t>` | Aerial 심볼 아웃라인 토글 |
+| Normal | `<leader>n` | NvimTree 토글, 파일 열면 자동 닫힘 |
+| Normal | `<leader>t` | Aerial 심볼 아웃라인 토글 |
 | Normal | `<leader>ff` | Telescope 파일 찾기 |
 | Normal | `<leader>fF` | Telescope Git 파일 찾기 |
 | Normal | `<leader>fg` | Telescope live grep |
@@ -196,13 +194,11 @@ Leader 키는 `,`다.
 | Normal | `gd` | 정의로 이동 |
 | Normal | `gr` | 참조 찾기 |
 | Normal | `K` | hover 문서 보기 |
-| Normal | `gl` | 현재 위치 진단 팝업 |
 | Normal | `<leader>e` | 현재 위치 진단 팝업 |
-| Normal | `<leader>gl` | 전체 진단 Telescope로 보기 |
 | Normal | `<leader>E` | 전체 진단 Telescope로 보기 |
 | Normal | `<leader>ca` | code action |
 | Normal | `<leader>rn` | symbol rename |
-| Normal | `<leader>f` | 현재 버퍼 포맷 |
+| Normal | `<leader>F` | 현재 버퍼 포맷 |
 
 ### 주석/폴딩
 
@@ -210,9 +206,6 @@ Leader 키는 `,`다.
 | --- | --- | --- |
 | Normal/Visual | `<leader>/` | 라인 주석 토글 |
 | Normal/Visual | `<M-/>` | 블록 주석 토글 |
-| Normal | `<leader>zR` | 모든 fold 열기 |
-| Normal | `<leader>zM` | 모든 fold 닫기 |
-| Normal | `<leader>za` | 현재 fold 토글 |
 
 ### Markdown
 

@@ -36,8 +36,3 @@
 vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 vim.opt.foldlevel = 99
-
--- Fold 키 매핑
--- vim.api.nvim_set_keymap('n', '<leader>zR', 'zR', { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('n', '<leader>zM', 'zM', { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('n', '<leader>za', 'za', { noremap = true, silent = true })
