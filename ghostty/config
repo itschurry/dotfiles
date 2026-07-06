@@ -16,8 +16,7 @@ font-family = Maple Mono NF
 font-feature = -calt
 font-feature = -liga
 font-size = 14
-font-thicken = true
-font-thicken-strength = 90
+font-thicken = false
 
 # Cursor / shell
 cursor-style = bar

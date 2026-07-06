@@ -34,8 +34,8 @@ ghostty/
 ## 주요 옵션
 
 - theme: `Hardcore`
-- font: `Maple Mono NF`, 14pt
-- opacity: `0.92`
+- font: `Maple Mono NF`, 14pt, thickening 비활성화
+- opacity: `0.85`
 - blur: `18`
 - shell integration: `zsh`
 - Option key: `Alt`로 사용
