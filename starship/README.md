@@ -48,13 +48,14 @@ STARSHIP_CONFIG="$PWD/starship.toml" starship prompt
 
 - `bracketed-segments`: Starship 기본 문구 대신 각 모듈을 `[...]` 형태로 표시
 - `tokyo-night colors`: 경로, Git, 상태, 시간에 Tokyo Night 계열 색상만 적용
-- `format`: 왼쪽 프롬프트에 경로와 Git 상태만 표시
+- `format`: 왼쪽 프롬프트에 경로, Git 브랜치, Git clean/dirty 상태만 표시
 - `right_format`: 오른쪽 프롬프트에 실행 시간, 백그라운드 작업, 종료 코드, 현재 시간 표시
 - `continuation_prompt`: 여러 줄 명령 입력 중 `..` 표시
 - `directory.truncation_length`: 경로를 줄이지 않고 풀 경로로 표시
 - `command_timeout`: Starship 모듈 명령 제한 시간 500ms
 - `scan_timeout`: 디렉터리 스캔 제한 시간 10ms
 - `git_branch`: 로컬 브랜치와 remote 브랜치를 같이 표시
+- `custom.git_clean`: Git 저장소가 깨끗하면 `✓` 표시
 - `git_status`: staged, modified, untracked, deleted, renamed, stashed, ahead/behind 상태를 개수와 함께 표시
 - `package.disabled`: 패키지 버전 표시는 꺼둠
 - `aws`, `gcloud`, `azure`: 클라우드 컨텍스트 표시는 꺼둠
