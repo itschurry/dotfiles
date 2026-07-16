@@ -55,7 +55,7 @@ STARSHIP_CONFIG="$PWD/starship.toml" starship prompt
 - `command_timeout`: Starship 모듈 명령 제한 시간 500ms
 - `scan_timeout`: 디렉터리 스캔 제한 시간 10ms
 - `git_branch`: 로컬 브랜치와 remote 브랜치를 같이 표시
-- `custom.git_clean`: Git 저장소가 깨끗하면 `✓` 표시
+- `custom.git_clean`: Git 저장소에서만 상태를 검사하고, 깨끗하면 `✓` 표시
 - `git_status`: staged, modified, untracked, deleted, renamed, stashed, ahead/behind 상태를 개수와 함께 표시
 - `package.disabled`: 패키지 버전 표시는 꺼둠
 - `aws`, `gcloud`, `azure`: 클라우드 컨텍스트 표시는 꺼둠
