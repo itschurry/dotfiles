@@ -85,6 +85,7 @@ lua/utils/                빌드, rsync, 터미널 유틸
   - 파일 시작: LSP/자동완성은 즉시 로드하고, UI/탐색/Markdown/주석/indent 일부는 지연 로드한다.
 - 플러그인 배치: 자동 로드가 필요한 최소 플러그인만 `start`에 두고, 테마/LSP/완성/UI/탐색 플러그인은 `opt`에 둔 뒤 설정 파일에서 `packadd`로 로드한다.
 - Lua Treesitter parser: Neovim 번들 parser를 우선 사용한다. `nvim-treesitter` 안의 오래된 prebuilt parser가 런타임 query와 충돌하는 걸 막기 위해서다.
+- Treesitter query 경로: `opt/nvim-treesitter/runtime`을 `runtimepath` 앞에 추가해 설치된 parser가 언어별 highlight query를 찾게 한다.
 - Treesitter 로딩: 파일 시작처럼 `FileType` 이벤트 뒤에 Treesitter 설정이 로드돼도 현재 버퍼에 바로 적용한다.
 - Treesitter 설치: `:TSInstallConfigured`는 parser와 query를 같이 맞추기 위해 설정된 언어를 강제 재설치한다.
 - Shell Treesitter: `sh`, `zsh` filetype은 `bash` parser로 처리한다.

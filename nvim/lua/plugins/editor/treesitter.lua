@@ -1,3 +1,6 @@
+vim.opt.runtimepath:prepend(
+  vim.fn.stdpath("data") .. "/site/pack/plugins/opt/nvim-treesitter/runtime"
+)
 vim.cmd("packadd nvim-treesitter")
 
 local treesitter = require("nvim-treesitter")
