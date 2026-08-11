@@ -8,6 +8,7 @@ format = """
 $username\
 $hostname\
 $directory\
+$python\
 $git_branch\
 ${custom.git_clean}\
 $git_status\
@@ -268,7 +269,7 @@ format = '\[[$symbol$stack]($style)\]'
 format = '\[[$symbol($version)]($style)\]'
 
 [python]
-format = '\[[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)\]'
+format = '\[[${symbol}${virtualenv}]($style)\]'
 style = '#e0af68'
 
 [quarto]

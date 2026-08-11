@@ -110,7 +110,7 @@ wezterm
 - `~/.blerc`: `~/dotfiles/blesh/blerc`으로 연결
 - `~/.config/ghostty/config`: `~/dotfiles/ghostty/config`으로 연결
 - `%USERPROFILE%\.wezterm.lua`: `wezterm/wezterm.lua`로 연결
-- Starship 세부 설정: `starship/README.md`
+- Starship 세부 설정: `starship/README.md` (`VIRTUAL_ENV` 활성 시 Python 가상환경 이름 표시)
 - ble.sh 세부 설정: `blesh/README.md`
 - Bash 입력 개선: 문법 하이라이트, 히스토리 자동제안, 수동 자동완성 메뉴, prefix/substring 히스토리 검색
 - Ghostty 세부 설정: `ghostty/README.md`

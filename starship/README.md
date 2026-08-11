@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Bash에서 쓰는 개발용 Starship 프롬프트 설정이다. Bracketed Segments preset을 기반으로 쓰되, 왼쪽은 경로와 Git만 두고 실행 시간, 백그라운드 작업, 종료 코드, 시간만 오른쪽 프롬프트로 보낸다.
+Bash에서 쓰는 개발용 Starship 프롬프트 설정이다. Bracketed Segments preset을 기반으로 쓰되, 왼쪽은 경로, 활성 Python 가상환경, Git을 두고 실행 시간, 백그라운드 작업, 종료 코드, 시간만 오른쪽 프롬프트로 보낸다.
 색상은 Tokyo Night 계열만 적용하고, Tokyo Night preset의 Powerline 레이아웃은 쓰지 않는다.
 
 ## Installation
@@ -48,7 +48,8 @@ STARSHIP_CONFIG="$PWD/starship.toml" starship prompt
 
 - `bracketed-segments`: Starship 기본 문구 대신 각 모듈을 `[...]` 형태로 표시
 - `tokyo-night colors`: 경로, Git, 상태, 시간에 Tokyo Night 계열 색상만 적용
-- `format`: 왼쪽 프롬프트에 경로, Git 브랜치, Git clean/dirty 상태만 표시
+- `format`: 왼쪽 프롬프트에 경로, 활성 Python 가상환경, Git 브랜치, Git clean/dirty 상태 표시
+- `python`: `VIRTUAL_ENV`가 설정된 동안 `[🐍 가상환경이름]` 표시
 - `right_format`: 오른쪽 프롬프트에 실행 시간, 백그라운드 작업, 종료 코드, 현재 시간 표시
 - `continuation_prompt`: 여러 줄 명령 입력 중 `..` 표시
 - `directory.truncation_length`: 경로를 줄이지 않고 풀 경로로 표시
