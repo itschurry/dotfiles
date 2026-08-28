@@ -2,7 +2,7 @@
 
 add_newline = true
 command_timeout = 500
-scan_timeout = 10
+scan_timeout = 100
 continuation_prompt = '[..](dimmed white) '
 format = """
 $username\
@@ -52,6 +52,7 @@ style = '#e0af68'
 command = 'printf ✓'
 when = 'test -z "$(git status --porcelain)"'
 require_repo = true
+ignore_timeout = true
 format = '\[[$output]($style)\]'
 style = '#9ece6a'
 
