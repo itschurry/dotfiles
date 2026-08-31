@@ -118,11 +118,10 @@ local function update_plugins()
         git -C "%s" fetch origin tag "%s" --depth=1
         git -C "%s" checkout --detach "%s"
       ]], path, plugin.tag, path, plugin.tag) or plugin.branch and string.format([[
-        git -C "%s" fetch origin "%s:refs/remotes/origin/%s" --depth=1
+        git -C "%s" fetch --force origin "refs/heads/%s:refs/remotes/origin/%s" --depth=1
         git -C "%s" checkout -B "%s" "origin/%s"
         git -C "%s" branch --set-upstream-to="origin/%s" "%s"
-        git -C "%s" pull --ff-only
-      ]], path, plugin.branch, plugin.branch, path, plugin.branch, plugin.branch, path, plugin.branch, plugin.branch, path) or string.format('git -C "%s" pull --ff-only', path)
+      ]], path, plugin.branch, plugin.branch, path, plugin.branch, plugin.branch, path, plugin.branch, plugin.branch) or string.format('git -C "%s" pull --ff-only', path)
     table.insert(lines, string.format([[
       if [ -d "%s" ]; then
         echo "🔄  updating %s ..."
