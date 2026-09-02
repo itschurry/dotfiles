@@ -1,6 +1,6 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-add_newline = true
+add_newline = false
 command_timeout = 500
 scan_timeout = 10
 continuation_prompt = '[..](dimmed white) '
@@ -46,14 +46,14 @@ vimcmd_symbol = '[❮](bold #e0af68)'
 
 [cmd_duration]
 format = '\[[⏱ $duration]($style)\]'
-style = '#e0af68'
+# style = '#e0af68'
 
 [custom.git_clean]
 command = 'printf ✓'
 when = 'test -z "$(git status --porcelain)"'
 require_repo = true
 format = '\[[$output]($style)\]'
-style = '#9ece6a'
+# style = '#9ece6a'
 
 [cobol]
 format = '\[[$symbol($version)]($style)\]'
@@ -83,14 +83,14 @@ format = '\[[$symbol($version)]($style)\]'
 format = '\[[$symbol$loaded/$allowed]($style)\]'
 
 [directory]
-style = 'bold #7aa2f7'
+# style = 'bold #7aa2f7'
 read_only_style = '#f7768e'
 truncation_length = 0
 truncate_to_repo = false
 
 [docker_context]
 format = '\[[$symbol$context]($style)\]'
-style = '#7aa2f7'
+# style = '#7aa2f7'
 
 [dotnet]
 format = '\[[$symbol($version)(🎯 $tfm)]($style)\]'
@@ -122,7 +122,7 @@ disabled = true
 
 [git_branch]
 format = '\[[$symbol$branch(:$remote_branch)]($style)\]'
-style = '#bb9af7'
+# style = '#bb9af7'
 
 [git_commit]
 format = '\[[\($hash$tag\)]($style)\]'
@@ -135,7 +135,7 @@ format = '\[[$state ($progress_current/$progress_total)]($style)\]'
 
 [git_status]
 format = '([\[$all_status$ahead_behind\]]($style))'
-style = '#f7768e'
+# style = '#f7768e'
 conflicted = '=${count}'
 ahead = '↑${count}'
 behind = '↓${count}'
@@ -153,7 +153,7 @@ format = '\[[$symbol($version)]($style)\]'
 
 [golang]
 format = '\[[$symbol($version)]($style)\]'
-style = '#7dcfff'
+# style = '#7dcfff'
 
 [gradle]
 format = '\[[$symbol($version)]($style)\]'
@@ -175,14 +175,14 @@ format = '\[[$symbol$branch]($style)\]'
 
 [hostname]
 format = '\[[$ssh_symbol($hostname)]($style)\] '
-style = '#bb9af7'
+# style = '#bb9af7'
 
 [java]
 format = '\[[$symbol($version)]($style)\]'
 
 [jobs]
 format = '\[[$symbol$number]($style)\]'
-style = '#7aa2f7'
+# style = '#7aa2f7'
 
 [julia]
 format = '\[[$symbol($version)]($style)\]'
@@ -192,7 +192,7 @@ format = '\[[$symbol($version)]($style)\]'
 
 [kubernetes]
 format = '\[[$symbol$context( \($namespace\))]($style)\]'
-style = '#7dcfff'
+# style = '#7dcfff'
 
 [localip]
 format = '\[[$localipv4]($style)\]'
@@ -229,7 +229,7 @@ format = '\[[$symbol$state( \($name\))]($style)\]'
 
 [nodejs]
 format = '\[[$symbol($version)]($style)\]'
-style = '#9ece6a'
+# style = '#9ece6a'
 
 [ocaml]
 format = '\[[$symbol($version)(\($switch_indicator$switch_name\))]($style)\]'
@@ -270,7 +270,7 @@ format = '\[[$symbol($version)]($style)\]'
 
 [python]
 format = '\[[${symbol}${virtualenv}]($style)\]'
-style = '#e0af68'
+# style = '#e0af68'
 
 [quarto]
 format = '\[[$symbol($version)]($style)\]'
@@ -289,7 +289,7 @@ format = '\[[$symbol($version)]($style)\]'
 
 [rust]
 format = '\[[$symbol($version)]($style)\]'
-style = '#f7768e'
+# style = '#f7768e'
 
 [scala]
 format = '\[[$symbol($version)]($style)\]'
@@ -309,7 +309,7 @@ format = '\[[$symbol$environment]($style)\]'
 [status]
 format = '\[[$symbol$status]($style)\]'
 disabled = false
-style = '#f7768e'
+# style = '#f7768e'
 
 [sudo]
 format = '\[[as $symbol]($style)\]'
@@ -323,15 +323,15 @@ format = '\[[$symbol$workspace]($style)\]'
 [time]
 format = '\[[$time]($style)\]'
 disabled = false
-style = '#565f89'
+# style = '#565f89'
 
 [typst]
 format = '\[[$symbol($version)]($style)\]'
 
 [username]
 format = '\[[$user]($style)\]'
-style_user = '#7aa2f7'
-style_root = '#f7768e'
+# style_user = '#7aa2f7'
+# style_root = '#f7768e'
 
 [vagrant]
 format = '\[[$symbol($version)]($style)\]'
