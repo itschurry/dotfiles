@@ -83,8 +83,9 @@ keybind = alt+enter=toggle_split_zoom
 keybind = alt+e=equalize_splits
 
 # Tabs / config
-# keybind = alt+[=previous_tab
-# keybind = alt+]=next_tab
+keybind = alt+[=previous_tab
+keybind = alt+]=next_tab
+keybind = alt+t=new_tab
 
 keybind = cmd+r=reload_config
 keybind = global:cmd+`=toggle_quick_terminal
