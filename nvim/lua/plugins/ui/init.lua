@@ -1,5 +1,11 @@
 local M = {}
 
+vim.cmd("packadd which-key.nvim")
+require("which-key").setup {
+  preset = "classic",
+  delay = 300,
+}
+
 local function once(fn)
   local loaded = false
   return function()

@@ -81,6 +81,7 @@ lua/utils/                빌드, rsync, 터미널 유틸
 ## 주요 설정
 
 - Leader: `,`
+- 단축키 안내: `which-key.nvim`. Leader(`,`)나 단축키 접두 키를 누르고 300ms 기다리면 화면 아래에 후속 키 목록이 뜬다. `Esc`로 닫는다.
 - 테마: `terafox`
 - BufferLine 구분선: 얇은 선(`thin`)
 - 로딩 정책:
