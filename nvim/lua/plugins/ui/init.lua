@@ -179,42 +179,6 @@ vim.api.nvim_set_hl(0, "GitSignsDelete", { link = "DiffDelete" })
 vim.api.nvim_set_hl(0, "GitSignsTopdelete", { link = "DiffDelete" })
 vim.api.nvim_set_hl(0, "GitSignsChangedelete", { link = "DiffChange" })
 
-local function setup_comment()
-  vim.cmd("packadd Comment.nvim")
-  require("Comment").setup({
-    mappings = {
-      basic = false,
-      extra = false,
-    },
-  })
-end
-
-local comment = once(setup_comment)
-
-vim.keymap.set("n", "<leader>/", function()
-  comment()
-  require("Comment.api").toggle.linewise.current()
-end, { desc = "Toggle line comment" })
-
-vim.keymap.set("v", "<leader>/", function()
-  comment()
-  local esc = vim.api.nvim_replace_termcodes("<ESC>", true, false, true)
-  vim.api.nvim_feedkeys(esc, "x", false)
-  require("Comment.api").toggle.linewise(vim.fn.visualmode())
-end, { desc = "Visual toggle line comment" })
-
-vim.keymap.set("n", "<M-/>", function()
-  comment()
-  require("Comment.api").toggle.blockwise.current()
-end, { desc = "Toggle block comment" })
-
-vim.keymap.set("v", "<M-/>", function()
-  comment()
-  local esc = vim.api.nvim_replace_termcodes("<ESC>", true, false, true)
-  vim.api.nvim_feedkeys(esc, "x", false)
-  require("Comment.api").toggle.blockwise(vim.fn.visualmode())
-end, { desc = "Visual toggle block comment" })
-
 M.ui_effects = once(function()
   vim.cmd("packadd nui.nvim")
   vim.cmd("packadd noice.nvim")

@@ -57,7 +57,6 @@ local plugins = {
 
   -- ☆ 기타
   { repo = "lukas-reineke/indent-blankline.nvim", opt = true },
-  { repo = "numToStr/Comment.nvim", opt = true },
 }
 
 local installed_any = false

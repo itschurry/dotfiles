@@ -40,6 +40,7 @@ else
     -- Step 1. 기본 설정
     require("core.options")
     require("core.keymaps")
+    require("core.comments").setup()
     require("core.autocommands")
     require("core.project")
 

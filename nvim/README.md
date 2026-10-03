@@ -116,7 +116,7 @@ lua/utils/                빌드, rsync, 터미널 유틸
 - BufferLine 구분선: 얇은 선(`thin`)
 - 로딩 정책:
   - 빈 시작: `terafox`, Alpha 대시보드를 먼저 띄운 뒤 LSP/자동완성/UI 부가 설정을 지연 로드한다.
-  - 파일 시작: LSP/자동완성은 즉시 로드하고, UI/탐색/Markdown/주석/indent 일부는 지연 로드한다.
+  - 파일 시작: LSP/자동완성은 즉시 로드하고, UI/탐색/Markdown/indent 일부는 지연 로드한다.
 - 플러그인 배치: 자동 로드가 필요한 최소 플러그인만 `start`에 두고, 테마/LSP/완성/UI/탐색 플러그인은 `opt`에 둔 뒤 설정 파일에서 `packadd`로 로드한다.
 - Lua Treesitter parser: Neovim 번들 parser를 우선 사용한다. `nvim-treesitter` 안의 오래된 prebuilt parser가 런타임 query와 충돌하는 걸 막기 위해서다.
 - Treesitter query 경로: `opt/nvim-treesitter/runtime`을 `runtimepath` 앞에 추가해 설치된 parser가 언어별 highlight query를 찾게 한다.
@@ -147,7 +147,7 @@ lua/utils/                빌드, rsync, 터미널 유틸
   - 요청 실행: `<leader>rr`, `:Rest run`
   - 마지막 요청 재실행: `<leader>rl`, `:Rest last`
   - env 파일 선택: `<leader>re`, `:Rest env select`
-- 주석: `<leader>/`, `<M-/>`
+- 주석: `<leader>/`, `<M-/>` 모두 Neovim 내장 줄 주석 토글 (Normal/Visual), Neovim 0.10 이상 필요
 - 파일 탐색: `<leader>n` (`nvim-tree`, 오른쪽 60컬럼, 파일을 열어도 유지)
 - 심볼 탐색: `<C-t>`
 - Alpha 대시보드: `ItsChurry Lab` 로고, 작업 버튼, 현재 경로/버전 footer 표시
@@ -240,7 +240,16 @@ Leader 키는 `,`다.
 | 모드 | 키 | 동작 |
 | --- | --- | --- |
 | Normal/Visual | `<leader>/` | 라인 주석 토글 |
-| Normal/Visual | `<M-/>` | 블록 주석 토글 |
+| Normal/Visual | `<M-/>` | 라인 주석 토글 (`<leader>/`와 동일) |
+| Normal | `<leader>ft` | 현재 버퍼의 실제 파일 형식 선택 |
+
+주석은 확장자뿐 아니라 파일 이름·경로·shebang으로 감지한 filetype과 commentstring을 사용한다.
+`.ssh/config`, `.ssh/config.d/*`, `.bashrc`, Dockerfile, Makefile, `.env`, `.env.*`, `.clangd` 등도 지원한다.
+주석 전용 parser 설치는 필요 없다. HTML/CSS처럼 줄 주석이 없는 형식은 해당 형식의 주석 구문으로 줄을 감싼다.
+알 수 없는 파일은 내용을 변경하지 않고 `,ft` 또는 `:setlocal filetype=<형식>`으로 실제 문법을 지정하도록 안내한다.
+`,ft`는 버퍼에만 적용하며 파일 내용을 변환하지 않는다. 목록에 없는 형식은 `:setlocal filetype=<형식>`으로 지정한다.
+엄격한 JSON은 주석을 허용하지 않는다. 실제로 JSONC를 받는 파일/도구인 경우에만 JSONC를 선택한다.
+`Alt+/` 전달 여부는 터미널에 따라 다르므로 기본 키는 `,/`이며, 내장 `gcc` / Visual `gc`도 사용할 수 있다.
 
 ### Markdown
 
@@ -306,6 +315,13 @@ Leader 키는 `,`다.
 | `u` | 플러그인 업데이트 |
 | `c` | Neovim 설정 열기 |
 | `q` | 종료 |
+
+### 도움말 창과 man 페이지
+
+- SSH 설정에서 옵션 이름 위의 `K`: Neovim 내장 `:Man 5 ssh_config`로 해당 옵션 안내를 연다. `q`로 도움말 창을 닫는다.
+- `:Man <명령>`도 Normal 모드의 `q`로 닫는다. 내장 man 버퍼에서 `h`는 왼쪽 이동이다.
+- 외부 `man`/`less` 화면의 `h`는 도움말이고 `q`는 종료다. Neovim 터미널의 상태가 NORMAL이면 먼저 `i`로 Terminal 모드에 들어가야 pager에 키가 전달된다.
+- 트리 `?`/`g?` 도움말은 `q` 또는 Esc로 닫는다. 개인 `,?` 안내는 `,d`로 버퍼를 닫는다.
 
 ## 명령어
 
