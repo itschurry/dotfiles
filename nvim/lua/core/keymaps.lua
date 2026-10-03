@@ -101,4 +101,5 @@ map("n", "<leader>w", "<cmd>update<CR>", { desc = "Save current file", silent = 
 map("n", "<leader>q", "<cmd>confirm quit<CR>", { desc = "Quit window (confirm unsaved changes)", silent = true })
 map("n", "<leader>?", function()
   vim.cmd("view " .. vim.fn.fnameescape(vim.fn.stdpath("config") .. "/README.md"))
+  map("n", "q", "<cmd>bdelete<CR>", { buffer = true, silent = true, desc = "Close personal guide" })
 end, { desc = "Open personal Neovim guide", silent = true })
