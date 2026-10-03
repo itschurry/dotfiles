@@ -27,7 +27,7 @@ M.nvim_tree = once(function()
       vim.keymap.set("n", "mc", api.marks.clear, { buffer = bufnr, desc = "Clear marked files", silent = true })
     end,
     view = {
-      width = 60,
+      width = 40,
       side = "right",
     },
     actions = {
