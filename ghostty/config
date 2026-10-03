@@ -1,9 +1,6 @@
 # Theme / window
 theme = Hardcore
 
-# macOS: integrate tabs into the titlebar (new windows only; ignored on Linux).
-macos-titlebar-style = tabs
-
 tab-inherit-working-directory = true
 working-directory = ~/
 
