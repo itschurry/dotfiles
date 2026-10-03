@@ -8,7 +8,7 @@ map("n", "<leader>N", function()
   vim.wo.number = not vim.wo.number
   vim.wo.relativenumber = vim.wo.number
 end, { silent = true, desc = "Toggle line numbers" })
-map("n", "<leader>u", ":redo<CR>", { silent = true })
+map("n", "<leader>u", ":redo<CR>", { silent = true, desc = "Redo" })
 
 -- 클립보드
 map({ "n", "v" }, "<leader>y", '"+y', { silent = true })
@@ -29,11 +29,11 @@ map("n", "<leader>E", show_diagnostics, {
 
 
 -- buffer 
-map("n", "<leader>z",  ":BufferLineCyclePrev<CR>",  { silent = true })
-map("n", "<leader>x",  ":BufferLineCycleNext<CR>",  { silent = true })
-map("n", "<leader>d",  ":bdelete<CR>",              { silent = true })
-map("n", "<leader>bb",  ":BufferLinePick<CR>",       { silent = true })
-map("n", "<leader>bD", ":BufferLinePickClose<CR>",  { silent = true })
+map("n", "<leader>z",  ":BufferLineCyclePrev<CR>",  { silent = true, desc = "Previous buffer" })
+map("n", "<leader>x",  ":BufferLineCycleNext<CR>",  { silent = true, desc = "Next buffer" })
+map("n", "<leader>d",  ":bdelete<CR>",              { silent = true, desc = "Close current buffer" })
+map("n", "<leader>bb",  ":BufferLinePick<CR>",       { silent = true, desc = "Pick buffer" })
+map("n", "<leader>bD", ":BufferLinePickClose<CR>",  { silent = true, desc = "Pick buffer to close" })
 map("n", "<leader>bo", ":BufferLineCloseOthers<CR>", { silent = true, desc = "Close other buffers" })
 map("n", "<leader>bL", ":BufferLineCloseLeft<CR>",   { silent = true, desc = "Close buffers on the left" })
 map("n", "<leader>bR", ":BufferLineCloseRight<CR>",  { silent = true, desc = "Close buffers on the right" })
@@ -95,3 +95,10 @@ map("n", "<M-h>", "<cmd>TmuxNavigateLeft<CR>", { silent = true, desc = "Move to 
 map("n", "<M-j>", "<cmd>TmuxNavigateDown<CR>", { silent = true, desc = "Move to lower pane" })
 map("n", "<M-k>", "<cmd>TmuxNavigateUp<CR>", { silent = true, desc = "Move to upper pane" })
 map("n", "<M-l>", "<cmd>TmuxNavigateRight<CR>", { silent = true, desc = "Move to right pane" })
+
+-- 자주 쓰는 작업과 설정 안내
+map("n", "<leader>w", "<cmd>update<CR>", { desc = "Save current file", silent = true })
+map("n", "<leader>q", "<cmd>confirm quit<CR>", { desc = "Quit window (confirm unsaved changes)", silent = true })
+map("n", "<leader>?", function()
+  vim.cmd("view " .. vim.fn.fnameescape(vim.fn.stdpath("config") .. "/README.md"))
+end, { desc = "Open personal Neovim guide", silent = true })

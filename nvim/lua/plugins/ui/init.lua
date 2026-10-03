@@ -20,13 +20,19 @@ end
 M.nvim_tree = once(function()
   vim.cmd("packadd nvim-tree.lua")
   require("nvim-tree").setup {
+    on_attach = function(bufnr)
+      local api = require("nvim-tree.api")
+      api.config.mappings.default_on_attach(bufnr)
+      vim.keymap.set("n", "?", api.tree.toggle_help, { buffer = bufnr, desc = "Tree key help", silent = true, nowait = true })
+      vim.keymap.set("n", "mc", api.marks.clear, { buffer = bufnr, desc = "Clear marked files", silent = true })
+    end,
     view = {
       width = 60,
       side = "right",
     },
     actions = {
       open_file = {
-        quit_on_open = true,
+        quit_on_open = false,
       },
     },
     filters = {
@@ -48,7 +54,7 @@ end)
 vim.keymap.set("n", "<leader>n", function()
   M.nvim_tree()
   vim.cmd("NvimTreeToggle")
-end, { silent = true })
+end, { silent = true, desc = "Toggle file explorer" })
 
 M.aerial = once(function()
   vim.cmd("packadd aerial.nvim")
@@ -264,5 +270,10 @@ require("zen-mode").setup {
     },
   },
 }
+
+vim.keymap.set("n", "<leader>fn", function()
+  M.nvim_tree()
+  require("nvim-tree.api").tree.find_file({ open = true, focus = true })
+end, { desc = "Reveal current file in explorer", silent = true })
 
 return M

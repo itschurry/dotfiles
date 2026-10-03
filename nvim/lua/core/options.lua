@@ -19,3 +19,6 @@ o.clipboard = "unnamed,unnamedplus"
 
 -- 줄 번호
 wo.number, wo.relativenumber = true, true
+
+-- 탐색 중 커서 주변 문맥 유지
+o.scrolloff, o.sidescrolloff = 5, 5

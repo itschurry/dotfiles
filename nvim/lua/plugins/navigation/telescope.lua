@@ -31,19 +31,22 @@ end
 
 -- Telescope 명령어에 키맵 연결
 local map = vim.keymap.set
-map("n", "<leader>ff", function() builtin("find_files") end, { silent = true })
-map("n", "<leader>fF", function() builtin("git_files") end, { silent = true })
-map("n", "<leader>fg", function() builtin("live_grep") end, { silent = true })
-map("n", "<leader>fb", function() builtin("buffers") end, { silent = true })
-map("n", "<leader>fh", function() builtin("help_tags") end, { silent = true })
-map("n", "<leader>fo", function() builtin("oldfiles") end, { silent = true })
-map("n", "<leader>fs", function() builtin("lsp_document_symbols") end, { silent = true })
-map("n", "<leader>fr", function() builtin("lsp_references") end, { silent = true })
+map("n", "<leader>ff", function() builtin("find_files") end, { silent = true, desc = "Find files" })
+map("n", "<leader>fF", function() builtin("git_files") end, { silent = true, desc = "Find Git files" })
+map("n", "<leader>fg", function() builtin("live_grep") end, { silent = true, desc = "Search project text" })
+map("n", "<leader>fb", function() builtin("buffers") end, { silent = true, desc = "Find open buffers" })
+map("n", "<leader>fh", function() builtin("help_tags") end, { silent = true, desc = "Search Neovim help" })
+map("n", "<leader>fo", function() builtin("oldfiles") end, { silent = true, desc = "Recent files" })
+map("n", "<leader>fs", function() builtin("lsp_document_symbols") end, { silent = true, desc = "Document symbols" })
+map("n", "<leader>fr", function() builtin("lsp_references") end, { silent = true, desc = "Find references" })
 -- vim.api.nvim_set_keymap('n', '<leader>ff', '<Cmd>Telescope find_files<CR>', { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap('n', '<leader>fg', '<Cmd>Telescope live_grep<CR>', { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap('n', '<leader>fb', '<Cmd>Telescope buffers<CR>', { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap('n', '<leader>fh', '<Cmd>Telescope help_tags<CR>', { noremap = true, silent = true })
 
+
+map("n", "<leader>fk", function() builtin("keymaps") end, { desc = "Search all keymaps", silent = true })
+map("n", "<leader>f/", function() builtin("current_buffer_fuzzy_find") end, { desc = "Search current buffer", silent = true })
 
 -- Fuction for selecting buffers and performing vimdiff
 function M.diff_buffers()
@@ -75,7 +78,7 @@ function M.diff_buffers()
         end
     }
 end
-vim.keymap.set("n", "<leader>fd", M.diff_buffers, { silent = true })
+vim.keymap.set("n", "<leader>fd", M.diff_buffers, { silent = true, desc = "Compare two buffers" })
 
 function M.find_files()
   builtin("find_files")
