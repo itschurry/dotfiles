@@ -2,8 +2,8 @@
 
 ## Purpose
 
-Bash에서 쓰는 개발용 Starship 프롬프트 설정이다. Bracketed Segments preset을 기반으로 쓰되, 왼쪽은 경로, 활성 Python 가상환경, Git을 두고 실행 시간, 백그라운드 작업, 종료 코드, 시간만 오른쪽 프롬프트로 보낸다.
-색상은 Tokyo Night 계열만 적용하고, Tokyo Night preset의 Powerline 레이아웃은 쓰지 않는다.
+Bash에서 쓰는 개발용 Starship 프롬프트 설정이다. Bracketed Segments preset을 기반으로 쓰되, 왼쪽은 경로와 Git을 두고 실행 시간, 백그라운드 작업, 종료 코드, 시간만 오른쪽 프롬프트로 보낸다. Python 가상환경은 표시하지 않는다.
+입력 기호와 읽기 전용 경로 색상은 Tokyo Night 계열을 사용한다. 주석 처리된 모듈 색상은 적용되지 않고 Starship 기본 색상을 사용한다.
 
 ## Installation
 
@@ -47,15 +47,14 @@ STARSHIP_CONFIG="$PWD/starship.toml" starship prompt
 ## Main configuration
 
 - `bracketed-segments`: Starship 기본 문구 대신 각 모듈을 `[...]` 형태로 표시
-- `tokyo-night colors`: 경로, Git, 상태, 시간에 Tokyo Night 계열 색상만 적용
-- `format`: 왼쪽 프롬프트에 경로, 활성 Python 가상환경, Git 브랜치, Git clean/dirty 상태 표시
-- `python`: `VIRTUAL_ENV`가 설정된 동안 `[🐍 가상환경이름]` 표시
+- `character`, `directory.read_only_style`: 입력 기호와 읽기 전용 경로에 Tokyo Night 계열 색상 적용
+- `format`: 왼쪽 프롬프트에 경로, Git 브랜치, Git clean/dirty 상태 표시
 - `right_format`: 오른쪽 프롬프트에 실행 시간, 백그라운드 작업, 종료 코드, 현재 시간 표시
 - `continuation_prompt`: 여러 줄 명령 입력 중 `..` 표시
 - `directory.truncation_length`: 경로를 줄이지 않고 풀 경로로 표시
-- `command_timeout`: Starship 모듈 명령 제한 시간 500ms
-- `scan_timeout`: 디렉터리 스캔 제한 시간 10ms
-- `git_branch`: 로컬 브랜치와 remote 브랜치를 같이 표시
+- `command_timeout`: 별도 지정 없이 기본 명령 제한 시간 500ms 사용
+- `scan_timeout`: 별도 지정 없이 기본 디렉터리 스캔 제한 시간 30ms 사용
+- `git_branch`: 로컬 브랜치 표시, 추적 브랜치 이름이 다르면 함께 표시
 - `custom.git_clean`: Git 저장소에서만 상태를 검사하고, 깨끗하면 `✓` 표시
 - `git_status`: staged, modified, untracked, deleted, renamed, stashed, ahead/behind 상태를 개수와 함께 표시
 - `package.disabled`: 패키지 버전 표시는 꺼둠
@@ -74,5 +73,18 @@ Bash에서 오른쪽 프롬프트와 이전 프롬프트 정리는 `ble.sh`가 �
 오른쪽 프롬프트에 언어 런타임이나 컨테이너 컨텍스트가 필요하면 `right_format`에 필요한 모듈만 직접 추가해.
 
 ```toml
-right_format = "$python$docker_context$cmd_duration$jobs$status$time"
+right_format = "$docker_context$cmd_duration$jobs$status$time"
 ```
+
+## 공식 설정 검토
+
+[Starship 공식 설정 문서](https://starship.rs/config/) 기준으로 확인한 내용이다.
+
+- `format`과 `right_format`에 없는 모듈의 프리셋 설정은 현재 사용하지 않는다. 언어 런타임, 클라우드, 패키지 등의 설정이 남아 있지만 해당 모듈을 프롬프트에 추가하기 전까지 실행되지 않는다.
+- `command_timeout = 500`은 기본값과 같아서 제거했다. `scan_timeout = 10`도 제거해서 기본값 30ms를 사용한다.
+- `$python`과 `[python]`을 제거했다. Python 프로젝트 감지와 가상환경 표시를 위해 Python 모듈을 실행하지 않는다. 다른 모듈의 디렉터리 스캔까지 비활성화하는 설정은 아니다.
+- `custom.git_clean`은 `git status --porcelain`을 추가 실행한다. `git_status`와 상태 검사가 겹치지만 작업 폴더가 깨끗할 때 `✓`를 표시하는 현재 동작을 유지한다.
+- 기본 `git_status.up_to_date`는 원격 추적 브랜치와의 동기화 상태다. 미커밋 변경이 없는 상태와 의미가 달라 `custom.git_clean`의 대체 설정으로 쓰지 않는다.
+- `git_status.up_to_date = ''`는 기본값과 같은 명시적 설정이다. 동기화 표시를 비워두려는 의도를 보여주므로 유지한다.
+- 오른쪽 프롬프트는 Starship의 `right_format`을 사용한다. Bash에서 이를 표시하고 이전 프롬프트를 정리하는 ble.sh 설정은 공식 Bash 연동 방식이며 별도 프롬프트 구현이 아니다.
+- Git 상태별 개수, 전체 경로 표시, 대괄호 형식은 기본 옵션을 조합한 사용자 표시 설정이다. 불필요한 기능 재구현이 아니다.

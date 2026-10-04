@@ -1,14 +1,11 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 add_newline = false
-command_timeout = 500
-scan_timeout = 10
 continuation_prompt = '[..](dimmed white) '
 format = """
 $username\
 $hostname\
 $directory\
-$python\
 $git_branch\
 ${custom.git_clean}\
 $git_status\
@@ -267,10 +264,6 @@ format = '\[[$symbol$stack]($style)\]'
 
 [purescript]
 format = '\[[$symbol($version)]($style)\]'
-
-[python]
-format = '\[[${symbol}${virtualenv}]($style)\]'
-# style = '#e0af68'
 
 [quarto]
 format = '\[[$symbol($version)]($style)\]'
