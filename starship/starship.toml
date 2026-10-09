@@ -11,7 +11,6 @@ $git_branch\
 $git_state\
 $git_status\
 $python\
-$cmd_duration\
 $line_break\
 $character"""
 right_format = ''
@@ -59,11 +58,6 @@ detect_extensions = []
 detect_files = []
 detect_folders = []
 detect_env_vars = ['VIRTUAL_ENV']
-
-[cmd_duration]
-format = '[$duration]($style) '
-style = '#e0af68'
-min_time = 2000
 
 [username]
 format = '[$user]($style) '
