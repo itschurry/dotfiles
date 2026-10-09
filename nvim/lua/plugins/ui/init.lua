@@ -23,6 +23,12 @@ M.nvim_tree = once(function()
     on_attach = function(bufnr)
       local api = require("nvim-tree.api")
       api.config.mappings.default_on_attach(bufnr)
+      -- 루트 이동은 좌우 방향키처럼 h/l로 통일하고 이름 변경은 e 유지
+      vim.keymap.del("n", "-", { buffer = bufnr })
+      vim.keymap.del("n", "<C-]>", { buffer = bufnr })
+      vim.keymap.del("n", "r", { buffer = bufnr })
+      vim.keymap.set("n", "h", api.tree.change_root_to_parent, { buffer = bufnr, desc = "Root: Parent directory", silent = true, nowait = true })
+      vim.keymap.set("n", "l", api.tree.change_root_to_node, { buffer = bufnr, desc = "Root: Selected directory", silent = true, nowait = true })
       vim.keymap.set("n", "?", api.tree.toggle_help, { buffer = bufnr, desc = "Tree key help", silent = true, nowait = true })
       vim.keymap.set("n", "mc", api.marks.clear, { buffer = bufnr, desc = "Clear marked files", silent = true })
     end,
