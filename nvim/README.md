@@ -121,6 +121,26 @@ nvim
 브랜치를 지정한 플러그인은 upstream의 강제 푸시도 반영하도록 원격 브랜치를 강제 동기화한다.
 플러그인 저장소에서 직접 만든 로컬 커밋은 유지하지 않는다.
 
+### SSH 클립보드
+
+`SSH_CONNECTION`이 설정된 SSH 세션에서는 Neovim 내장 OSC 52 provider를 사용해.
+`yy` 또는 Visual 선택 후 `y`로 복사하면 SSH에 접속한 로컬 컴퓨터의 클립보드에 전달돼.
+macOS에서는 다른 앱에서 `Cmd+V`로 붙여넣어.
+
+서버에서 설정을 갱신한 뒤 Neovim을 다시 시작해:
+
+```sh
+cd ~/dotfiles
+git pull --ff-only
+nvim
+```
+
+로컬 터미널은 OSC 52 클립보드 쓰기를 지원하고 허용해야 해.
+이 저장소의 Ghostty 설정에는 `clipboard-write = allow`가 적용돼 있어.
+서버에서 tmux를 쓰면 이 저장소의 `tmux/tmux.conf`처럼 `set -g set-clipboard on`을 적용해.
+`p`로 로컬 클립보드를 읽으려면 터미널의 OSC 52 읽기도 지원하고 허용해야 해.
+SSH 밖에서는 기존 시스템 클립보드 설정을 사용해.
+
 ## 디렉터리 구조
 
 ```text
@@ -140,6 +160,7 @@ lua/utils/                빌드, rsync, 터미널 유틸
 ## 주요 설정
 
 - Leader: `,`
+- 클립보드: `unnamed,unnamedplus`. SSH 접속 시 `SSH_CONNECTION`으로 감지하고 내장 OSC 52 provider를 지정해 로컬 터미널 클립보드와 연결해.
 - 단축키 안내: `which-key.nvim`. Leader(`,`)나 단축키 접두 키를 누르고 300ms 기다리면 화면 아래에 후속 키 목록이 뜬다. `Esc`로 닫는다.
 - 테마: `TokyoNight Night`, 불투명 배경. 주석은 밝은 회청색 평문, 비활성 창도 동일한 대비 유지.
 - 화면: true color, 현재 줄/줄 번호 강조, 고정 1컬럼 Git/진단 gutter, 팝업 투명도 제거.

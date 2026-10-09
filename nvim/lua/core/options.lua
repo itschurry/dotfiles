@@ -15,6 +15,10 @@ o.ignorecase, o.smartcase = true, true
 o.backspace = "indent,eol,start"
 o.mouse = "a"
 o.mousemoveevent = true
+-- SSH에서는 로컬 터미널의 클립보드를 OSC 52로 사용한다.
+if vim.env.SSH_CONNECTION and vim.env.SSH_CONNECTION ~= "" then
+  vim.g.clipboard = "osc52"
+end
 o.clipboard = "unnamed,unnamedplus"
 o.confirm = true
 o.autoread = true
