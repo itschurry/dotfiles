@@ -8,8 +8,10 @@ require("blink.cmp").setup({
     preset = "enter",
     ["<C-s>"] = {}, -- Ctrl+s는 저장, 완성창은 Ctrl+Space
     ["<C-k>"] = {}, -- LuaSnip의 다음 항목 이동 유지
-    ["<Tab>"] = {}, -- 일반 들여쓰기를 가로채지 않음
-    ["<S-Tab>"] = {},
+    ["<Tab>"] = { "select_next", "fallback" },
+    ["<S-Tab>"] = { "select_prev", "fallback" },
+    ["<Up>"] = {},
+    ["<Down>"] = {},
     ["<C-n>"] = { "select_next" },
     ["<C-p>"] = { "select_prev" },
   },

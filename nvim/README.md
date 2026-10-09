@@ -10,7 +10,7 @@ Neovim용 Lua 설정이다. 플러그인은 별도 매니저 없이 `site/pack/p
 - Normal의 `Ctrl+p`: 파일 빠르게 열기. `,fw`: 커서 아래 단어를 프로젝트에서 검색.
 - `Ctrl+s` / `,w`: 저장, `,q`: 현재 창 닫기, `,d`: 현재 버퍼 닫기. 수정한 파일을 닫을 때는 저장 여부 확인.
 - 검색 창에서 `Ctrl+n/p`: 선택 이동, Enter: 열기, `Esc`: 바로 닫기.
-- 자동완성: `Ctrl+Space`로 열기, `Ctrl+n/p` 또는 방향키로 선택, Enter로 확정. Tab은 들여쓰기, `Ctrl+k/j`는 스니펫 이동.
+- 자동완성: `Ctrl+Space`로 열기, `Tab` / `Shift+Tab`으로 다음/이전 후보 선택, Enter로 확정. 완성창이 닫혀 있으면 Tab은 일반 들여쓰기, 방향키는 커서 이동, `Ctrl+k/j`는 스니펫 이동.
 - 코드: `gd` / F12 정의, `gr` 참조 목록, F2 / `,rn` 심볼 이름 변경, `K` 문서, `,ca` 코드 액션, `,cs` 함수 인자 안내.
 - 진단: `[d` / `]d` 이전/다음 오류·경고, `,e` 현재 위치 상세, `,E` 프로젝트 진단 목록. `,gp`: Git 변경 미리보기.
 - 마우스: 코드·탭 클릭, 선택, 스크롤, 분할 경계 드래그. 터미널 자체 텍스트 선택은 Shift를 누르고 드래그.
@@ -329,10 +329,11 @@ Leader 키는 `,`다.
 | --- | --- | --- |
 | Insert | `<C-Space>` | completion 메뉴/문서 표시 |
 | Insert | `<CR>` | 직접 선택한 completion 확정, 선택이 없으면 줄바꿈 |
-| Insert | `<C-n>` / 아래 방향키 | 다음 completion 항목 |
-| Insert | `<C-p>` / 위 방향키 | 이전 completion 항목 |
+| Insert | `<Tab>` / `<C-n>` | 다음 completion 항목 |
+| Insert | `<S-Tab>` / `<C-p>` | 이전 completion 항목 |
 | Insert | `<C-e>` | completion 취소 |
-| Insert | `<Tab>` | 일반 들여쓰기 |
+| Insert | `<Tab>` (완성창 닫힘) | 일반 들여쓰기 |
+| Insert | 위/아래 방향키 | 기본 커서 이동 |
 | Insert/Select | `<C-K>` | LuaSnip expand 또는 다음 jump |
 | Insert/Select | `<C-J>` | LuaSnip 이전 jump |
 
