@@ -110,11 +110,11 @@ wezterm
 - `~/.blerc`: `~/dotfiles/blesh/blerc`으로 연결
 - `~/.config/ghostty/config`: `~/dotfiles/ghostty/config`으로 연결
 - `%USERPROFILE%\.wezterm.lua`: `wezterm/wezterm.lua`로 연결
-- Starship 세부 설정: `starship/README.md` (경로, 활성 Python 가상환경 이름, Git 상태 표시)
+- Starship 세부 설정: `starship/README.md` (Pure 기반 두 줄 프롬프트, TokyoNight 색상, 전체 경로·가상환경·Git 변경 개수)
 - ble.sh 세부 설정: `blesh/README.md`
 - Bash 입력 개선: 문법 하이라이트, 히스토리 자동제안, 수동 자동완성 메뉴, prefix/substring 히스토리 검색
 - Ghostty 세부 설정: `ghostty/README.md`
-- Ghostty/Neovim 가독성: 불투명 TokyoNight Night, Maple Mono NF 14pt, 줄 간격 +30%. Ghostty `Cmd+R`과 Neovim 재시작으로 적용.
+- Ghostty/Neovim 가독성: 불투명 TokyoNight Night, Maple Mono NF Light 14pt, 줄 간격 +30%, 획 두껍게 처리 비활성화. Ghostty `Cmd+R`과 Neovim 재시작으로 적용.
 - Neovim 사용 흐름: 마우스 선택/분할 조절, `Ctrl+p` 파일 열기, `Ctrl+s` 저장, 숨김 파일 검색, 완성 문서 자동 표시, 현재 줄 진단, Lua/Shell LSP. 설치와 전체 단축키는 `nvim/README.md` 참고 (Neovim 0.12 이상 필요).
 - WezTerm 세부 설정: `wezterm/README.md`
 - tmux 세부 설정: `tmux/README.md`

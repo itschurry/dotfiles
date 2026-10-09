@@ -34,7 +34,7 @@ ghostty/
 ## 주요 옵션
 
 - theme: `TokyoNight Night` (Neovim과 같은 배경색 `#1a1b26`)
-- font: `Maple Mono NF`, 14pt, macOS thickening 활성화
+- font: `Maple Mono NF`, `Light` 스타일, 14pt, macOS thickening 비활성화
 - 줄 간격: `adjust-cell-height = 30%` (기본 셀 높이보다 30% 증가)
 - opacity: `1` (불투명), blur 비활성화
 - 비활성 split: 밝기 유지 (`unfocused-split-opacity = 1`)
