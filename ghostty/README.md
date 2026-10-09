@@ -33,14 +33,24 @@ ghostty/
 
 ## 주요 옵션
 
-- theme: `Hardcore`
-- font: `Maple Mono NF`, 14pt, thickening 비활성화
-- opacity: `0.85`
-- blur: `18`
+- theme: `TokyoNight Night` (Neovim과 같은 배경색 `#1a1b26`)
+- font: `Maple Mono NF`, 16pt, macOS thickening 활성화
+- 줄 간격: `adjust-cell-height = 12%` (기본 셀 높이보다 12% 증가)
+- opacity: `1` (불투명), blur 비활성화
+- 비활성 split: 밝기 유지 (`unfocused-split-opacity = 1`)
 - shell integration: `zsh`
 - Option key: `Alt`로 사용
 - clipboard: 읽기/쓰기 허용, 선택 시 clipboard 복사
 - quick terminal: `Cmd+\``
+
+`Maple Mono NF` 글꼴을 먼저 설치해. macOS에서는 아래 명령으로 설치할 수 있어.
+
+```bash
+brew install --cask font-maple-mono-nf
+```
+
+변경 후 `Cmd+R`로 리로드하고 Neovim을 재시작해. 글자 크기를 수동으로 바꾼 기존 탭은 리로드해도 크기가 유지되므로 새 탭을 열어.
+줄 간격은 Neovim 설정이 아니라 Ghostty 셀 높이로 조절하며, 터미널 전체에 적용돼.
 
 ## 키 바인딩
 

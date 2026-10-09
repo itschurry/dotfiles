@@ -1,22 +1,23 @@
 # Theme / window
-theme = Hardcore
+theme = TokyoNight Night
 
 tab-inherit-working-directory = true
 working-directory = ~/
 
-background-opacity = 0.85
-background-blur = 18
+background-opacity = 1
+background-blur = false
 background-opacity-cells = true
 window-padding-x = 12
 window-padding-y = 12
-unfocused-split-opacity = 0.80
+unfocused-split-opacity = 1
 
 # Font
 font-family = Maple Mono NF
 font-feature = -calt
 font-feature = -liga
-font-size = 14
-font-thicken = false
+font-size = 16
+font-thicken = true
+adjust-cell-height = 12%
 
 # Cursor / shell
 cursor-style = bar

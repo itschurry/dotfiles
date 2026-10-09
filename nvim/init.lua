@@ -9,9 +9,9 @@ else
 
     local function setup_theme()
       -- require("theme.catppuccin")
-      -- require("theme.tokyonight")
+      require("theme.tokyonight")
       -- require("theme.github")
-      require("theme.nightfox")
+      -- require("theme.nightfox")
     end
 
     local function setup_editing_plugins()

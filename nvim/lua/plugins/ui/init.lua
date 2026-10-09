@@ -83,8 +83,8 @@ vim.cmd("packadd lualine.nvim")
 require("lualine").setup {
   options = {
     theme = "auto",
-    section_separators = { "", "" },
-    component_separators = { "", "" },
+    section_separators = "",
+    component_separators = "",
   },
   sections = {
     lualine_a = { "mode" },
@@ -92,7 +92,7 @@ require("lualine").setup {
     lualine_c = {
       {
         "filename",
-        path = 2,
+        path = 1,
       },
     },
     lualine_x = { "encoding", "fileformat", "filetype" },
@@ -105,7 +105,7 @@ vim.cmd("packadd bufferline.nvim")
 require("bufferline").setup {
   options = {
     mode = "buffers",
-    numbers = "ordinal",
+    numbers = "none",
     diagnostics = "nvim_lsp",
     diagnostics_indicator = function(count, level)
       local icon = tostring(level):match("error") and "" or ""
@@ -147,8 +147,8 @@ M.indent = once(function()
     },
     scope = {
       enabled = true,
-      show_start = true,
-      show_end = true,
+      show_start = false,
+      show_end = false,
     },
     exclude = {
       filetypes = { "help", "dashboard", "terminal" },
@@ -170,14 +170,8 @@ require("gitsigns").setup {
     topdelete = { text = "‾" },
     changedelete = { text = "~" },
   },
-  current_line_blame = true,
+  current_line_blame = false,
 }
-
-vim.api.nvim_set_hl(0, "GitSignsAdd", { link = "DiffAdd" })
-vim.api.nvim_set_hl(0, "GitSignsChange", { link = "DiffChange" })
-vim.api.nvim_set_hl(0, "GitSignsDelete", { link = "DiffDelete" })
-vim.api.nvim_set_hl(0, "GitSignsTopdelete", { link = "DiffDelete" })
-vim.api.nvim_set_hl(0, "GitSignsChangedelete", { link = "DiffChange" })
 
 M.ui_effects = once(function()
   vim.cmd("packadd nui.nvim")

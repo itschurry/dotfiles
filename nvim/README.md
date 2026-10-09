@@ -35,7 +35,9 @@ Neovim용 Lua 설정이다. 플러그인은 별도 매니저 없이 `site/pack/p
 ## 설치
 
 ```sh
-git clone <repo-url> ~/.config/nvim
+git clone git@github.com:itschurry/dotfiles.git ~/dotfiles
+mkdir -p ~/.config
+ln -sfn ~/dotfiles/nvim ~/.config/nvim
 nvim
 ```
 
@@ -112,10 +114,15 @@ lua/utils/                빌드, rsync, 터미널 유틸
 
 - Leader: `,`
 - 단축키 안내: `which-key.nvim`. Leader(`,`)나 단축키 접두 키를 누르고 300ms 기다리면 화면 아래에 후속 키 목록이 뜬다. `Esc`로 닫는다.
-- 테마: `terafox`
+- 테마: `TokyoNight Night`, 불투명 배경. 주석은 밝은 회청색 평문, 비활성 창도 동일한 대비 유지.
+- 화면: true color, 현재 줄/줄 번호 강조, 고정 1컬럼 Git/진단 gutter, 팝업 투명도 제거.
+- Ghostty: `../ghostty/config`의 `Maple Mono NF` 16pt와 셀 높이 +12%를 함께 적용. 적용 후 Ghostty에서 `Cmd+R`, Neovim 재시작.
+- 상태줄: 구분 장식 제거, 파일 경로는 작업 디렉터리 기준 상대 경로.
+- Git: 변경 gutter는 유지하고 현재 줄 blame 문구는 기본 숨김. 필요할 때 `:Gitsigns toggle_current_line_blame`으로 토글.
+- 들여쓰기: 얇고 낮은 대비의 세로 가이드. 현재 scope의 시작/끝 밑줄은 표시하지 않음.
 - BufferLine 구분선: 얇은 선(`thin`)
 - 로딩 정책:
-  - 빈 시작: `terafox`, Alpha 대시보드를 먼저 띄운 뒤 LSP/자동완성/UI 부가 설정을 지연 로드한다.
+  - 빈 시작: `TokyoNight Night`, Alpha 대시보드를 먼저 띄운 뒤 LSP/자동완성/UI 부가 설정을 지연 로드한다.
   - 파일 시작: LSP/자동완성은 즉시 로드하고, UI/탐색/Markdown/indent 일부는 지연 로드한다.
 - 플러그인 배치: 자동 로드가 필요한 최소 플러그인만 `start`에 두고, 테마/LSP/완성/UI/탐색 플러그인은 `opt`에 둔 뒤 설정 파일에서 `packadd`로 로드한다.
 - Lua Treesitter parser: Neovim 번들 parser를 우선 사용한다. `nvim-treesitter` 안의 오래된 prebuilt parser가 런타임 query와 충돌하는 걸 막기 위해서다.
@@ -148,7 +155,7 @@ lua/utils/                빌드, rsync, 터미널 유틸
   - 마지막 요청 재실행: `<leader>rl`, `:Rest last`
   - env 파일 선택: `<leader>re`, `:Rest env select`
 - 주석: `<leader>/`, `<M-/>` 모두 Neovim 내장 줄 주석 토글 (Normal/Visual), Neovim 0.10 이상 필요
-- 파일 탐색: `<leader>n` (`nvim-tree`, 오른쪽 60컬럼, 파일을 열어도 유지)
+- 파일 탐색: `<leader>n` (`nvim-tree`, 오른쪽 40컬럼, 파일을 열어도 유지)
 - 심볼 탐색: `<C-t>`
 - Alpha 대시보드: `ItsChurry Lab` 로고, 작업 버튼, 현재 경로/버전 footer 표시
 - UI 효과: `noice.nvim`, `nvim-notify`

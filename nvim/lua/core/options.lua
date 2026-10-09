@@ -20,5 +20,15 @@ o.clipboard = "unnamed,unnamedplus"
 -- 줄 번호
 wo.number, wo.relativenumber = true, true
 
+-- 색상과 현재 줄을 또렷하게 표시하고 gutter 폭을 고정
+o.termguicolors = true
+o.background = "dark"
+wo.cursorline = true
+o.cursorlineopt = "number,line"
+wo.signcolumn = "yes:1"
+o.numberwidth = 4
+o.pumblend, o.winblend = 0, 0
+o.fillchars = "eob: "
+
 -- 탐색 중 커서 주변 문맥 유지
 o.scrolloff, o.sidescrolloff = 5, 5
