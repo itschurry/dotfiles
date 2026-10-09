@@ -5,6 +5,12 @@ require("which-key").setup {
   preset = "classic",
   delay = 300,
 }
+require("which-key").add {
+  { "<leader>b", group = "Buffers" },
+  { "<leader>c", group = "Code / Build" },
+  { "<leader>f", group = "Find" },
+  { "<leader>r", group = "REST / Rsync" },
+}
 
 local function once(fn)
   local loaded = false
@@ -20,6 +26,8 @@ end
 M.nvim_tree = once(function()
   vim.cmd("packadd nvim-tree.lua")
   require("nvim-tree").setup {
+    hijack_cursor = true,
+    update_focused_file = { enable = true },
     on_attach = function(bufnr)
       local api = require("nvim-tree.api")
       api.config.mappings.default_on_attach(bufnr)
@@ -42,15 +50,29 @@ M.nvim_tree = once(function()
       },
     },
     filters = {
-      dotfiles = true,
+      dotfiles = false,
+      custom = { "^\\.git$" },
     },
+    diagnostics = {
+      enable = true,
+      show_on_dirs = true,
+      show_on_open_dirs = false,
+      severity = { min = vim.diagnostic.severity.WARN },
+    },
+    modified = { enable = true },
+    tab = { sync = { open = true, close = true } },
     renderer = {
+      group_empty = true,
+      highlight_opened_files = "name",
+      indent_markers = { enable = true },
       icons = {
         show = {
           file = true,
           folder = true,
           folder_arrow = true,
           git = true,
+          modified = true,
+          diagnostics = true,
         },
       },
     },
@@ -89,6 +111,7 @@ vim.cmd("packadd lualine.nvim")
 require("lualine").setup {
   options = {
     theme = "auto",
+    globalstatus = true,
     section_separators = "",
     component_separators = "",
   },
@@ -117,10 +140,10 @@ require("bufferline").setup {
       local icon = tostring(level):match("error") and "" or ""
       return " " .. icon .. " " .. count
     end,
-    close_command = "bdelete %d",
-    right_mouse_command = "bdelete %d",
-    middle_mouse_command = "bdelete %d",
-    show_buffer_close_icons = false,
+    close_command = "confirm bdelete %d",
+    right_mouse_command = "confirm bdelete %d",
+    middle_mouse_command = "confirm bdelete %d",
+    show_buffer_close_icons = true,
     show_close_icon = false,
     always_show_bufferline = false,
     separator_style = "thin",
@@ -157,15 +180,13 @@ M.indent = once(function()
       show_end = false,
     },
     exclude = {
-      filetypes = { "help", "dashboard", "terminal" },
+      filetypes = { "help", "alpha", "dashboard", "terminal", "NvimTree", "aerial", "TelescopePrompt", "noice", "notify" },
     },
   }
 end)
 
-vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
-  once = true,
-  callback = M.indent,
-})
+-- 첫 파일은 BufReadPost 이후에 UI가 로드되므로 즉시 적용
+M.indent()
 
 vim.cmd("packadd gitsigns.nvim")
 require("gitsigns").setup {
@@ -178,6 +199,9 @@ require("gitsigns").setup {
   },
   current_line_blame = false,
 }
+vim.keymap.set("n", "<leader>gp", function()
+  require("gitsigns").preview_hunk()
+end, { silent = true, desc = "Preview Git changes" })
 
 M.ui_effects = once(function()
   vim.cmd("packadd nui.nvim")
@@ -201,16 +225,17 @@ M.ui_effects = once(function()
         enabled = false,
       },
     },
+    presets = { lsp_doc_border = true },
   })
 
-  local bg = vim.api.nvim_get_hl_by_name("Normal", true).background
+  local bg = vim.api.nvim_get_hl(0, { name = "Normal", link = false }).bg
   local notify = require("notify")
 
   notify.setup({
-    background_colour = string.format("#%06x", bg or 0x000000),
+    background_colour = string.format("#%06x", bg),
     timeout = 3000,
     render = "compact",
-    stages = "fade_in_slide_out",
+    stages = "static",
     top_down = false,
   })
   vim.notify = notify

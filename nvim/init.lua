@@ -56,8 +56,8 @@ else
     local mason_start_path = plugin_site .. "/start/mason.nvim"
     local mason_opt_path = plugin_site .. "/opt/mason.nvim"
     if vim.fn.isdirectory(mason_start_path) ~= 0 or vim.fn.isdirectory(mason_opt_path) ~= 0 then
+      setup_theme()
       if is_empty_start() then
-        setup_theme()
         require("plugins.ui.alpha").open()
 
         vim.defer_fn(function()
@@ -67,7 +67,6 @@ else
       else
         setup_editing_plugins()
         vim.schedule(function()
-          setup_theme()
           setup_deferred_plugins()
         end)
       end

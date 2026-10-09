@@ -1,6 +1,5 @@
 local o = vim.o
 local wo = vim.wo
-local g = vim.g
 
 local bundled_lua_parser = vim.fn.fnamemodify(vim.v.progpath, ":h:h") .. "/lib/nvim/parser/lua.so"
 if vim.fn.filereadable(bundled_lua_parser) == 1 then
@@ -14,8 +13,20 @@ o.expandtab, o.autoindent, o.smartindent = true, true, true
 o.hidden, o.hlsearch, o.incsearch = true, true, true
 o.ignorecase, o.smartcase = true, true
 o.backspace = "indent,eol,start"
-o.mouse = ""
+o.mouse = "a"
+o.mousemoveevent = true
 o.clipboard = "unnamed,unnamedplus"
+o.confirm = true
+o.autoread = true
+o.undofile = true
+o.undodir = vim.fn.stdpath("state") .. "/undo//"
+vim.fn.mkdir(vim.fn.stdpath("state") .. "/undo", "p")
+o.splitbelow, o.splitright = true, true
+o.wrap = false
+o.list = true
+o.listchars = "tab:» ,trail:·,nbsp:␣"
+o.timeoutlen = 400
+o.updatetime = 250
 
 -- 줄 번호
 wo.number, wo.relativenumber = true, true
@@ -28,6 +39,8 @@ o.cursorlineopt = "number,line"
 wo.signcolumn = "yes:1"
 o.numberwidth = 4
 o.pumblend, o.winblend = 0, 0
+o.winborder = "rounded"
+o.laststatus = 3
 o.fillchars = "eob: "
 
 -- 탐색 중 커서 주변 문맥 유지

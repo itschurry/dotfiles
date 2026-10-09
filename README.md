@@ -115,6 +115,7 @@ wezterm
 - Bash 입력 개선: 문법 하이라이트, 히스토리 자동제안, 수동 자동완성 메뉴, prefix/substring 히스토리 검색
 - Ghostty 세부 설정: `ghostty/README.md`
 - Ghostty/Neovim 가독성: 불투명 TokyoNight Night, Maple Mono NF 14pt, 줄 간격 +30%. Ghostty `Cmd+R`과 Neovim 재시작으로 적용.
+- Neovim 사용 흐름: 마우스 선택/분할 조절, `Ctrl+p` 파일 열기, `Ctrl+s` 저장, 숨김 파일 검색, 완성 문서 자동 표시, 현재 줄 진단, Lua/Shell LSP. 설치와 전체 단축키는 `nvim/README.md` 참고 (Neovim 0.12 이상 필요).
 - WezTerm 세부 설정: `wezterm/README.md`
 - tmux 세부 설정: `tmux/README.md`
 - tmux prefix: `C-a`

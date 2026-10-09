@@ -31,7 +31,7 @@ map("n", "<leader>E", show_diagnostics, {
 -- buffer 
 map("n", "<leader>z",  ":BufferLineCyclePrev<CR>",  { silent = true, desc = "Previous buffer" })
 map("n", "<leader>x",  ":BufferLineCycleNext<CR>",  { silent = true, desc = "Next buffer" })
-map("n", "<leader>d",  ":bdelete<CR>",              { silent = true, desc = "Close current buffer" })
+map("n", "<leader>d",  ":confirm bdelete<CR>",      { silent = true, desc = "Close current buffer (confirm unsaved changes)" })
 map("n", "<leader>bb",  ":BufferLinePick<CR>",       { silent = true, desc = "Pick buffer" })
 map("n", "<leader>bD", ":BufferLinePickClose<CR>",  { silent = true, desc = "Pick buffer to close" })
 map("n", "<leader>bo", ":BufferLineCloseOthers<CR>", { silent = true, desc = "Close other buffers" })
@@ -98,6 +98,15 @@ map("n", "<M-l>", "<cmd>TmuxNavigateRight<CR>", { silent = true, desc = "Move to
 
 -- 자주 쓰는 작업과 설정 안내
 map("n", "<leader>w", "<cmd>update<CR>", { desc = "Save current file", silent = true })
+if not vim.g.vscode then
+  map({ "n", "i" }, "<C-s>", "<cmd>update<CR>", { desc = "Save current file", silent = true })
+  map("v", "<C-s>", "<Esc><cmd>update<CR>", { desc = "Save current file", silent = true })
+  map("n", "<C-p>", function()
+    require("plugins.navigation.telescope").find_files()
+  end, { desc = "Quick open file", silent = true })
+end
+map("v", "<", "<gv", { desc = "Indent left and keep selection", silent = true })
+map("v", ">", ">gv", { desc = "Indent right and keep selection", silent = true })
 map("n", "<leader>q", "<cmd>confirm quit<CR>", { desc = "Quit window (confirm unsaved changes)", silent = true })
 map("n", "<leader>?", function()
   vim.cmd("view " .. vim.fn.fnameescape(vim.fn.stdpath("config") .. "/README.md"))

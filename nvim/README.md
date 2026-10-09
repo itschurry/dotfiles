@@ -7,8 +7,13 @@ Neovim용 Lua 설정이다. 플러그인은 별도 매니저 없이 `site/pack/p
 - `,?`: 이 설정 안내 열기. `,fk`: 전체 단축키 검색. `,`를 누르고 기다리면 which-key 안내.
 - `,n`: 탐색기 열기/닫기. `,fn`: 현재 파일을 탐색기에서 찾기. 트리에서 `?` 또는 `g?`: 트리 단축키 안내.
 - `,ff`: 파일 찾기, `,fg`: 프로젝트 문자열 검색, `,f/`: 현재 파일 검색, `,fo`: 최근 파일, `,fb`: 열린 버퍼.
-- `,w`: 저장, `,q`: 현재 창 닫기 (수정 내용은 확인), `,d`: 현재 버퍼 닫기.
-- 검색 창에서 `Ctrl+n/p`: 선택 이동, Enter: 열기, `Esc`로 Normal 전환 후 다시 `Esc`: 닫기.
+- Normal의 `Ctrl+p`: 파일 빠르게 열기. `,fw`: 커서 아래 단어를 프로젝트에서 검색.
+- `Ctrl+s` / `,w`: 저장, `,q`: 현재 창 닫기, `,d`: 현재 버퍼 닫기. 수정한 파일을 닫을 때는 저장 여부 확인.
+- 검색 창에서 `Ctrl+n/p`: 선택 이동, Enter: 열기, `Esc`: 바로 닫기.
+- 자동완성: `Ctrl+Space`로 열기, `Ctrl+n/p` 또는 방향키로 선택, Enter로 확정. Tab은 들여쓰기, `Ctrl+k/j`는 스니펫 이동.
+- 코드: `gd` / F12 정의, `gr` 참조 목록, F2 / `,rn` 심볼 이름 변경, `K` 문서, `,ca` 코드 액션, `,cs` 함수 인자 안내.
+- 진단: `[d` / `]d` 이전/다음 오류·경고, `,e` 현재 위치 상세, `,E` 프로젝트 진단 목록. `,gp`: Git 변경 미리보기.
+- 마우스: 코드·탭 클릭, 선택, 스크롤, 분할 경계 드래그. 터미널 자체 텍스트 선택은 Shift를 누르고 드래그.
 
 ### 파일/폴더 정리
 
@@ -30,12 +35,30 @@ Neovim용 Lua 설정이다. 플러그인은 별도 매니저 없이 `site/pack/p
 | `q` | 탐색기 닫기 |
 
 여러 파일은 각각 `m`으로 표시한 뒤 목적지 폴더에 커서를 놓고 `bmv`를 누른다.
-루트 이동은 트리 안에서 `h`/`l`로 통일했고, 기존 `-`/`Ctrl+]` 및 `r` 이름 변경 매핑은 제거했어.
-`e`는 확장자를 유지하는 이름 변경이야. 폴더 펼치기/접기는 Enter 또는 `o`를 사용해.
 `Move to:` 경로를 확인하고 Enter를 누르면 이동한다. Esc는 취소하고 표시는 남으므로 `mc`로 해제할 수 있다.
 트리를 유지하도록 설정했으므로 파일을 연 후 `,l`로 오른쪽 탐색기로 돌아올 수 있다.
 
+루트 이동은 트리 안에서 `h`/`l`로 통일했고, 기존 `-`/`Ctrl+]` 및 `r` 이름 변경 매핑은 제거했어.
+`e`는 확장자를 유지하는 이름 변경이야. 폴더 펼치기/접기는 Enter 또는 `o`를 사용해.
+숨김 파일은 기본 표시하고 `.git` 디렉터리는 숨겨. `H`로 숨김 파일, `U`로 `.git` 같은 사용자 제외 필터를 토글해.
+현재 편집 파일을 자동으로 따라가지만 트리 루트는 자동 변경하지 않아. 빈 중간 폴더는 묶어 표시하며 `L`로 묶음을 토글해.
+파일과 닫힌 폴더에 오류·경고 표시, 저장하지 않은 파일에는 수정 표시를 붙여.
+
 ## 설치
+
+Neovim **0.12 이상**이 필요해. `nvim-treesitter`의 `main` 브랜치 요구 버전이야.
+먼저 필수 도구를 설치해. macOS:
+
+```sh
+brew install neovim ripgrep node luarocks tree-sitter
+```
+
+Linux에서는 Neovim 0.12 이상을 설치한 뒤:
+
+```sh
+sudo apt install git curl gcc luarocks ripgrep npm
+npm install -g tree-sitter-cli
+```
 
 ```sh
 git clone git@github.com:itschurry/dotfiles.git ~/dotfiles
@@ -46,14 +69,9 @@ nvim
 
 처음 실행하면 `lua/plugins/init.lua`에 정의된 플러그인을 자동 설치한다. 설치가 끝나면 Neovim을 한 번 재시작해.
 시작 때 필요 없는 플러그인은 `site/pack/plugins/opt`에 두고 사용할 때 `packadd`로 로드한다.
-필수 도구:
-
-```sh
-sudo apt install git curl gcc luarocks
-npm install -g tree-sitter-cli
-```
-
 `blink.cmp`는 v1 태그의 prebuilt fuzzy matcher를 받기 때문에 `git`, `curl`이 필요하다.
+Rust matcher를 명시적으로 사용하며 바이너리가 준비되지 않으면 오류를 표시한다.
+프로젝트 문자열 검색은 `rg` (`ripgrep`)가 필요하다.
 Treesitter parser 설치는 `tree-sitter` CLI와 C 컴파일러가 필요하다.
 `rest.nvim`은 `curl`과 LuaRocks 의존성(`mimetypes`, `xml2lua`)이 필요하다.
 이 설정은 Neovim 데이터 경로 아래 `rocks` 트리를 Lua module path로 추가한다.
@@ -81,6 +99,11 @@ Treesitter parser는 시작 시 자동 설치하지 않는다. 처음 설치하�
 ```vim
 :MasonInstall stylua ruff clang-format cmakelang jq yamlfmt
 ```
+
+`lua-language-server`, `bash-language-server`를 포함한 관리 대상 LSP 서버는 Mason이 자동 설치해.
+Mason 서버 설치에는 `npm`/`node` 등이 필요하며 `:Mason`에서 설치 상태를 확인할 수 있어.
+`clangd`는 PATH에 직접 준비해. C/C++ 프로젝트의 `.clangd`와 `compile_commands.json`도 맞춰야 해.
+플러그인·서버 설치가 끝난 뒤 다시 시작하면 해당 파일을 열 때 연결돼.
 
 ## 실행
 
@@ -120,13 +143,18 @@ lua/utils/                빌드, rsync, 터미널 유틸
 - 테마: `TokyoNight Night`, 불투명 배경. 주석은 밝은 회청색 평문, 비활성 창도 동일한 대비 유지.
 - 화면: true color, 현재 줄/줄 번호 강조, 고정 1컬럼 Git/진단 gutter, 팝업 투명도 제거.
 - Ghostty: `../ghostty/config`의 `Maple Mono NF` 14pt와 셀 높이 +30%를 함께 적용. 적용 후 Ghostty에서 `Cmd+R`, Neovim 재시작.
-- 상태줄: 구분 장식 제거, 파일 경로는 작업 디렉터리 기준 상대 경로.
+- 상태줄: 분할 창 전체에서 하나만 표시, 구분 장식 제거, 파일 경로는 작업 디렉터리 기준 상대 경로.
+- 편집: 마우스 활성화, 새 분할은 오른쪽/아래, 코드 자동 줄바꿈 비활성화. Markdown/텍스트/커밋 메시지는 단어 단위 줄바꿈.
+- 수정 보존: 지속 undo (`stdpath("state")/undo`), 닫기 전 저장 확인. 외부 수정은 창 복귀 시 확인하며 저장하지 않은 변경은 자동으로 덮어쓰지 않아.
+- 여백: Tab·줄 끝 공백·non-breaking space만 표시. 복사한 영역은 150ms 강조.
+- 검색: 넓은 미리보기, 위쪽 입력창, Esc 한 번으로 닫기. 숨김 파일도 포함하되 Git ignore 규칙은 유지.
+  - `node_modules`, `.git`, `build`, `install`, `log`, `.venv` 디렉터리는 제외. `build_tools.lua` 같은 파일명은 제외하지 않아.
 - Git: 변경 gutter는 유지하고 현재 줄 blame 문구는 기본 숨김. 필요할 때 `:Gitsigns toggle_current_line_blame`으로 토글.
 - 들여쓰기: 얇고 낮은 대비의 세로 가이드. 현재 scope의 시작/끝 밑줄은 표시하지 않음.
-- BufferLine 구분선: 얇은 선(`thin`)
+- BufferLine 구분선: 얇은 선(`thin`). 탭의 닫기 버튼과 중간/오른쪽 클릭 지원, 수정된 파일은 저장 확인.
 - 로딩 정책:
   - 빈 시작: `TokyoNight Night`, Alpha 대시보드를 먼저 띄운 뒤 LSP/자동완성/UI 부가 설정을 지연 로드한다.
-  - 파일 시작: LSP/자동완성은 즉시 로드하고, UI/탐색/Markdown/indent 일부는 지연 로드한다.
+  - 파일 시작: 테마를 먼저 적용하고 LSP/자동완성/Markdown은 즉시 로드, UI/탐색/indent는 지연 로드한다.
 - 플러그인 배치: 자동 로드가 필요한 최소 플러그인만 `start`에 두고, 테마/LSP/완성/UI/탐색 플러그인은 `opt`에 둔 뒤 설정 파일에서 `packadd`로 로드한다.
 - Lua Treesitter parser: Neovim 번들 parser를 우선 사용한다. `nvim-treesitter` 안의 오래된 prebuilt parser가 런타임 query와 충돌하는 걸 막기 위해서다.
 - Treesitter query 경로: `opt/nvim-treesitter/runtime`을 `runtimepath` 앞에 추가해 설치된 parser가 언어별 highlight query를 찾게 한다.
@@ -134,12 +162,17 @@ lua/utils/                빌드, rsync, 터미널 유틸
 - Treesitter 설치: `:TSInstallConfigured`는 parser와 query를 같이 맞추기 위해 설정된 언어를 강제 재설치한다.
 - Shell Treesitter: `sh`, `zsh` filetype은 `bash` parser로 처리한다.
 - LSP: `mason.nvim`, `mason-lspconfig.nvim`, Neovim LSP API
-  - 활성 서버: `clangd`, `pyright`, `dockerls`, `jsonls`, `yamlls`
+  - 활성 서버: `clangd`, `pyright`, `dockerls`, `jsonls`, `yamlls`, `lua_ls`, `bashls`
   - `clangd` compile database 위치는 프로젝트별 `.clangd` 설정을 따른다.
+  - Flutter를 포함한 모든 서버에 동일한 탐색/문서/이름 변경 키맵 적용.
+  - 진단: gutter·밑줄은 유지, 현재 줄에만 오류/경고 문구 표시. 입력 중에는 진단 표시를 갱신하지 않아.
 - Flutter: `flutter-tools.nvim`
   - `dartls`는 `flutter-tools.nvim`이 관리한다.
   - Flutter SDK는 `flutter` 명령이 PATH에 있는 머신에서만 로드한다.
 - 자동완성: `blink.cmp` v1.10.2, `LuaSnip`
+  - 첫 후보 자동 선택과 선택 중 코드 삽입을 끄고, 직접 선택 후 Enter로 확정.
+  - 완성창은 최대 10줄, 종류 아이콘·이름·출처 표시. 선택한 후보 문서는 250ms 후 자동 표시.
+  - 완성/문서/진단 팝업은 둥근 테두리, 알림은 이동 애니메이션 없이 표시.
 - 저장 시 포맷: `conform.nvim`
   - Lua: `stylua`
   - Python: `ruff format`
@@ -159,7 +192,7 @@ lua/utils/                빌드, rsync, 터미널 유틸
   - env 파일 선택: `<leader>re`, `:Rest env select`
 - 주석: `<leader>/`, `<M-/>` 모두 Neovim 내장 줄 주석 토글 (Normal/Visual), Neovim 0.10 이상 필요
 - 파일 탐색: `<leader>n` (`nvim-tree`, 오른쪽 40컬럼, 파일을 열어도 유지)
-- 심볼 탐색: `<C-t>`
+- 심볼 탐색: `<leader>t` (Aerial)
 - Alpha 대시보드: `ItsChurry Lab` 로고, 작업 버튼, 현재 경로/버전 footer 표시
 - UI 효과: `noice.nvim`, `nvim-notify`
   - command-line 입력은 popup UI로 표시한다.
@@ -180,6 +213,8 @@ Leader 키는 `,`다.
 | Normal | `<leader>nh` | 검색 하이라이트 제거 |
 | Normal | `<leader>N` | 줄 번호/상대 줄 번호 토글 |
 | Normal | `<leader>u` | redo |
+| Normal/Insert/Visual | `<C-s>` | 저장 (Insert 모드는 유지, Visual은 선택 해제) |
+| Visual | `<` / `>` | 들여쓰기 변경 후 선택 유지 |
 | Normal/Visual | `<leader>y` | 시스템 클립보드로 yank |
 | Normal | `<leader>P` | 시스템 클립보드에서 paste |
 
@@ -221,8 +256,10 @@ Leader 키는 `,`다.
 | Normal | `<leader>n` | NvimTree 토글, 파일을 열어도 유지 |
 | Normal | `<leader>t` | Aerial 심볼 아웃라인 토글 |
 | Normal | `<leader>ff` | Telescope 파일 찾기 |
+| Normal | `<C-p>` | 파일 빠르게 열기 |
 | Normal | `<leader>fF` | Telescope Git 파일 찾기 |
 | Normal | `<leader>fg` | Telescope live grep |
+| Normal | `<leader>fw` | 커서 아래 단어를 프로젝트에서 검색 |
 | Normal | `<leader>fb` | Telescope 버퍼 목록 |
 | Normal | `<leader>fh` | Telescope help tags |
 | Normal | `<leader>fo` | Telescope 최근 파일 |
@@ -231,18 +268,27 @@ Leader 키는 `,`다.
 | Normal | `<leader>fd` | 버퍼 2개 선택해서 diff |
 | Insert | `<C-n>` | Telescope 선택 항목 아래로 이동 |
 | Insert | `<C-p>` | Telescope 선택 항목 위로 이동 |
+| Insert/Normal | `<Esc>` | Telescope 닫기 |
 
 ### LSP/진단/포맷
 
 | 모드 | 키 | 동작 |
 | --- | --- | --- |
 | Normal | `gd` | 정의로 이동 |
-| Normal | `gr` | 참조 찾기 |
+| Normal | `<F12>` | 정의로 이동 |
+| Normal | `gD` | 선언으로 이동 |
+| Normal | `gi` | 구현으로 이동 |
+| Normal | `gy` | 타입 정의로 이동 |
+| Normal | `gr` | 참조를 Telescope에서 찾기 |
 | Normal | `K` | hover 문서 보기 |
 | Normal | `<leader>e` | 현재 위치 진단 팝업 |
 | Normal | `<leader>E` | 전체 진단 Telescope로 보기 |
 | Normal | `<leader>ca` | code action |
 | Normal | `<leader>rn` | symbol rename |
+| Normal | `<F2>` | symbol rename |
+| Normal | `<leader>cs` | 함수 인자 안내 |
+| Normal | `[d` / `]d` | 이전/다음 진단 (Neovim 기본 키) |
+| Normal | `<leader>gp` | Git 변경 미리보기 |
 | Normal | `<leader>F` | 현재 버퍼 포맷 |
 
 ### 주석/폴딩
@@ -280,10 +326,12 @@ Leader 키는 `,`다.
 
 | 모드 | 키 | 동작 |
 | --- | --- | --- |
-| Insert | `<C-s>` | completion 메뉴 열기 |
-| Insert | `<CR>` | completion 선택 확정 |
-| Insert | `<Tab>` | 다음 completion 항목 |
-| Insert | `<S-Tab>` | 이전 completion 항목 |
+| Insert | `<C-Space>` | completion 메뉴/문서 표시 |
+| Insert | `<CR>` | 직접 선택한 completion 확정, 선택이 없으면 줄바꿈 |
+| Insert | `<C-n>` / 아래 방향키 | 다음 completion 항목 |
+| Insert | `<C-p>` / 위 방향키 | 이전 completion 항목 |
+| Insert | `<C-e>` | completion 취소 |
+| Insert | `<Tab>` | 일반 들여쓰기 |
 | Insert/Select | `<C-K>` | LuaSnip expand 또는 다음 jump |
 | Insert/Select | `<C-J>` | LuaSnip 이전 jump |
 
@@ -318,6 +366,7 @@ Leader 키는 `,`다.
 | 키 | 동작 |
 | --- | --- |
 | `e` | 새 파일 열기 |
+| `n` | 탐색기 토글 |
 | `f` | 파일 찾기 |
 | `r` | 최근 파일 |
 | `g` | grep 문자열 찾기 |

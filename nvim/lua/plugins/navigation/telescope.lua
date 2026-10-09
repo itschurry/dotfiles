@@ -13,13 +13,31 @@ function M.setup()
 
   telescope.setup({
     defaults = {
-      file_ignore_patterns = { "node_modules", ".git", "build", "install" },
+      file_ignore_patterns = { "^node_modules/", "/node_modules/", "^%.git/", "/%.git/", "^build/", "/build/", "^install/", "/install/", "^log/", "/log/", "^%.venv/", "/%.venv/" },
+      sorting_strategy = "ascending",
+      layout_strategy = "flex",
+      layout_config = {
+        width = 0.9,
+        height = 0.85,
+        prompt_position = "top",
+        horizontal = { preview_width = 0.55 },
+        vertical = { preview_height = 0.45 },
+      },
+      path_display = { "smart" },
+      border = true,
       mappings = {
         i = {
           ["<C-n>"] = actions.move_selection_next,
           ["<C-p>"] = actions.move_selection_previous,
+          ["<Esc>"] = actions.close,
         },
       },
+    },
+    pickers = {
+      find_files = { hidden = true },
+      live_grep = { additional_args = { "--hidden", "--glob", "!.git/*" } },
+      grep_string = { additional_args = { "--hidden", "--glob", "!.git/*" } },
+      buffers = { sort_mru = true },
     },
   })
 end
@@ -34,6 +52,7 @@ local map = vim.keymap.set
 map("n", "<leader>ff", function() builtin("find_files") end, { silent = true, desc = "Find files" })
 map("n", "<leader>fF", function() builtin("git_files") end, { silent = true, desc = "Find Git files" })
 map("n", "<leader>fg", function() builtin("live_grep") end, { silent = true, desc = "Search project text" })
+map("n", "<leader>fw", function() builtin("grep_string") end, { silent = true, desc = "Search word under cursor" })
 map("n", "<leader>fb", function() builtin("buffers") end, { silent = true, desc = "Find open buffers" })
 map("n", "<leader>fh", function() builtin("help_tags") end, { silent = true, desc = "Search Neovim help" })
 map("n", "<leader>fo", function() builtin("oldfiles") end, { silent = true, desc = "Recent files" })
@@ -102,6 +121,10 @@ end
 
 function M.diagnostics()
   builtin("diagnostics")
+end
+
+function M.references()
+  builtin("lsp_references")
 end
 
 return M

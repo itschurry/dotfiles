@@ -31,7 +31,7 @@ function M.setup()
     "  | |  | |  ___) | |___|  _  | |_| |  _ <|  _ < | |    | |___ / ___ \\| |_) |",
     " |___| |_| |____/ \\____|_| |_|\\___/|_| \\_\\_| \\_\\|_|    |_____/_/   \\_\\____/",
     "",
-    "                               No mouse, No mercy",
+    "                               코드 탐색과 편집을 한곳에서",
     "",
     "                  .  ˚  *  ｡  .  ˚  *  ｡  .  ˚  *  ｡  .  ˚  *  ｡",
   }
@@ -39,7 +39,7 @@ function M.setup()
   dashboard.section.footer.val = {
     "",
     "  " .. version .. "  |  " .. cwd,
-    "  ,ff find  ,fg grep  <C-n> tree  <C-t> symbols",
+    "  ,ff 파일  ,fg 검색  ,n 탐색기  ,t 심볼",
   }
 
   dashboard.section.buttons.val = {
@@ -66,9 +66,9 @@ function M.setup()
     dashboard.section.footer,
   }
 
-  vim.api.nvim_set_hl(0, "AlphaHeader", { fg = "#f4b8e4", bold = true })
-  vim.api.nvim_set_hl(0, "AlphaButtons", { fg = "#c0caf5" })
-  vim.api.nvim_set_hl(0, "AlphaFooter", { fg = "#94e2d5", italic = true })
+  vim.api.nvim_set_hl(0, "AlphaHeader", { link = "Title" })
+  vim.api.nvim_set_hl(0, "AlphaButtons", { link = "Normal" })
+  vim.api.nvim_set_hl(0, "AlphaFooter", { link = "Comment" })
   dashboard.opts.opts.noautocmd = true
 
   alpha.setup(dashboard.config)

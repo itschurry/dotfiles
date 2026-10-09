@@ -1,5 +1,28 @@
 local group = vim.api.nvim_create_augroup("PersonalHelp", { clear = true })
 
+local editing_group = vim.api.nvim_create_augroup("PersonalEditing", { clear = true })
+vim.api.nvim_create_autocmd("TextYankPost", {
+  group = editing_group,
+  callback = function()
+    vim.hl.on_yank({ higroup = "IncSearch", timeout = 150 })
+  end,
+})
+
+vim.api.nvim_create_autocmd("FocusGained", {
+  group = editing_group,
+  command = "checktime",
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = editing_group,
+  pattern = { "markdown", "text", "gitcommit" },
+  callback = function()
+    vim.wo.wrap = true
+    vim.wo.linebreak = true
+    vim.wo.breakindent = true
+  end,
+})
+
 -- :help는 편집 버퍼의 q를 바꾸지 않고 도움말 창에서만 닫기 키를 제공한다.
 vim.api.nvim_create_autocmd("FileType", {
   group = group,
