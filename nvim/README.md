@@ -116,7 +116,7 @@ lua/utils/                빌드, rsync, 터미널 유틸
 - 단축키 안내: `which-key.nvim`. Leader(`,`)나 단축키 접두 키를 누르고 300ms 기다리면 화면 아래에 후속 키 목록이 뜬다. `Esc`로 닫는다.
 - 테마: `TokyoNight Night`, 불투명 배경. 주석은 밝은 회청색 평문, 비활성 창도 동일한 대비 유지.
 - 화면: true color, 현재 줄/줄 번호 강조, 고정 1컬럼 Git/진단 gutter, 팝업 투명도 제거.
-- Ghostty: `../ghostty/config`의 `Maple Mono NF` 16pt와 셀 높이 +12%를 함께 적용. 적용 후 Ghostty에서 `Cmd+R`, Neovim 재시작.
+- Ghostty: `../ghostty/config`의 `Maple Mono NF` 14pt와 셀 높이 +30%를 함께 적용. 적용 후 Ghostty에서 `Cmd+R`, Neovim 재시작.
 - 상태줄: 구분 장식 제거, 파일 경로는 작업 디렉터리 기준 상대 경로.
 - Git: 변경 gutter는 유지하고 현재 줄 blame 문구는 기본 숨김. 필요할 때 `:Gitsigns toggle_current_line_blame`으로 토글.
 - 들여쓰기: 얇고 낮은 대비의 세로 가이드. 현재 scope의 시작/끝 밑줄은 표시하지 않음.
