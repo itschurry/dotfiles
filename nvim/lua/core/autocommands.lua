@@ -1,6 +1,32 @@
 local group = vim.api.nvim_create_augroup("PersonalHelp", { clear = true })
 
 local editing_group = vim.api.nvim_create_augroup("PersonalEditing", { clear = true })
+
+-- 마지막 편집 창에서 종료하면 트리를 먼저 닫고 Neovim의 종료 검사를 따른다.
+vim.api.nvim_create_autocmd("QuitPre", {
+  group = editing_group,
+  callback = function()
+    if vim.bo.filetype == "NvimTree"
+      or vim.api.nvim_win_get_config(0).relative ~= "" then return end
+
+    local tree_win
+    local other_windows = 0
+    for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+      if vim.api.nvim_win_get_config(win).relative == "" then
+        local buf = vim.api.nvim_win_get_buf(win)
+        if vim.bo[buf].filetype == "NvimTree" then
+          tree_win = win
+        else
+          other_windows = other_windows + 1
+        end
+      end
+    end
+    if tree_win and other_windows == 1 then
+      vim.api.nvim_win_close(tree_win, false)
+    end
+  end,
+})
+
 vim.api.nvim_create_autocmd("TextYankPost", {
   group = editing_group,
   callback = function()
