@@ -139,9 +139,9 @@ require("bufferline").setup {
       local icon = tostring(level):match("error") and "" or ""
       return " " .. icon .. " " .. count
     end,
-    close_command = "confirm bdelete %d",
-    right_mouse_command = "confirm bdelete %d",
-    middle_mouse_command = "confirm bdelete %d",
+    close_command = require("utils.buffers").close,
+    right_mouse_command = require("utils.buffers").close,
+    middle_mouse_command = require("utils.buffers").close,
     show_buffer_close_icons = true,
     show_close_icon = false,
     always_show_bufferline = false,

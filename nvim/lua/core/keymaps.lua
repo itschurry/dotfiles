@@ -31,7 +31,8 @@ map("n", "<leader>E", show_diagnostics, {
 -- buffer 
 map("n", "<leader>z",  ":BufferLineCyclePrev<CR>",  { silent = true, desc = "Previous buffer" })
 map("n", "<leader>x",  ":BufferLineCycleNext<CR>",  { silent = true, desc = "Next buffer" })
-map("n", "<leader>d",  ":confirm bdelete<CR>",      { silent = true, desc = "Close current buffer (confirm unsaved changes)" })
+map("n", "<leader>d", function() require("utils.buffers").close() end,
+  { silent = true, desc = "Close buffer, keep window (confirm unsaved changes)" })
 map("n", "<leader>bb",  ":BufferLinePick<CR>",       { silent = true, desc = "Pick buffer" })
 map("n", "<leader>bD", ":BufferLinePickClose<CR>",  { silent = true, desc = "Pick buffer to close" })
 map("n", "<leader>bo", ":BufferLineCloseOthers<CR>", { silent = true, desc = "Close other buffers" })
@@ -110,5 +111,6 @@ map("v", ">", ">gv", { desc = "Indent right and keep selection", silent = true }
 map("n", "<leader>q", "<cmd>confirm quit<CR>", { desc = "Quit window (confirm unsaved changes)", silent = true })
 map("n", "<leader>?", function()
   vim.cmd("view " .. vim.fn.fnameescape(vim.fn.stdpath("config") .. "/README.md"))
-  map("n", "q", "<cmd>bdelete<CR>", { buffer = true, silent = true, desc = "Close personal guide" })
+  map("n", "q", function() require("utils.buffers").close() end,
+    { buffer = true, silent = true, desc = "Close personal guide" })
 end, { desc = "Open personal Neovim guide", silent = true })

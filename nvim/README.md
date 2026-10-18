@@ -9,6 +9,8 @@ Neovim용 Lua 설정이다. 플러그인은 별도 매니저 없이 `site/pack/p
 - `,ff`: 파일 찾기, `,fg`: 프로젝트 문자열 검색, `,f/`: 현재 파일 검색, `,fo`: 최근 파일, `,fb`: 열린 버퍼.
 - Normal의 `Ctrl+p`: 파일 빠르게 열기. `,fw`: 커서 아래 단어를 프로젝트에서 검색.
 - `Ctrl+s` / `,w`: 저장, `,q`: 현재 창 닫기, `,d`: 현재 버퍼 닫기. 수정한 파일을 닫을 때는 저장 여부 확인.
+- `,d`와 BufferLine 닫기(닫기 아이콘·마우스 오른쪽/가운데 클릭·선택/일괄 닫기)는 편집 창과 탐색기 폭을 유지해. 마지막 파일을 닫으면 빈 편집 버퍼를 남겨. 저장하지 않은 변경은 저장/버리기/취소 중 선택해.
+- `:bd`/`:bdelete`, `:q`, `,q`는 기본 창 닫기 동작을 유지해. 탐색기 폭을 유지하면서 버퍼만 닫으려면 `,d`를 써. 탐색기에 커서가 있을 때 `,d`는 동작하지 않고, 트리는 `q` 또는 `,n`으로 닫아.
 - 검색 창에서 `Ctrl+n/p`: 선택 이동, Enter: 열기, `Esc`: 바로 닫기.
 - 자동완성: `Ctrl+Space`로 열기, `Tab` / `Shift+Tab`으로 다음/이전 후보 선택, Enter로 확정. 완성창이 닫혀 있으면 Tab은 일반 들여쓰기, 방향키는 커서 이동, `Ctrl+k/j`는 스니펫 이동.
 - 코드: `gd` / F12 정의, `gr` 참조 목록, F2 / `,rn` 심볼 이름 변경, `K` 문서, `,ca` 코드 액션, `,cs` 함수 인자 안내.
@@ -154,7 +156,7 @@ lua/plugins/completion/   자동완성, 스니펫
 lua/plugins/language/     LSP, Flutter
 lua/plugins/navigation/   Telescope 탐색
 lua/theme/                colorscheme 설정
-lua/utils/                빌드, rsync, 터미널 유틸
+lua/utils/                버퍼 닫기, 빌드, rsync, 터미널 유틸
 ```
 
 ## 주요 설정
@@ -246,7 +248,7 @@ Leader 키는 `,`다.
 | --- | --- | --- |
 | Normal | `<leader>z` | 이전 버퍼로 이동 |
 | Normal | `<leader>x` | 다음 버퍼로 이동 |
-| Normal | `<leader>d` | 현재 버퍼 닫기 |
+| Normal | `<leader>d` | 편집 창과 탐색기 폭을 유지하며 현재 버퍼 닫기 |
 | Normal | `<leader>bb` | BufferLine 버퍼 선택 |
 | Normal | `<leader>bD` | BufferLine 버퍼 선택 후 닫기 |
 | Normal | `<leader>bo` | 현재 버퍼만 남기고 닫기 |
