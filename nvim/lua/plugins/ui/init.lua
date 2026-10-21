@@ -41,7 +41,7 @@ M.nvim_tree = once(function()
     end,
     view = {
       width = 40,
-      side = "right",
+      side = "left",
     },
     actions = {
       open_file = {
