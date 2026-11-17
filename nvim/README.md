@@ -50,6 +50,16 @@ Neovim용 Lua 설정이다. 플러그인은 별도 매니저 없이 `site/pack/p
 
 ## 설치
 
+```bash
+cd /tmp
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
+sudo rm -rf /opt/nvim-linux-x86_64
+sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
+sudo ln -sf /opt/nvim-linux-x86_64/bin/nvim /usr/local/bin/nvim
+hash -r
+nvim --version | head -n 1
+```
+
 Neovim **0.12 이상**이 필요해. `nvim-treesitter`의 `main` 브랜치 요구 버전이야.
 먼저 필수 도구를 설치해. macOS:
 
